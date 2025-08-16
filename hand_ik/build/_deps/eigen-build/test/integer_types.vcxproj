@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{DC8CAB6B-C9F1-368E-8EA9-03801C5B871F}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>integer_types</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src;C:\Users\nicol\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src;C:\Users\nicol\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src;C:\Users\nicol\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src;C:\Users\nicol\vcpkg\installed\x64-windows\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\test\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/_deps/eigen-src/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik -BC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/_deps/eigen-build/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-4.1\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\MacroAddFileDependencies.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\EigenSmokeTestList.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindBLAS.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindCHOLMOD.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindHWLOC.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindKLU.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindLAPACK.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindPASTIX.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindSPQR.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindSuperLU.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindUMFPACK.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\BoostConfig.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\BoostConfigVersion.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\vcpkg-cmake-wrapper.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-config-version.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-config.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-targets.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/_deps/eigen-src/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik -BC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/_deps/eigen-build/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-4.1\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\MacroAddFileDependencies.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\EigenSmokeTestList.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindBLAS.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindCHOLMOD.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindHWLOC.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindKLU.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindLAPACK.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindPASTIX.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindSPQR.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindSuperLU.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindUMFPACK.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\BoostConfig.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\BoostConfigVersion.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\vcpkg-cmake-wrapper.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-config-version.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-config.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-targets.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/_deps/eigen-src/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik -BC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/_deps/eigen-build/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-4.1\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\MacroAddFileDependencies.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\EigenSmokeTestList.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindBLAS.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindCHOLMOD.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindHWLOC.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindKLU.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindLAPACK.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindPASTIX.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindSPQR.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindSuperLU.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindUMFPACK.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\BoostConfig.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\BoostConfigVersion.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\vcpkg-cmake-wrapper.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-config-version.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-config.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-targets.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/_deps/eigen-src/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik -BC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/_deps/eigen-build/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-4.1\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CMakePushCheckState.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckCXXSymbolExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckFortranFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckFunctionExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckIncludeFile.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckLanguage.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\CheckStructHasMember.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindBoost.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindPkgConfig.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindQt4.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\Internal\CheckSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-4.1\Modules\MacroAddFileDependencies.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\EigenSmokeTestList.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindBLAS.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindCHOLMOD.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindHWLOC.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindKLU.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindLAPACK.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindPASTIX.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindSPQR.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindSuperLU.cmake;C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-src\cmake\FindUMFPACK.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\BoostConfig.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\BoostConfigVersion.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost\vcpkg-cmake-wrapper.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-config-version.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-config.cmake;C:\Users\nicol\vcpkg\installed\x64-windows\share\boost_headers\boost_headers-targets.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\ZERO_CHECK.vcxproj">
+      <Project>{29879422-3C19-3FE0-BFE2-176DEAA2A375}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\integer_types_1.vcxproj">
+      <Project>{A3C8A0BF-41E5-37DA-9F4E-EBE7EB7773B2}</Project>
+      <Name>integer_types_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\integer_types_2.vcxproj">
+      <Project>{8E480701-C8BA-3610-ACB9-8C3159906848}</Project>
+      <Name>integer_types_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\integer_types_3.vcxproj">
+      <Project>{2FED34E3-2CB9-3F17-9B82-E9E85F2C5631}</Project>
+      <Name>integer_types_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\integer_types_4.vcxproj">
+      <Project>{B7585526-0D73-3B35-806F-486EE3CEC51F}</Project>
+      <Name>integer_types_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\integer_types_5.vcxproj">
+      <Project>{D45C4ACF-13F2-312F-A1EE-7D1467878075}</Project>
+      <Name>integer_types_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\integer_types_6.vcxproj">
+      <Project>{FD93CB46-4BCE-3C50-BCF6-20AAB79B9B1C}</Project>
+      <Name>integer_types_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\integer_types_7.vcxproj">
+      <Project>{C28FB94D-8252-3000-AAF6-FD44F5A7521A}</Project>
+      <Name>integer_types_7</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\integer_types_8.vcxproj">
+      <Project>{7A099E52-B0C2-3B44-8835-6951CC5C2734}</Project>
+      <Name>integer_types_8</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\_deps\eigen-build\test\integer_types_9.vcxproj">
+      <Project>{D17C4516-0290-3AE5-BCF7-AC35E6386178}</Project>
+      <Name>integer_types_9</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

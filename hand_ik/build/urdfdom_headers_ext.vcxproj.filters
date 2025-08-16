@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\3e5de67cee25aade5866c28fdf3a9f2e\urdfdom_headers_ext-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\3e5de67cee25aade5866c28fdf3a9f2e\urdfdom_headers_ext-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\3e5de67cee25aade5866c28fdf3a9f2e\urdfdom_headers_ext-update_disconnected.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\3e5de67cee25aade5866c28fdf3a9f2e\urdfdom_headers_ext-patch_disconnected.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\3e5de67cee25aade5866c28fdf3a9f2e\urdfdom_headers_ext-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\3e5de67cee25aade5866c28fdf3a9f2e\urdfdom_headers_ext-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\3e5de67cee25aade5866c28fdf3a9f2e\urdfdom_headers_ext-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\a4dd8d1bae32c8bd35d5e711c691f886\urdfdom_headers_ext-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\f62d3558f4d0d2be21143655fbffa7a9\urdfdom_headers_ext.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Apps\pinocchio_ik_v3\hand_ik\hand_ik\build\CMakeFiles\urdfdom_headers_ext" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{9EDD1F6D-A44E-30E0-9799-BD16569823E2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

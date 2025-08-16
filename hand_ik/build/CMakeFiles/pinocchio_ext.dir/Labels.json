@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/pinocchio_ext"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/f62d3558f4d0d2be21143655fbffa7a9/pinocchio_ext.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/a4dd8d1bae32c8bd35d5e711c691f886/pinocchio_ext-complete.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/f820a030584bff85fa2d3212eacd000a/pinocchio_ext-build.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/f820a030584bff85fa2d3212eacd000a/pinocchio_ext-configure.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/f820a030584bff85fa2d3212eacd000a/pinocchio_ext-download.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/f820a030584bff85fa2d3212eacd000a/pinocchio_ext-install.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/f820a030584bff85fa2d3212eacd000a/pinocchio_ext-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/f820a030584bff85fa2d3212eacd000a/pinocchio_ext-patch_disconnected.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/CMakeFiles/f820a030584bff85fa2d3212eacd000a/pinocchio_ext-update_disconnected.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"pinocchio_ext"
+		],
+		"name" : "pinocchio_ext"
+	}
+}
