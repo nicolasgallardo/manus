@@ -20,14 +20,11 @@ ADOLC_INCLUDES:PATH=ADOLC_INCLUDES-NOTFOUND
 //Path to a library.
 ADOLC_LIBRARIES:FILEPATH=ADOLC_LIBRARIES-NOTFOUND
 
-//The directory containing a CMake configuration file for Adolc.
-Adolc_DIR:PATH=Adolc_DIR-NOTFOUND
-
 //Path to a library.
 BLAS_Accelerate_LIBRARY:FILEPATH=BLAS_Accelerate_LIBRARY-NOTFOUND
 
-//The directory containing a CMake configuration file for BLAS.
-BLAS_DIR:PATH=BLAS_DIR-NOTFOUND
+//Installation directory of BLAS library
+BLAS_DIR:PATH=
 
 //Print some additional information during BLAS libraries detection
 BLAS_VERBOSE:BOOL=OFF
@@ -104,26 +101,26 @@ BLAS_sunperf_LIBRARY:FILEPATH=BLAS_sunperf_LIBRARY-NOTFOUND
 //Path to a library.
 BLAS_vecLib_LIBRARY:FILEPATH=BLAS_vecLib_LIBRARY-NOTFOUND
 
-//Build Manus integration bridge
-BUILD_MANUS_INTEGRATION:BOOL=ON
-
-//Build the Manus SDKClient executable
-BUILD_SDKCLIENT:BOOL=ON
-
-//Build optional Surge integration
-BUILD_SURGE_INTEGRATION:BOOL=OFF
-
-//Build tests
+//Build the testing tree.
 BUILD_TESTING:BOOL=ON
-
-//Build with Pinocchio support
-BUILD_WITH_PINOCCHIO:BOOL=ON
 
 //The directory containing a CMake configuration file for Boost.
 Boost_DIR:PATH=C:/Users/nicol/vcpkg/installed/x64-windows/share/boost
 
-//The directory containing a CMake configuration file for CHOLMOD.
-CHOLMOD_DIR:PATH=CHOLMOD_DIR-NOTFOUND
+Boost_FILESYSTEM_LIBRARY_DEBUG:STRING=C:/Users/nicol/vcpkg/installed/x64-windows/debug/bin/boost_filesystem-vc143-mt-gd-x64-1_88.dll
+
+Boost_FILESYSTEM_LIBRARY_RELEASE:STRING=C:/Users/nicol/vcpkg/installed/x64-windows/bin/boost_filesystem-vc143-mt-x64-1_88.dll
+
+//Path to a file.
+Boost_INCLUDE_DIR:PATH=C:/Users/nicol/vcpkg/installed/x64-windows/include
+
+Boost_SERIALIZATION_LIBRARY_DEBUG:STRING=C:/Users/nicol/vcpkg/installed/x64-windows/debug/bin/boost_serialization-vc143-mt-gd-x64-1_88.dll
+
+Boost_SERIALIZATION_LIBRARY_RELEASE:STRING=C:/Users/nicol/vcpkg/installed/x64-windows/bin/boost_serialization-vc143-mt-x64-1_88.dll
+
+Boost_SYSTEM_LIBRARY_DEBUG:STRING=C:/Users/nicol/vcpkg/installed/x64-windows/debug/bin/boost_system-vc143-mt-gd-x64-1_88.dll
+
+Boost_SYSTEM_LIBRARY_RELEASE:STRING=C:/Users/nicol/vcpkg/installed/x64-windows/bin/boost_system-vc143-mt-x64-1_88.dll
 
 //Path to a file.
 CHOLMOD_INCLUDES:PATH=CHOLMOD_INCLUDES-NOTFOUND
@@ -138,8 +135,8 @@ CMAKEPACKAGE_INSTALL_DIR:PATH=share/eigen3/cmake
 //Path to a program.
 CMAKE_AR:FILEPATH=C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/lib.exe
 
-//Build type
-CMAKE_BUILD_TYPE:STRING=Release
+//No help, variable specified on the command line.
+CMAKE_BUILD_TYPE:UNINITIALIZED=Release
 
 //Semicolon separated list of supported configuration types, only
 // supports Debug, Release, MinSizeRel, and RelWithDebInfo, anything
@@ -150,7 +147,7 @@ CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release;MinSizeRel;RelWithDebInfo
 CMAKE_CXX_FLAGS:STRING=/DWIN32 /D_WINDOWS /EHsc
 
 //Flags used by the CXX compiler during DEBUG builds.
-CMAKE_CXX_FLAGS_DEBUG:STRING=/Ob0 /Od /RTC1
+CMAKE_CXX_FLAGS_DEBUG:STRING=/Zi /Ob0 /Od /RTC1
 
 //Flags used by the CXX compiler during MINSIZEREL builds.
 CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG
@@ -159,7 +156,7 @@ CMAKE_CXX_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG
 CMAKE_CXX_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG
 
 //Flags used by the CXX compiler during RELWITHDEBINFO builds.
-CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/O2 /Ob1 /DNDEBUG
+CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=/Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C++ applications.
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -168,7 +165,7 @@ CMAKE_CXX_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.l
 CMAKE_C_FLAGS:STRING=/DWIN32 /D_WINDOWS
 
 //Flags used by the C compiler during DEBUG builds.
-CMAKE_C_FLAGS_DEBUG:STRING=/Ob0 /Od /RTC1
+CMAKE_C_FLAGS_DEBUG:STRING=/Zi /Ob0 /Od /RTC1
 
 //Flags used by the C compiler during MINSIZEREL builds.
 CMAKE_C_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG
@@ -177,7 +174,7 @@ CMAKE_C_FLAGS_MINSIZEREL:STRING=/O1 /Ob1 /DNDEBUG
 CMAKE_C_FLAGS_RELEASE:STRING=/O2 /Ob2 /DNDEBUG
 
 //Flags used by the C compiler during RELWITHDEBINFO builds.
-CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/O2 /Ob1 /DNDEBUG
+CMAKE_C_FLAGS_RELWITHDEBINFO:STRING=/Zi /O2 /Ob1 /DNDEBUG
 
 //Libraries linked by default with all C applications.
 CMAKE_C_STANDARD_LIBRARIES:STRING=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
@@ -240,7 +237,7 @@ CMAKE_INSTALL_MANDIR:PATH=
 CMAKE_INSTALL_OLDINCLUDEDIR:PATH=/usr/include
 
 //Install path prefix, prepended onto install directories.
-CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/ManusHandIKIntegration
+CMAKE_INSTALL_PREFIX:PATH=C:/Program Files/manus_integration
 
 //Run-time variable data (LOCALSTATEDIR/run)
 CMAKE_INSTALL_RUNSTATEDIR:PATH=
@@ -280,7 +277,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 //Path to a program.
 CMAKE_MT:FILEPATH=C:/Program Files (x86)/Windows Kits/10/bin/10.0.22621.0/x64/mt.exe
 
-CMAKE_PREFIX_PATH:STRING=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/pinocchio;C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom;C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers;C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/tinyxml2;C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/tinyxml2;C:/Users/nicol/vcpkg/installed/x64-windows/debug;C:/Users/nicol/vcpkg/installed/x64-windows
+CMAKE_PREFIX_PATH:STRING=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/pinocchio;C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom;C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers;C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/tinyxml2;C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/tinyxml2;C:/Users/nicol/vcpkg/installed/x64-windows;C:/Users/nicol/vcpkg/installed/x64-windows/debug
 
 //Value Computed by CMake
 CMAKE_PROJECT_COMPAT_VERSION:STATIC=
@@ -292,7 +289,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=ManusHandIKIntegration
+CMAKE_PROJECT_NAME:STATIC=manus_integration
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=
@@ -396,8 +393,84 @@ CTEST_SUBMIT_RETRY_COUNT:STRING=3
 //How long to wait between timed-out CTest submissions.
 CTEST_SUBMIT_RETRY_DELAY:STRING=5
 
-//The directory containing a CMake configuration file for CUDA.
-CUDA_DIR:PATH=CUDA_DIR-NOTFOUND
+//Compile device code in 64 bit mode
+CUDA_64_BIT_DEVICE_CODE:BOOL=ON
+
+//Attach the build rule to the CUDA source file.  Enable only when
+// the CUDA source file is added to at most one target.
+CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE:BOOL=ON
+
+//Generate and parse .cubin files in Device mode.
+CUDA_BUILD_CUBIN:BOOL=OFF
+
+//Build in Emulation mode
+CUDA_BUILD_EMULATION:BOOL=OFF
+
+//"cudart" library
+CUDA_CUDART_LIBRARY:FILEPATH=CUDA_CUDART_LIBRARY-NOTFOUND
+
+//"cuda" library (older versions only).
+CUDA_CUDA_LIBRARY:FILEPATH=CUDA_CUDA_LIBRARY-NOTFOUND
+
+//Directory to put all the output files.  If blank it will default
+// to the CMAKE_CURRENT_BINARY_DIR
+CUDA_GENERATED_OUTPUT_DIR:PATH=
+
+//Generated file extension
+CUDA_HOST_COMPILATION_CPP:BOOL=ON
+
+//Host side compiler used by NVCC
+CUDA_HOST_COMPILER:FILEPATH=$(VCInstallDir)Tools/MSVC/$(VCToolsVersion)/bin/Host$(Platform)/$(PlatformTarget)
+
+//Path to a program.
+CUDA_NVCC_EXECUTABLE:FILEPATH=CUDA_NVCC_EXECUTABLE-NOTFOUND
+
+//Semi-colon delimit multiple arguments. during all build types.
+CUDA_NVCC_FLAGS:STRING=
+
+//Semi-colon delimit multiple arguments. during DEBUG builds.
+CUDA_NVCC_FLAGS_DEBUG:STRING=
+
+//Semi-colon delimit multiple arguments. during MINSIZEREL builds.
+CUDA_NVCC_FLAGS_MINSIZEREL:STRING=
+
+//Semi-colon delimit multiple arguments. during RELEASE builds.
+CUDA_NVCC_FLAGS_RELEASE:STRING=
+
+//Semi-colon delimit multiple arguments. during RELWITHDEBINFO
+// builds.
+CUDA_NVCC_FLAGS_RELWITHDEBINFO:STRING=
+
+//Propagate C/CXX_FLAGS and friends to the host compiler via -Xcompile
+CUDA_PROPAGATE_HOST_FLAGS:BOOL=ON
+
+//Path to a file.
+CUDA_SDK_ROOT_DIR:PATH=CUDA_SDK_ROOT_DIR-NOTFOUND
+
+//Compile CUDA objects with separable compilation enabled.  Requires
+// CUDA 5.0+
+CUDA_SEPARABLE_COMPILATION:BOOL=OFF
+
+//Path to a file.
+CUDA_TOOLKIT_INCLUDE:PATH=CUDA_TOOLKIT_INCLUDE-NOTFOUND
+
+//Print out the commands run while compiling the CUDA source file.
+//  With the Makefile generator this defaults to VERBOSE variable
+// specified on the command line, but can be forced on with this
+// option.
+CUDA_VERBOSE_BUILD:BOOL=OFF
+
+//"cublas" library
+CUDA_cublas_LIBRARY:FILEPATH=CUDA_cublas_LIBRARY-NOTFOUND
+
+//"cublasemu" library
+CUDA_cublasemu_LIBRARY:FILEPATH=CUDA_cublasemu_LIBRARY-NOTFOUND
+
+//"cufft" library
+CUDA_cufft_LIBRARY:FILEPATH=CUDA_cufft_LIBRARY-NOTFOUND
+
+//"cufftemu" library
+CUDA_cufftemu_LIBRARY:FILEPATH=CUDA_cufftemu_LIBRARY-NOTFOUND
 
 //Maximum time allowed before CTest will kill the test.
 DART_TESTING_TIMEOUT:STRING=1500
@@ -587,9 +660,6 @@ FFTWF_LIB:FILEPATH=FFTWF_LIB-NOTFOUND
 //Path to a library.
 FFTWL_LIB:FILEPATH=FFTWL_LIB-NOTFOUND
 
-//The directory containing a CMake configuration file for FFTW.
-FFTW_DIR:PATH=FFTW_DIR-NOTFOUND
-
 //Path to a file.
 FFTW_INCLUDES:PATH=FFTW_INCLUDES-NOTFOUND
 
@@ -602,44 +672,8 @@ GITCOMMAND:FILEPATH=C:/Program Files/Git/cmd/git.exe
 //Git command line client
 GIT_EXECUTABLE:FILEPATH=C:/Program Files/Git/cmd/git.exe
 
-//Path to a library.
-GMOCK_LIBRARY:FILEPATH=GMOCK_LIBRARY-NOTFOUND
-
-//Path to a library.
-GMOCK_LIBRARY_DEBUG:FILEPATH=GMOCK_LIBRARY_DEBUG-NOTFOUND
-
-//Path to a library.
-GMOCK_MAIN_LIBRARY:FILEPATH=GMOCK_MAIN_LIBRARY-NOTFOUND
-
-//Path to a library.
-GMOCK_MAIN_LIBRARY_DEBUG:FILEPATH=GMOCK_MAIN_LIBRARY_DEBUG-NOTFOUND
-
 //Path to a file.
 GOOGLEHASH_INCLUDES:PATH=GOOGLEHASH_INCLUDES-NOTFOUND
-
-//Path to a file.
-GTEST_INCLUDE_DIR:PATH=GTEST_INCLUDE_DIR-NOTFOUND
-
-//Path to a library.
-GTEST_LIBRARY:FILEPATH=GTEST_LIBRARY-NOTFOUND
-
-//Path to a library.
-GTEST_LIBRARY_DEBUG:FILEPATH=GTEST_LIBRARY_DEBUG-NOTFOUND
-
-//Path to a library.
-GTEST_MAIN_LIBRARY:FILEPATH=GTEST_MAIN_LIBRARY-NOTFOUND
-
-//Path to a library.
-GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
-
-//The directory containing a CMake configuration file for GTest.
-GTest_DIR:PATH=GTest_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for Git.
-Git_DIR:PATH=Git_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for GoogleHash.
-GoogleHash_DIR:PATH=GoogleHash_DIR-NOTFOUND
 
 //Build examples
 HAND_IK_BUILD_EXAMPLES:BOOL=ON
@@ -647,8 +681,8 @@ HAND_IK_BUILD_EXAMPLES:BOOL=ON
 //Build tests
 HAND_IK_BUILD_TESTS:BOOL=ON
 
-//The directory containing a CMake configuration file for HWLOC.
-HWLOC_DIR:PATH=HWLOC_DIR-NOTFOUND
+//Installation directory of HWLOC library
+HWLOC_DIR:PATH=
 
 //Path to a file.
 HWLOC_hwloc.h_DIRS:PATH=HWLOC_hwloc.h_DIRS-NOTFOUND
@@ -660,29 +694,29 @@ HWLOC_hwloc_LIBRARY:FILEPATH=HWLOC_hwloc_LIBRARY-NOTFOUND
 // files are installed
 INCLUDE_INSTALL_DIR:PATH=include/eigen3
 
-//The directory containing a CMake configuration file for KLU.
-KLU_DIR:PATH=KLU_DIR-NOTFOUND
-
 //Path to a file.
 KLU_INCLUDES:PATH=KLU_INCLUDES-NOTFOUND
 
 //Path to a library.
 KLU_LIBRARIES:FILEPATH=KLU_LIBRARIES-NOTFOUND
 
-//The directory containing a CMake configuration file for LAPACK.
-LAPACK_DIR:PATH=LAPACK_DIR-NOTFOUND
-
 //Command to build the project
 MAKECOMMAND:STRING="C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
 
-//Path to a library.
-MANUS_CORE_LIBRARY:FILEPATH=MANUS_CORE_LIBRARY-NOTFOUND
+//Build test executables
+MANUS_BUILD_TESTS:BOOL=ON
 
-//Path to the Manus SDK root
+//Path to Manus SDK
 MANUS_SDK_DIR:PATH=C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK
 
+//Path to a file.
+MANUS_SDK_DLL:FILEPATH=C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK/SDKClient_Windows/ManusSDK/lib/ManusSDK.dll
+
+//Path to a file.
+MANUS_SDK_INCLUDE_DIR:PATH=C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK/SDKClient_Windows/ManusSDK/include
+
 //Path to a library.
-MANUS_SDK_LIBRARY:FILEPATH=MANUS_SDK_LIBRARY-NOTFOUND
+MANUS_SDK_LIBRARY:FILEPATH=C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK/SDKClient_Windows/ManusSDK/lib/ManusSDK.lib
 
 //Path to the memory checking command, used for memory error detection.
 MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
@@ -690,26 +724,11 @@ MEMORYCHECK_COMMAND:FILEPATH=MEMORYCHECK_COMMAND-NOTFOUND
 //File that contains suppressions for the memory checker
 MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 
-//The directory containing a CMake configuration file for MPFR.
-MPFR_DIR:PATH=MPFR_DIR-NOTFOUND
-
 //Path to a file.
 MPFR_INCLUDES:PATH=MPFR_INCLUDES-NOTFOUND
 
 //Path to a library.
 MPFR_LIBRARIES:FILEPATH=MPFR_LIBRARIES-NOTFOUND
-
-//The directory containing a CMake configuration file for MPREAL.
-MPREAL_DIR:PATH=MPREAL_DIR-NOTFOUND
-
-//Value Computed by CMake
-ManusHandIKIntegration_BINARY_DIR:STATIC=C:/Users/nicol/Alt_Bionics/GitHub/manus/build
-
-//Value Computed by CMake
-ManusHandIKIntegration_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-ManusHandIKIntegration_SOURCE_DIR:STATIC=C:/Users/nicol/Alt_Bionics/GitHub/manus
 
 //Path to a library.
 OMP_gomp_LIBRARY:FILEPATH=OMP_gomp_LIBRARY-NOTFOUND
@@ -717,8 +736,8 @@ OMP_gomp_LIBRARY:FILEPATH=OMP_gomp_LIBRARY-NOTFOUND
 //Path to a library.
 OMP_iomp5_LIBRARY:FILEPATH=OMP_iomp5_LIBRARY-NOTFOUND
 
-//The directory containing a CMake configuration file for PASTIX.
-PASTIX_DIR:PATH=PASTIX_DIR-NOTFOUND
+//Installation directory of PASTIX library
+PASTIX_DIR:PATH=
 
 //Path to a library.
 PASTIX_M_m_LIBRARY:FILEPATH=PASTIX_M_m_LIBRARY-NOTFOUND
@@ -738,19 +757,10 @@ PKG_CONFIG_EXECUTABLE:FILEPATH=C:/Users/nicol/vcpkg/installed/x64-windows/tools/
 
 Pinocchio_DIR:PATH=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/pinocchio/lib/cmake/pinocchio
 
-//The directory containing a CMake configuration file for PkgConfig.
-PkgConfig_DIR:PATH=PkgConfig_DIR-NOTFOUND
-
 QT_QMAKE_EXECUTABLE:FILEPATH=NOTFOUND
-
-//The directory containing a CMake configuration file for Qt4.
-Qt4_DIR:PATH=Qt4_DIR-NOTFOUND
 
 //Name of the computer/site where compile is being run
 SITE:STRING=orion
-
-//The directory containing a CMake configuration file for SPQR.
-SPQR_DIR:PATH=SPQR_DIR-NOTFOUND
 
 //Path to a file.
 SPQR_INCLUDES:PATH=SPQR_INCLUDES-NOTFOUND
@@ -764,25 +774,16 @@ SUPERLU_INCLUDES:PATH=SUPERLU_INCLUDES-NOTFOUND
 //Path to a library.
 SUPERLU_LIBRARIES:FILEPATH=SUPERLU_LIBRARIES-NOTFOUND
 
-//The directory containing a CMake configuration file for StandardMathLibrary.
-StandardMathLibrary_DIR:PATH=StandardMathLibrary_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for SuperLU.
-SuperLU_DIR:PATH=SuperLU_DIR-NOTFOUND
-
 TINYXML2_ROOT:PATH=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/tinyxml2
-
-//The directory containing a CMake configuration file for Threads.
-Threads_DIR:PATH=Threads_DIR-NOTFOUND
-
-//The directory containing a CMake configuration file for UMFPACK.
-UMFPACK_DIR:PATH=UMFPACK_DIR-NOTFOUND
 
 //Path to a file.
 UMFPACK_INCLUDES:PATH=UMFPACK_INCLUDES-NOTFOUND
 
 //Path to a library.
 UMFPACK_LIBRARIES:FILEPATH=UMFPACK_LIBRARIES-NOTFOUND
+
+//Prefer system/vcpkg Eigen3 via find_package
+USE_SYSTEM_EIGEN:BOOL=ON
 
 //Automatically copy dependencies into the output directory for
 // executables.
@@ -1022,6 +1023,15 @@ hand_ik_IS_TOP_LEVEL:STATIC=OFF
 //Value Computed by CMake
 hand_ik_SOURCE_DIR:STATIC=C:/Users/nicol/Alt_Bionics/GitHub/manus/hand_ik
 
+//Value Computed by CMake
+manus_integration_BINARY_DIR:STATIC=C:/Users/nicol/Alt_Bionics/GitHub/manus/build
+
+//Value Computed by CMake
+manus_integration_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+manus_integration_SOURCE_DIR:STATIC=C:/Users/nicol/Alt_Bionics/GitHub/manus
+
 //Path to a library.
 onelib:FILEPATH=C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v2/hand_superbuild/build/stage/urdfdom/lib/urdfdom_world.lib
 
@@ -1102,6 +1112,8 @@ BLAS_sgemm_LIBRARY-ADVANCED:INTERNAL=1
 BLAS_sunperf_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: BLAS_vecLib_LIBRARY
 BLAS_vecLib_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CHOLMOD_INCLUDES
 CHOLMOD_INCLUDES-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CHOLMOD_LIBRARIES
@@ -1169,7 +1181,7 @@ CMAKE_GENERATOR:INTERNAL=Visual Studio 17 2022
 //Generator instance identifier.
 CMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community
 //Name of generator platform.
-CMAKE_GENERATOR_PLATFORM:INTERNAL=
+CMAKE_GENERATOR_PLATFORM:INTERNAL=x64
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Test CMAKE_HAVE_LIBC_PTHREAD
@@ -1294,6 +1306,66 @@ COVERAGE_EXTRA_FLAGS-ADVANCED:INTERNAL=1
 CTEST_SUBMIT_RETRY_COUNT-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CTEST_SUBMIT_RETRY_DELAY
 CTEST_SUBMIT_RETRY_DELAY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_64_BIT_DEVICE_CODE
+CUDA_64_BIT_DEVICE_CODE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE
+CUDA_ATTACH_VS_BUILD_RULE_TO_CUDA_FILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_BUILD_CUBIN
+CUDA_BUILD_CUBIN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_BUILD_EMULATION
+CUDA_BUILD_EMULATION-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_CUDART_LIBRARY
+CUDA_CUDART_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_CUDA_LIBRARY
+CUDA_CUDA_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_GENERATED_OUTPUT_DIR
+CUDA_GENERATED_OUTPUT_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_HOST_COMPILATION_CPP
+CUDA_HOST_COMPILATION_CPP-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_NVCC_EXECUTABLE
+CUDA_NVCC_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_NVCC_FLAGS
+CUDA_NVCC_FLAGS-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_NVCC_FLAGS_DEBUG
+CUDA_NVCC_FLAGS_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_NVCC_FLAGS_MINSIZEREL
+CUDA_NVCC_FLAGS_MINSIZEREL-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_NVCC_FLAGS_RELEASE
+CUDA_NVCC_FLAGS_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_NVCC_FLAGS_RELWITHDEBINFO
+CUDA_NVCC_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_PROPAGATE_HOST_FLAGS
+CUDA_PROPAGATE_HOST_FLAGS-ADVANCED:INTERNAL=1
+//This is the value of the last time CUDA_SDK_ROOT_DIR was set
+// successfully.
+CUDA_SDK_ROOT_DIR_INTERNAL:INTERNAL=CUDA_SDK_ROOT_DIR-NOTFOUND
+//ADVANCED property for variable: CUDA_SEPARABLE_COMPILATION
+CUDA_SEPARABLE_COMPILATION-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_TOOLKIT_INCLUDE
+CUDA_TOOLKIT_INCLUDE-ADVANCED:INTERNAL=1
+//This is the value of the last time CUDA_TOOLKIT_ROOT_DIR was
+// set successfully.
+CUDA_TOOLKIT_ROOT_DIR_INTERNAL:INTERNAL=
+//This is the value of the last time CUDA_TOOLKIT_TARGET_DIR was
+// set successfully.
+CUDA_TOOLKIT_TARGET_DIR_INTERNAL:INTERNAL=
+CUDA_USE_STATIC_CUDA_RUNTIME:INTERNAL=OFF
+//ADVANCED property for variable: CUDA_VERBOSE_BUILD
+CUDA_VERBOSE_BUILD-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_cublas_LIBRARY
+CUDA_cublas_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_cublasemu_LIBRARY
+CUDA_cublasemu_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_cufft_LIBRARY
+CUDA_cufft_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: CUDA_cufftemu_LIBRARY
+CUDA_cufftemu_LIBRARY-ADVANCED:INTERNAL=1
+//Location of make2cmake.cmake
+CUDA_make2cmake:INTERNAL=C:/Program Files/CMake/share/cmake-4.1/Modules/FindCUDA/make2cmake.cmake
+//Location of parse_cubin.cmake
+CUDA_parse_cubin:INTERNAL=C:/Program Files/CMake/share/cmake-4.1/Modules/FindCUDA/parse_cubin.cmake
+//Location of run_nvcc.cmake
+CUDA_run_nvcc:INTERNAL=C:/Program Files/CMake/share/cmake-4.1/Modules/FindCUDA/run_nvcc.cmake
 //ADVANCED property for variable: DART_TESTING_TIMEOUT
 DART_TESTING_TIMEOUT-ADVANCED:INTERNAL=1
 //Test EIGEN_COMPILER_SUPPORT_CPP11
@@ -1308,6 +1380,8 @@ FFTWL_LIB-ADVANCED:INTERNAL=1
 FFTW_INCLUDES-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: FFTW_LIB
 FFTW_LIB-ADVANCED:INTERNAL=1
+//Details about finding Boost
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[C:/Users/nicol/vcpkg/installed/x64-windows/share/boost/BoostConfig.cmake][ ][v1.88.0(1.53.0)]
 //Details about finding Git
 FIND_PACKAGE_MESSAGE_DETAILS_Git:INTERNAL=[C:/Program Files/Git/cmd/git.exe][v2.47.1.windows.2()]
 //Details about finding PkgConfig
@@ -1318,26 +1392,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 GITCOMMAND-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GIT_EXECUTABLE
 GIT_EXECUTABLE-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GMOCK_LIBRARY
-GMOCK_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GMOCK_LIBRARY_DEBUG
-GMOCK_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GMOCK_MAIN_LIBRARY
-GMOCK_MAIN_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GMOCK_MAIN_LIBRARY_DEBUG
-GMOCK_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GOOGLEHASH_INCLUDES
 GOOGLEHASH_INCLUDES-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GTEST_INCLUDE_DIR
-GTEST_INCLUDE_DIR-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GTEST_LIBRARY
-GTEST_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GTEST_LIBRARY_DEBUG
-GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GTEST_MAIN_LIBRARY
-GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
-GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 HWLOC_CFLAGS:INTERNAL=
 HWLOC_CFLAGS_I:INTERNAL=
 HWLOC_CFLAGS_OTHER:INTERNAL=
@@ -1449,7 +1505,7 @@ Z_VCPKG_ROOT_DIR:INTERNAL=C:/Users/nicol/vcpkg
 //Result of TRY_COMPILE
 _CompileResult:INTERNAL=TRUE
 //CMAKE_INSTALL_PREFIX during last run
-_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files (x86)/ManusHandIKIntegration
+_GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=C:/Program Files/manus_integration
 _MINIMAL_CXX_STANDARD:INTERNAL=14
 __pkg_config_checked_HWLOC:INTERNAL=1
 __pkg_config_checked_PKG_FFTW:INTERNAL=1
