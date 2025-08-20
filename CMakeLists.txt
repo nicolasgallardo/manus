@@ -95,8 +95,9 @@ endif()
 # Manus SDK Configuration (from your repository)
 # =============================================================================
 
-# Check if manus_sdk folder exists in your repository
-set(MANUS_SDK_DIR "${CMAKE_CURRENT_SOURCE_DIR}/manus_sdk")
+# Default to the folder that exists in this repo; allow user override
+set(MANUS_SDK_DIR "${CMAKE_SOURCE_DIR}/MANUS_Core_3.0.0_SDK"
+    CACHE PATH "Path to the Manus SDK root")
 
 if(EXISTS ${MANUS_SDK_DIR})
     message(STATUS "Found Manus SDK in repository: ${MANUS_SDK_DIR}")
@@ -106,7 +107,7 @@ if(EXISTS ${MANUS_SDK_DIR})
         ${MANUS_SDK_DIR}/include
         ${MANUS_SDK_DIR}/CoreSDK/include
         ${MANUS_SDK_DIR}/ManusSDK/include
-        # Add other include paths as needed based on your manus_sdk structure
+        # Add other include paths as needed based on your MANUS_Core_3.0.0_SDK structure
     )
     
     # Find Manus SDK libraries
@@ -167,9 +168,9 @@ if(EXISTS ${MANUS_SDK_DIR})
     endif()
     
 else()
-    message(WARNING "Manus SDK directory not found at: ${MANUS_SDK_DIR}")
-    message(STATUS "Please ensure your repository contains the manus_sdk folder")
-    message(STATUS "Or update MANUS_SDK_DIR in CMakeLists.txt to point to the correct location")
+    message(WARNING 
+        "Manus SDK directory not found at: ${MANUS_SDK_DIR}\n"
+        "Set -DMANUS_SDK_DIR=<path> to your Manus SDK location.")
     
     # Fallback: manual configuration
     set(MANUS_SDK_INCLUDE_DIRS 
@@ -300,26 +301,78 @@ if(WIN32)
 endif()
 
 # =============================================================================
-# Main Executable (SDKClient)
+# Main Executable (SDKClient) - Robust source discovery
 # =============================================================================
 
-add_executable(SDKClient
-    src/SDKClientIntegration.cpp
-)
+option(BUILD_SDKCLIENT "Build the Manus SDKClient executable" ON)
 
-# Link to the integration bridge
-target_link_libraries(SDKClient PRIVATE
-    ManusHandIK
-)
+if(BUILD_SDKCLIENT)
+    # Preferred integration source in this repo:
+    set(SDKCLIENT_SRC "${CMAKE_SOURCE_DIR}/src/SDKClientIntegration.cpp")
 
-# Include Manus SDK directories for the executable
-if(MANUS_SDK_INCLUDE_DIRS)
-    target_include_directories(SDKClient PRIVATE ${MANUS_SDK_INCLUDE_DIRS})
-endif()
+    # If not present, try to find a Manus SDK sample client:
+    if(NOT EXISTS "${SDKCLIENT_SRC}")
+        file(GLOB_RECURSE SDKCLIENT_CANDIDATES
+            "${MANUS_SDK_DIR}/*SDKClient*.cpp" 
+            "${MANUS_SDK_DIR}/*SDKClient*.cxx"
+            "${MANUS_SDK_DIR}/*Client*.cpp"
+            "${MANUS_SDK_DIR}/*Sample*.cpp"
+        )
+        if(SDKCLIENT_CANDIDATES)
+            list(GET SDKCLIENT_CANDIDATES 0 SDKCLIENT_SRC)
+            message(STATUS "Using Manus SDK sample for SDKClient: ${SDKCLIENT_SRC}")
+        endif()
+    endif()
 
-# Platform-specific settings for executable
-if(WIN32)
-    target_compile_definitions(SDKClient PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN)
+    if(EXISTS "${SDKCLIENT_SRC}")
+        add_executable(SDKClient "${SDKCLIENT_SRC}")
+        
+        target_include_directories(SDKClient PRIVATE
+            ${CMAKE_SOURCE_DIR}/src          # Integration headers
+            ${MANUS_SDK_INCLUDE_DIRS}        # Manus SDK headers
+        )
+        
+        # Link to the integration bridge
+        target_link_libraries(SDKClient PRIVATE
+            ManusHandIK
+            Boost::filesystem
+            Boost::serialization
+            Boost::system
+        )
+        
+        # Add Pinocchio if available
+        if(BUILD_WITH_PINOCCHIO AND PINOCCHIO_LIBRARIES)
+            if(TARGET pinocchio::pinocchio)
+                target_link_libraries(SDKClient PRIVATE pinocchio::pinocchio)
+            else()
+                target_link_libraries(SDKClient PRIVATE ${PINOCCHIO_LIBRARIES})
+            endif()
+        endif()
+        
+        # Add Manus SDK libraries (when found)
+        if(MANUS_SDK_LIBRARIES)
+            target_link_libraries(SDKClient PRIVATE ${MANUS_SDK_LIBRARIES})
+        endif()
+        
+        # Platform-specific settings for executable
+        if(WIN32)
+            target_compile_definitions(SDKClient PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN)
+        endif()
+        
+        set_target_properties(SDKClient PROPERTIES
+            RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+        )
+        
+        message(STATUS "SDKClient will be built using: ${SDKCLIENT_SRC}")
+    else()
+        message(WARNING
+            "SDKClient source not found.\n"
+            "  Looked for: ${CMAKE_SOURCE_DIR}/src/SDKClientIntegration.cpp\n"
+            "  and any *SDKClient*.cpp inside: ${MANUS_SDK_DIR}\n"
+            "Skipping SDKClient. Disable this check with -DBUILD_SDKCLIENT=OFF")
+    endif()
+else()
+    message(STATUS "SDKClient build disabled")
 endif()
 
 # =============================================================================
