@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\CMakeFiles\799ae64a4342fce30b1be4b1385be574\RUN_TESTS_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{D3A53798-F4A8-328B-90F1-B20853E67400}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

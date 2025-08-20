@@ -1,0 +1,4 @@
+jacobian_test 1 3.0019
+reachability_test 1 1.38872
+coupling_validation 1 1.41412
+---

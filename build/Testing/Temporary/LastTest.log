@@ -1,0 +1,859 @@
+Start testing: Aug 20 17:27 Central Daylight Time
+----------------------------------------------------------
+1/3 Testing: jacobian_test
+1/3 Test: jacobian_test
+Command: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/bin/Release/test_jacobian.exe"
+Directory: C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik
+"jacobian_test" start time: Aug 20 17:27 Central Daylight Time
+Output:
+----------------------------------------------------------
+=== Jacobian Finite Difference Test (Fixed with Frozen Planes) ===
+Using URDF: C:/Users/nicol/Alt_Bionics/GitHub/manus/build/bin/Release\surge_v13_hand_right_pybullet.urdf
+Passive coupling coefficients consistency verified
+
+=== Passive Coupling Smoke Test ===
+MCP = 10° (0.174533 rad)
+Expected DIP = 10.6994°
+Computed DIP = 10.6994° (0.18674 rad)
+Error = 1.50892e-06° (2.63357e-08 rad)
+Degrees path: PASS
+Radians path: PASS
+
+=== Model Consistency Test ===
+Active-to-full mapping always produces 10-vector
+
+Testing Jacobian computation with library method (includes proper offset targets)...
+
+--- Test 1: Zero Configuration ---
+
+Testing Jacobian at qa: 0 0 0 0 0 0
+Library Jacobian FD check: PASS
+
+--- Test 2: Random Configuration 0 ---
+
+Testing Jacobian at qa:         0  0.269163  0.126023 0.0670061  0.118831  0.263538
+Library Jacobian FD check: PASS
+
+--- Test 3: Random Configuration 1 ---
+
+Testing Jacobian at qa: 0.0961283  0.240779  0.199939  0.248734  0.243572  0.166845
+Library Jacobian FD check: PASS
+
+--- Test 4: Random Configuration 2 ---
+
+Testing Jacobian at qa: 0.171066        0 0.187144 0.113803 0.289449        0
+Library Jacobian FD check: PASS
+
+--- Test 5: Random Configuration 3 ---
+
+Testing Jacobian at qa:         0 0.0471666  0.107325         0 0.0350059         0
+Library Jacobian FD check: PASS
+
+--- Test 6: Random Configuration 4 ---
+
+Testing Jacobian at qa:  0.0391068          0   0.294824   0.166539   0.270411 0.00523257
+Library Jacobian FD check: PASS
+
+--- Test 7: Near Joint Limit Boundaries ---
+
+Testing Jacobian at qa: 1.674 1.674 1.674 1.674 1.674 1.674
+Library Jacobian FD check: PASS
+
+--- Test 8: Verbose Diagnostic Test ---
+HandIK initialized with 10 configuration variables
+Active parameters: 6
+Model nv (velocity): 10
+Passive coupling validation: MCP=10Â° -> DIP=10.6994Â° (expected=10.6994Â°)
+Testing with verbose output to see internal diagnostics...
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Computing frozen planes at qa: 0.5   0   0   0 0.3 0.4
+Finger 0: MCP q_idx=0 (q=0.5001), Distal q_idx=1 (q=0.533306)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:    0.5001  0.533306       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.4999), Distal q_idx=1 (q=0.533084)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:    0.4999  0.533084       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+  Finger 0: axis= 0.0832202   0.995497 -0.0453968, origin=0.00173944  0.0328558   0.136809
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0.0001), Distal q_idx=5 (q=0.0130097)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4    0.0001 0.0130097         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+  Finger 1: degenerate cross product, using default axis
+  Finger 1: axis=0 1 0, origin=-0.0175722 0.00974993   0.140096
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0.0001), Distal q_idx=9 (q=0.0130097)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125    0.0001 0.0130097
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+  Finger 2: degenerate cross product, using default axis
+  Finger 2: axis=0 1 0, origin=-0.0172354 -0.0150481   0.136552
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0.0001), Distal q_idx=7 (q=0.0130097)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125    0.0001 0.0130097         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+  Finger 3: degenerate cross product, using default axis
+  Finger 3: axis=0 1 0, origin=-0.0127692 -0.0392877   0.129077
+FK: qfull size=10, model.nq=10, model.nv=10
+Building analytical Jacobian:
+  Residual size: 18
+  Model nv: 10
+  Model structure debugging:
+    Frame Index_Distal -> parent joint: Index_PIP_Joint (joint id=2)
+    Finger 0: MCP joint_id=1 v_idx=0, Distal joint_id=2 v_idx=1
+    Frame Middle_Distal -> parent joint: Middle_PIP_Joint (joint id=6)
+    Finger 1: MCP joint_id=5 v_idx=4, Distal joint_id=6 v_idx=5
+    Frame Ring_Distal -> parent joint: Ring_PIP_Joint (joint id=10)
+    Finger 2: MCP joint_id=9 v_idx=8, Distal joint_id=10 v_idx=9
+    Frame Pinky_Distal -> parent joint: Pinky_PIP_Joint (joint id=8)
+    Finger 3: MCP joint_id=7 v_idx=6, Distal joint_id=8 v_idx=7
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+  Finger 0: analytical FD J_column=-0.0323462 0.00320286  0.0109387
+    qa_plus[0]=0.5, qa_minus[0]=0.5
+    J_projected norm=0.0342956, weight=1
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=1e-08), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4     1e-08 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+  Finger 1: analytical FD J_column= -0.0169044 0.000788347 -0.00276882
+    qa_plus[1]=1e-08, qa_minus[1]=0
+    J_projected norm=0.0171297, weight=1
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=1e-08), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125     1e-08 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+  Finger 2: analytical FD J_column=  -0.0169152 -0.000336393  -0.00279465
+    qa_plus[2]=1e-08, qa_minus[2]=0
+    J_projected norm=0.0171445, weight=1
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=1e-08), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125     1e-08 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+  Finger 3: analytical FD J_column=  -0.016881 -0.00161437 -0.00254427
+    qa_plus[3]=1e-08, qa_minus[3]=0
+    J_projected norm=0.0170716, weight=1
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+  Thumb position: analytical FD
+    J_thumb_rot= -0.0164773  0.00955635 -0.00027977
+    J_thumb_flex=-0 -0 -0
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+    Thumb orientation: analytical FD
+      rot column:     0.389418 -1.38778e-09     0.921061
+      flex column: -1.51788e-09            1 -1.23599e-09
+  Final Jacobian norm: 0.149726
+  Final Jacobian max element: 0.1
+Finger 0: MCP q_idx=0 (q=0.500001), Distal q_idx=1 (q=0.533196)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:  0.500001  0.533196       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.499999), Distal q_idx=1 (q=0.533194)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:  0.499999  0.533194       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=1e-06), Distal q_idx=5 (q=0.0129135)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4     1e-06 0.0129135         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=1e-06), Distal q_idx=9 (q=0.0129135)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125     1e-06 0.0129135
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=1e-06), Distal q_idx=7 (q=0.0129135)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125     1e-06 0.0129135         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195       0.3       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.300001), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195  0.300001       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.299999), flex q_idx=3 (q=0.4)
+Full q vector:       0.5  0.533195  0.299999       0.4         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.400001)
+Full q vector:       0.5  0.533195       0.3  0.400001         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Finger 0: MCP q_idx=0 (q=0.5), Distal q_idx=1 (q=0.533195)
+Finger 1: MCP q_idx=4 (q=0), Distal q_idx=5 (q=0.0129125)
+Finger 2: MCP q_idx=8 (q=0), Distal q_idx=9 (q=0.0129125)
+Finger 3: MCP q_idx=6 (q=0), Distal q_idx=7 (q=0.0129125)
+Thumb: rot q_idx=2 (q=0.3), flex q_idx=3 (q=0.399999)
+Full q vector:       0.5  0.533195       0.3  0.399999         0 0.0129125         0 0.0129125         0 0.0129125
+FK: qfull size=10, model.nq=10, model.nv=10
+Jacobian FD check: max error = 9.575674e-09
+Base residual norm: 2.234519e-02
+Target offset used: 1.000000e-02 m
+Per-column errors:
+  Column 0: error=1.996762e-10, analytic_norm=3.429561e-02, fd_norm=3.429561e-02
+  Column 1: error=8.385778e-09, analytic_norm=1.712968e-02, fd_norm=1.712968e-02
+  Column 2: error=8.278005e-09, analytic_norm=1.714451e-02, fd_norm=1.714451e-02
+  Column 3: error=9.642137e-09, analytic_norm=1.707165e-02, fd_norm=1.707165e-02
+  Column 4: error=3.196460e-10, analytic_norm=1.017983e-01, fd_norm=1.017983e-01
+    Column 4 sample values:
+      Row 15: analytic=3.894183e-02, FD=3.894183e-02, diff=2.120699e-11
+      Row 16: analytic=-1.387779e-10, FD=-1.387779e-12, diff=-1.373901e-10
+      Row 17: analytic=9.210610e-02, FD=9.210610e-02, diff=2.449213e-10
+  Column 5: error=6.347254e-10, analytic_norm=1.000000e-01, fd_norm=1.000000e-01
+    Column 5 sample values:
+      Row 15: analytic=-1.517883e-10, FD=-8.673617e-13, diff=-1.509209e-10
+      Row 16: analytic=1.000000e-01, FD=1.000000e-01, diff=-6.036838e-10
+      Row 17: analytic=-1.235990e-10, FD=1.561251e-12, diff=-1.251603e-10
+Analytical J matrix stats:
+  Size: 18x6
+  Norm: 1.497261e-01
+  Max element: 1.000000e-01
+FD J matrix stats:
+  Size: 18x6
+  Norm: 1.497261e-01
+  Max element: 1.000000e-01
+Finger 0: MCP q_idx=0 (q=5.000000e-01), Distal q_idx=1 (q=5.331950e-01)
+Finger 1: MCP q_idx=4 (q=0.000000e+00), Distal q_idx=5 (q=1.291250e-02)
+Finger 2: MCP q_idx=8 (q=0.000000e+00), Distal q_idx=9 (q=1.291250e-02)
+Finger 3: MCP q_idx=6 (q=0.000000e+00), Distal q_idx=7 (q=1.291250e-02)
+Thumb: rot q_idx=2 (q=3.000000e-01), flex q_idx=3 (q=4.000000e-01)
+Full q vector: 5.000000e-01 5.331950e-01 3.000000e-01 4.000000e-01 0.000000e+00 1.291250e-02 0.000000e+00 1.291250e-02 0.000000e+00 1.291250e-02
+FK: qfull size=10, model.nq=10, model.nv=10
+Verbose test result: PASS
+
+=== Final Results ===
+All Jacobian tests passed: YES
+
+?? SUCCESS! Jacobian finite difference validation achieved:
+   - Base residual should show ~0.01m (1cm offset) instead of ~1e-17
+   - Analytical and FD Jacobian norms should be non-zero (~1e-2 to 1e-1)
+   - Max error should be ~1e-6 instead of ~1e-1
+   - Frozen plane consistency achieved between solver and tests
+Jacobian finite difference validation complete with offset target method.
+<end of output>
+Test time =   3.00 sec
+----------------------------------------------------------
+Test Passed.
+"jacobian_test" end time: Aug 20 17:27 Central Daylight Time
+"jacobian_test" time elapsed: 00:00:03
+----------------------------------------------------------
+
+2/3 Testing: reachability_test
+2/3 Test: reachability_test
+Command: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/bin/Release/test_reachability.exe"
+Directory: C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik
+"reachability_test" start time: Aug 20 17:27 Central Daylight Time
+Output:
+----------------------------------------------------------
+=== Hand IK Reachability Test Suite (Fixed with Proper MCP Plane Detection) ===
+[URDF] Resolved path: C:/Users/nicol/Alt_Bionics/GitHub/manus/build/bin/Release\surge_v13_hand_right_pybullet.urdf
+[model] nq=10 nv=10
+[coeffs] q_distal = 0.137056*q_mcp^2 + 0.972037*q_mcp + 0.0129125 (radians)
+
+=== URDF Sanity Audit ===
+[base->tip @ q0] pos=-0.015119  0.034323  0.138079 rpy=3.09617 3.12334 3.05736 (rad)
+Hand scale: 0.109618 m (reasonable)
+WARN MCP joint axes differ by 10.1374° -> non-planar fingers
+No major URDF issues detected
+============================
+
+--- Test 1: Basic Reachability (Proper MCP Plane Detection) ---
+Running 50 reachability tests...
+Noise scale: 0.05
+Position tolerance: 0.001 m
+Orientation tolerance: 0.01 rad
+Test 1/50 (valid: 1, skipped: 0) - Success rate: 100%
+Test 2/50 (valid: 2, skipped: 0) - Success rate: 100%
+Test 3/50 (valid: 3, skipped: 0) - Success rate: 100%
+Test 10/50 (valid: 10, skipped: 0) - Success rate: 100%
+Test 20/50 (valid: 20, skipped: 0) - Success rate: 95%
+Test 30/50 (valid: 30, skipped: 0) - Success rate: 93.3333%
+Test 40/50 (valid: 40, skipped: 0) - Success rate: 95%
+Test 50/50 (valid: 50, skipped: 0) - Success rate: 96%
+
+=== Reachability Test Results ===
+Total tests attempted: 50
+Tests skipped (out-of-plane): 0
+Valid tests: 50
+Successful tests: 48 (96%)
+Converged tests: 48 (96%)
+Within tolerance: 48 (96%)
+
+=== Timing Statistics ===
+Average solve time: 0.59366 ms
+Maximum solve time: 0.965 ms
+
+=== Iteration Statistics ===
+Average iterations: 14
+Maximum iterations: 16
+
+=== Error Statistics ===
+Average final error: 0.0065781
+Maximum final error: 0.178633
+
+=== Plane Statistics ===
+Plane tolerance used: 0.005 m
+Average in-plane distance: 8.72171e-29 m
+Maximum in-plane distance: 6.81576e-28 m
+
+=== Test Result ===
+Required success rate: 80%
+Achieved success rate: 96%
+Test result: PASS
+
+--- Test 2: Medium Noise Robustness ---
+Running 30 reachability tests...
+Noise scale: 0.15
+Position tolerance: 0.001 m
+Orientation tolerance: 0.01 rad
+Test 1/30 (valid: 1, skipped: 0) - Success rate: 100%
+Test 2/30 (valid: 2, skipped: 0) - Success rate: 100%
+Test 3/30 (valid: 3, skipped: 0) - Success rate: 100%
+Test 10/30 (valid: 10, skipped: 0) - Success rate: 100%
+Test 20/30 (valid: 20, skipped: 0) - Success rate: 95%
+Test 30/30 (valid: 30, skipped: 0) - Success rate: 96.6667%
+
+=== Reachability Test Results ===
+Total tests attempted: 30
+Tests skipped (out-of-plane): 0
+Valid tests: 30
+Successful tests: 29 (96.6667%)
+Converged tests: 29 (96.6667%)
+Within tolerance: 29 (96.6667%)
+
+=== Timing Statistics ===
+Average solve time: 0.538467 ms
+Maximum solve time: 1.038 ms
+
+=== Iteration Statistics ===
+Average iterations: 13.9667
+Maximum iterations: 16
+
+=== Error Statistics ===
+Average final error: 0.0106462
+Maximum final error: 0.319362
+
+=== Plane Statistics ===
+Plane tolerance used: 0.005 m
+Average in-plane distance: 8.98862e-29 m
+Maximum in-plane distance: 4.03897e-28 m
+
+=== Test Result ===
+Required success rate: 80%
+Achieved success rate: 96.6667%
+Test result: PASS
+
+--- Test 3: Out-of-Plane Target Handling (Proper MCP Planes) ---
+
+=== Out-of-Plane Target Handling Test ===
+Testing with out-of-plane target (5cm offset along MCP flexion axis)...
+Target out-of-plane distances:
+  Finger 0: 0.05 m (OUT-OF-PLANE)
+  Finger 1: 1.89327e-29 m (in-plane)
+  Finger 2: 9.26441e-16 m (in-plane)
+  Finger 3: 6.19368e-15 m (in-plane)
+Solve succeeded: NO
+Iterations: 0
+Final error: 0.023647
+Solver detected out-of-plane for finger 0: 0.0483076 m
+Out-of-plane test result: PASS
+
+--- Test 4: Performance Benchmark ---
+Running 100 reachability tests...
+Noise scale: 0.1
+Position tolerance: 0.001 m
+Orientation tolerance: 0.01 rad
+Test 1/100 (valid: 1, skipped: 0) - Success rate: 100%
+Test 2/100 (valid: 2, skipped: 0) - Success rate: 100%
+Test 3/100 (valid: 3, skipped: 0) - Success rate: 100%
+Test 10/100 (valid: 10, skipped: 0) - Success rate: 100%
+Test 20/100 (valid: 20, skipped: 0) - Success rate: 100%
+Test 30/100 (valid: 30, skipped: 0) - Success rate: 100%
+Test 40/100 (valid: 40, skipped: 0) - Success rate: 100%
+Test 50/100 (valid: 50, skipped: 0) - Success rate: 100%
+Test 60/100 (valid: 60, skipped: 0) - Success rate: 100%
+Test 70/100 (valid: 70, skipped: 0) - Success rate: 98.5714%
+Test 80/100 (valid: 80, skipped: 0) - Success rate: 98.75%
+Test 90/100 (valid: 90, skipped: 0) - Success rate: 98.8889%
+Test 100/100 (valid: 100, skipped: 0) - Success rate: 99%
+
+=== Reachability Test Results ===
+Total tests attempted: 100
+Tests skipped (out-of-plane): 0
+Valid tests: 100
+Successful tests: 99 (99%)
+Converged tests: 99 (99%)
+Within tolerance: 99 (99%)
+
+=== Timing Statistics ===
+Average solve time: 0.5592 ms
+Maximum solve time: 0.879 ms
+
+=== Iteration Statistics ===
+Average iterations: 14.5
+Maximum iterations: 16
+
+=== Error Statistics ===
+Average final error: 0.00253243
+Maximum final error: 0.253174
+
+=== Plane Statistics ===
+Plane tolerance used: 0.005 m
+Average in-plane distance: 7.56998e-29 m
+Maximum in-plane distance: 4.03897e-28 m
+
+=== Test Result ===
+Required success rate: 80%
+Achieved success rate: 99%
+Test result: PASS
+Total time for 100 tests: 57 ms
+Average time per test: 0.57 ms
+
+=== Final Test Results ===
+All critical tests passed: YES
+
+?? SUCCESS! Proper MCP plane detection achieved:
+   Position: 1e-3 m, Orientation: 1e-2 rad
+   Out-of-plane detection: Per-finger MCP flexion planes
+All reachability tests completed successfully with proper plane detection.
+<end of output>
+Test time =   1.39 sec
+----------------------------------------------------------
+Test Passed.
+"reachability_test" end time: Aug 20 17:27 Central Daylight Time
+"reachability_test" time elapsed: 00:00:01
+----------------------------------------------------------
+
+3/3 Testing: coupling_validation
+3/3 Test: coupling_validation
+Command: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/bin/Release/validate_coupling.exe"
+Directory: C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik
+"coupling_validation" start time: Aug 20 17:27 Central Daylight Time
+Output:
+----------------------------------------------------------
+=== Passive Coupling Validation - Multiple Models ===
+Comparing measured data with different polynomial models
+
+### SOURCE-OF-TRUTH: Quadratic Model in Degrees ###
+
+=== Testing SOURCE-OF-TRUTH Quadratic in Degrees ===
+Coefficients (degrees domain):
+  a (cubic): 0
+  b (quadratic): 0.00239207
+  c (linear): 0.972037
+  d (constant): 0.739835
+
+MCP(deg)Measured(deg)Computed(deg)  Error(deg)    Error(%)
+------------------------------------------------------------
+     0.0         0.0         0.7        0.74         0.0%
+     5.0        10.1         5.7        4.44        44.0%
+    10.0        11.7        10.7        1.00         8.6%
+    15.0        14.8        15.9        1.06         7.2%
+    20.0        19.0        21.1        2.14        11.2%
+    25.0        24.1        26.5        2.39         9.9%
+    30.0        30.0        32.1        2.05         6.8%
+    35.0        36.4        37.7        1.34         3.7%
+    40.0        42.9        43.4        0.55         1.3%
+    45.0        49.6        49.3        0.27         0.6%
+    50.0        56.3        55.3        0.95         1.7%
+    55.0        62.8        61.4        1.36         2.2%
+    60.0        69.3        67.7        1.63         2.3%
+    65.0        75.6        74.0        1.57         2.1%
+    70.0        81.8        80.5        1.30         1.6%
+    75.0        87.8        87.1        0.70         0.8%
+    80.0        93.8        93.8        0.01         0.0%
+    85.0        99.7       100.6        0.95         0.9%
+    90.0       105.6       107.6        2.00         1.9%
+------------------------------------------------------------
+Error Statistics:
+  Average absolute error: 1.39 degrees
+  Maximum absolute error: 4.44 degrees
+  Average relative error: 5.6%
+
+Acceptance Criteria:
+  Avg error < 2.0°: PASS (1.4°)
+  Max error < 5.0°: PASS (4.4°)
+  Overall: PASS
+
+### Solver Coefficients (Radians Domain) ###
+
+=== Testing Solver Coefficients in Radians ===
+Coefficients (radians domain):
+  a (cubic): 0.0
+  b (quadratic): 0.1
+  c (linear): 1.0
+  d (constant): 0.0
+
+MCP(deg)Measured(deg)Computed(deg)  Error(deg)    Error(%)
+------------------------------------------------------------
+     0.0         0.0         0.7        0.74         0.0%
+     5.0        10.1         5.7        4.44        44.0%
+    10.0        11.7        10.7        1.00         8.6%
+    15.0        14.8        15.9        1.06         7.2%
+    20.0        19.0        21.1        2.14        11.2%
+    25.0        24.1        26.5        2.39         9.9%
+    30.0        30.0        32.1        2.05         6.8%
+    35.0        36.4        37.7        1.34         3.7%
+    40.0        42.9        43.4        0.55         1.3%
+    45.0        49.6        49.3        0.27         0.6%
+    50.0        56.3        55.3        0.95         1.7%
+    55.0        62.8        61.4        1.36         2.2%
+    60.0        69.3        67.7        1.63         2.3%
+    65.0        75.6        74.0        1.57         2.1%
+    70.0        81.8        80.5        1.30         1.6%
+    75.0        87.8        87.1        0.70         0.8%
+    80.0        93.8        93.8        0.01         0.0%
+    85.0        99.7       100.6        0.95         0.9%
+    90.0       105.6       107.6        2.00         1.9%
+------------------------------------------------------------
+Error Statistics:
+  Average absolute error: 1.39 degrees
+  Maximum absolute error: 4.44 degrees
+  Average relative error: 5.6%
+
+Acceptance Criteria:
+  Avg error < 2.0°: PASS (1.4°)
+  Max error < 5.0°: PASS (4.4°)
+  Overall: PASS
+
+### Coefficient Verification ###
+Expected solver coeffs: b=0.1, c=1.0, d=0.0
+Computed solver coeffs: b=0.1, c=1.0, d=0.0
+Coefficients match: PASS
+
+### Original Broken Model (for reference) ###
+
+=== Testing Original Broken Model ===
+Coefficients (radians domain):
+  a (cubic): 0.0
+  b (quadratic): 0.0
+  c (linear): 0.0
+  d (constant): 0.1
+
+MCP(deg)Measured(deg)Computed(deg)  Error(deg)    Error(%)
+------------------------------------------------------------
+     0.0         0.0         3.0        3.00         0.0%
+     5.0        10.1         3.1        7.04        69.7%
+    10.0        11.7         3.1        8.59        73.4%
+    15.0        14.8         3.2       11.63        78.6%
+    20.0        19.0         3.2       15.78        83.1%
+    25.0        24.1         3.3       20.88        86.4%
+    30.0        30.0         3.3       26.67        88.9%
+    35.0        36.4         3.4       32.96        90.7%
+    40.0        42.9         3.4       39.46        92.0%
+    45.0        49.6         3.5       46.10        92.9%
+    50.0        56.3         3.6       52.72        93.7%
+    55.0        62.8         3.6       59.19        94.3%
+    60.0        69.3         3.7       65.63        94.7%
+    65.0        75.6         3.7       71.87        95.1%
+    70.0        81.8         3.8       78.01        95.4%
+    75.0        87.8         3.8       83.96        95.6%
+    80.0        93.8         3.9       89.90        95.8%
+    85.0        99.7         4.0       95.73        96.0%
+    90.0       105.6         4.0      101.57        96.2%
+------------------------------------------------------------
+Error Statistics:
+  Average absolute error: 47.93 degrees
+  Maximum absolute error: 101.57 degrees
+  Average relative error: 84.9%
+
+Acceptance Criteria:
+  Avg error < 2.0°: FAIL (47.9°)
+  Max error < 5.0°: FAIL (101.6°)
+  Overall: FAIL
+
+### Cubic Model in Degrees (for completeness) ###
+
+=== Testing Cubic in Degrees ===
+Coefficients (degrees domain):
+  a (cubic): 0.0
+  b (quadratic): 0.0
+  c (linear): 1.0
+  d (constant): 0.7
+
+MCP(deg)Measured(deg)Computed(deg)  Error(deg)    Error(%)
+------------------------------------------------------------
+     0.0         0.0         0.7        0.74         0.0%
+     5.0        10.1         5.9        4.20        41.6%
+    10.0        11.7        12.9        1.16         9.9%
+    15.0        14.8        23.4        8.62        58.2%
+    20.0        19.0        39.4       20.38       107.3%
+    25.0        24.1        62.5       38.39       159.0%
+    30.0        30.0        94.7       64.70       215.7%
+    35.0        36.4       137.7      101.31       278.7%
+    40.0        42.9       193.2      150.32       350.4%
+    45.0        49.6       263.2      213.58       430.6%
+    50.0        56.3       349.3      293.07       520.8%
+    55.0        62.8       453.5      390.70       622.1%
+    60.0        69.3       577.5      508.16       733.3%
+    65.0        75.6       723.0      647.42       856.4%
+    70.0        81.8       892.0      810.18       990.4%
+    75.0        87.8      1086.1      998.34      1137.1%
+    80.0        93.8      1307.3     1213.50      1293.7%
+    85.0        99.7      1557.3     1457.56      1461.9%
+    90.0       105.6      1837.8     1732.22      1640.4%
+------------------------------------------------------------
+Error Statistics:
+  Average absolute error: 455.50 degrees
+  Maximum absolute error: 1732.22 degrees
+  Average relative error: 574.1%
+
+Acceptance Criteria:
+  Avg error < 2.0°: FAIL (455.5°)
+  Max error < 5.0°: FAIL (1732.2°)
+  Overall: FAIL
+
+=== Final Summary ===
+SOURCE-OF-TRUTH (degrees): y_deg = 0.00239207*x_deg^2 + 0.97203665*x_deg + 0.73983459
+SOLVER (radians): q_distal = 0.137056*q_mcp^2 + 0.972037*q_mcp + 0.0129125
+Original broken model: major errors due to unit conversion mistakes
+
+=== Recommendations ===
+1. Lock in the source-of-truth coefficients shown above
+2. Use the correctly converted radian coefficients in the solver
+3. Add assertions in tests to detect any coefficient drift
+
+=== Unit Conversion Formula Reference ===
+For polynomial y_deg = beta*x_deg^2 + gamma*x_deg + delta
+To get y_rad = a*x_rad^3 + b*x_rad^2 + c*x_rad + d:
+  a = 0 (no cubic term)
+  b = beta*(180/pi)
+  c = gamma
+  d = delta*(pi/180)
+<end of output>
+Test time =   1.41 sec
+----------------------------------------------------------
+Test Passed.
+"coupling_validation" end time: Aug 20 17:27 Central Daylight Time
+"coupling_validation" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Aug 20 17:27 Central Daylight Time
