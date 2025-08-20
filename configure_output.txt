@@ -1,0 +1,53 @@
+-- Selecting Windows SDK version 10.0.22621.0 to target Windows 10.0.26100.
+-- The CXX compiler identification is MSVC 19.43.34808.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Using system/vcpkg Eigen3::Eigen
+-- Eigen selection: SYSTEM (propagated to all subdirs)
+-- Eigen selection: SYSTEM (skipping all vendor operations)
+-- ✓ Eigen3::Eigen target is available for subdirectories
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - not found
+-- Found Threads: TRUE
+-- Found Boost via CONFIG: 1.88.0
+-- pinocchio.lib not FOUND.
+-- boost_filesystem-vc143-mt-x64-1_88.lib FOUND. boost_filesystem-vc143-mt-x64-1_88.lib at C:/Users/nicol/vcpkg/installed/x64-windows/lib/boost_filesystem-vc143-mt-x64-1_88.lib
+-- boost_serialization-vc143-mt-x64-1_88.lib FOUND. boost_serialization-vc143-mt-x64-1_88.lib at C:/Users/nicol/vcpkg/installed/x64-windows/lib/boost_serialization-vc143-mt-x64-1_88.lib
+-- boost_system-vc143-mt-x64-1_88.lib FOUND. boost_system-vc143-mt-x64-1_88.lib at C:/Users/nicol/vcpkg/installed/x64-windows/lib/boost_system-vc143-mt-x64-1_88.lib
+CMake Warning (dev) at C:/Users/nicol/vcpkg/installed/x64-windows/share/boost/vcpkg-cmake-wrapper.cmake:3 (_find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  C:/Users/nicol/vcpkg/scripts/buildsystems/vcpkg.cmake:850 (include)
+  C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)
+  C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v2/hand_superbuild/build/stage/pinocchio/lib/cmake/pinocchio/pinocchioConfig.cmake:157 (find_dependency)
+  C:/Users/nicol/vcpkg/scripts/buildsystems/vcpkg.cmake:896 (_find_package)
+  CMakeLists.txt:83 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found Boost: C:/Users/nicol/vcpkg/installed/x64-windows/share/boost/BoostConfig.cmake (found version "1.88.0") found components: filesystem serialization system
+-- Default C++ standard: 201703
+-- Minimal C++ standard upgraded to 14
+-- C++ standard sufficient: Minimal required 14, currently defined: 17
+-- Found pinocchio via CONFIG: 2.6.21
+-- Found Manus SDK in repository: C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK
+-- Manus SDK include dir: C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK/SDKClient_Windows/ManusSDK/include
+-- Manus SDK library: C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK/SDKClient_Windows/ManusSDK/lib/ManusSDK.lib
+-- Manus SDK DLL: C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK/SDKClient_Windows/ManusSDK/lib/ManusSDK.dll
+-- [hand_ik] Checking Eigen availability...
+-- [hand_ik] Using parent-provided system Eigen3::Eigen
+-- [hand_ik] ✓ Eigen3::Eigen target is available
+CMake Error at hand_ik/CMakeLists.txt:116 (ExternalProject_Add):
+  Unknown CMake command "ExternalProject_Add".
+
+
+-- Configuring incomplete, errors occurred!

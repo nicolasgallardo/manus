@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\x64\Release\ZERO_CHECK</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdfdom_model.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdfdom_world.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\check_urdf.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_double_convert.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_mem_test.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_to_graphiz.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_to_graphviz.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_unit_test.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_version_test.exe</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdfdom_model_state.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdfdom_sensor.dll</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\x64\Release\ALL_BUILD</FullPath>
+    </ProjectOutput>
+    <ProjectOutput>
+      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\x64\Release\INSTALL</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles />
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>

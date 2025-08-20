@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\CMakeFiles\7ef98d98fda138c11e4c7232b01fe5ca\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{140E74C4-2952-328A-B9C7-D8529F20D04A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

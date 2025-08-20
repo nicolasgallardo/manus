@@ -13,35 +13,64 @@ if(POLICY CMP0167)
     cmake_policy(SET CMP0167 NEW)
 endif()
 
-# ---------------- Eigen selection (FIX #1: Avoid target collision) ----------------
+# ---- Eigen provider switch (AUTHORITATIVE) ----
+option(USE_SYSTEM_EIGEN "Prefer system/vcpkg Eigen3 via find_package" ON)
+set(SKIP_VENDOR_EIGEN OFF CACHE BOOL "Force-skip any vendored Eigen fetch in subprojects")
+
+# Try system Eigen first
 set(_eigen_ok FALSE)
 if(USE_SYSTEM_EIGEN)
     find_package(Eigen3 CONFIG QUIET)  # provides Eigen3::Eigen
     if(TARGET Eigen3::Eigen)
         set(_eigen_ok TRUE)
         message(STATUS "Using system/vcpkg Eigen3::Eigen")
+        # Make this visible/authoritative to subdirs
+        set(EIGEN3_FROM_SYSTEM TRUE CACHE BOOL "Eigen provided by system/vcpkg" FORCE)
+        set(SKIP_VENDOR_EIGEN   TRUE CACHE BOOL "Skip vendored Eigen everywhere"  FORCE)
+        message(STATUS "Eigen selection: SYSTEM (propagated to all subdirs)")
     endif()
 endif()
 
-# Fallback: vendor Eigen only if not found above
-if(NOT _eigen_ok)
-    message(STATUS "System Eigen not found; falling back to vendored Eigen")
+# Fallback: vendor Eigen only if system not found AND target doesn't exist
+if(NOT _eigen_ok AND NOT TARGET Eigen3::Eigen)
+    message(STATUS "System Eigen not found; allowing vendored Eigen fallback")
+    set(EIGEN3_FROM_SYSTEM FALSE CACHE BOOL "Eigen provided by system/vcpkg" FORCE)
+    set(SKIP_VENDOR_EIGEN  FALSE CACHE BOOL "Skip vendored Eigen everywhere"  FORCE)
+    
+    # Root-level vendored Eigen (only if no target exists)
     include(FetchContent)
     FetchContent_Declare(
         eigen
         GIT_REPOSITORY https://gitlab.com/libeigen/eigen.git
         GIT_TAG        3.4.0
     )
+    
+    # Reduce noise during vendored Eigen build
+    set(EIGEN_BUILD_DOC OFF CACHE BOOL "" FORCE)
+    set(EIGEN_BUILD_TESTING OFF CACHE BOOL "" FORCE)
+    set(EIGEN_BUILD_PKGCONFIG OFF CACHE BOOL "" FORCE)
+    
     FetchContent_MakeAvailable(eigen)
     
-    # Eigen's own CMake should define Eigen3::Eigen; defensive fallback if not
+    # Defensive fallback if Eigen's CMake doesn't create the alias
     if(NOT TARGET Eigen3::Eigen)
         add_library(Eigen3::Eigen INTERFACE IMPORTED)
         target_include_directories(Eigen3::Eigen INTERFACE "${eigen_SOURCE_DIR}")
-        message(STATUS "Created fallback Eigen3::Eigen target")
+        message(STATUS "Created fallback Eigen3::Eigen target from vendored source")
     endif()
+    
+    message(STATUS "Eigen selection: VENDORED (root level)")
+elseif(_eigen_ok)
+    message(STATUS "Eigen selection: SYSTEM (skipping all vendor operations)")
 else()
-    message(STATUS "Skipping vendored Eigen (system version available)")
+    message(STATUS "Eigen selection: TARGET EXISTS (skipping vendor to avoid collision)")
+endif()
+
+# Validation guard - prevent configuration errors
+if(TARGET Eigen3::Eigen)
+    message(STATUS "✓ Eigen3::Eigen target is available for subdirectories")
+else()
+    message(FATAL_ERROR "No Eigen3::Eigen target available! This should not happen.")
 endif()
 
 # ---------------- Boost (CONFIG mode) ----------------

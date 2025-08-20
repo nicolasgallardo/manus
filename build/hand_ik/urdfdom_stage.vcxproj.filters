@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\CMakeFiles\0b8a5a4f5e0cf5c8164ada26b4562087\urdfdom_stage.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\hand_ik\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\CMakeFiles\urdfdom_stage" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{7F0F01E1-7D08-305A-BC4E-9C81D0C5D6CE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

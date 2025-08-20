@@ -1,0 +1,208 @@
+-- Selecting Windows SDK version 10.0.22621.0 to target Windows 10.0.26100.
+-- The CXX compiler identification is MSVC 19.43.34808.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- System Eigen not found; allowing vendored Eigen fallback
+CMake Deprecation Warning at build/_deps/eigen-src/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- The C compiler identification is MSVC 19.43.34808.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Performing Test EIGEN_COMPILER_SUPPORT_CPP11
+-- Performing Test EIGEN_COMPILER_SUPPORT_CPP11 - Failed
+-- Performing Test COMPILER_SUPPORT_std=cpp03
+-- Performing Test COMPILER_SUPPORT_std=cpp03 - Failed
+-- Performing Test standard_math_library_linked_to_automatically
+-- Performing Test standard_math_library_linked_to_automatically - Success
+-- Standard libraries to link to explicitly: none
+-- Performing Test COMPILER_SUPPORT_OPENMP
+-- Performing Test COMPILER_SUPPORT_OPENMP - Success
+CMake Warning (dev) at build/_deps/eigen-src/cmake/EigenDetermineVSServicePack.cmake:1 (include):
+  Policy CMP0196 is not set: The CMakeDetermineVSServicePack module is
+  removed.  Run "cmake --help-policy CMP0196" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  build/_deps/eigen-src/cmake/EigenTesting.cmake:459 (include)
+  build/_deps/eigen-src/cmake/EigenTesting.cmake:598 (ei_get_compilerver)
+  build/_deps/eigen-src/cmake/EigenConfigureTesting.cmake:8 (ei_set_build_string)
+  build/_deps/eigen-src/CMakeLists.txt:487 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Deprecation Warning at C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeDetermineVSServicePack.cmake:77 (message):
+  This module is deprecated and should not be used.  Use the
+  CMAKE_<LANG>_COMPILER_VERSION variable instead.
+Call Stack (most recent call first):
+  build/_deps/eigen-src/cmake/EigenDetermineVSServicePack.cmake:1 (include)
+  build/_deps/eigen-src/cmake/EigenTesting.cmake:459 (include)
+  build/_deps/eigen-src/cmake/EigenTesting.cmake:598 (ei_get_compilerver)
+  build/_deps/eigen-src/cmake/EigenConfigureTesting.cmake:8 (ei_set_build_string)
+  build/_deps/eigen-src/CMakeLists.txt:487 (include)
+
+
+CMake Warning (dev) at build/_deps/eigen-src/cmake/EigenDetermineOSVersion.cmake:31 (exec_program):
+  Policy CMP0153 is not set: The exec_program command should not be called.
+  Run "cmake --help-policy CMP0153" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  Use execute_process() instead.
+Call Stack (most recent call first):
+  build/_deps/eigen-src/cmake/EigenTesting.cmake:602 (DetermineOSVersion)
+  build/_deps/eigen-src/cmake/EigenConfigureTesting.cmake:8 (ei_set_build_string)
+  build/_deps/eigen-src/CMakeLists.txt:487 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Looking for a Fortran compiler
+-- Looking for a Fortran compiler - NOTFOUND
+-- Could NOT find CHOLMOD (missing: CHOLMOD_INCLUDES CHOLMOD_LIBRARIES) 
+-- Could NOT find UMFPACK (missing: UMFPACK_INCLUDES UMFPACK_LIBRARIES) 
+-- Could NOT find KLU (missing: KLU_INCLUDES KLU_LIBRARIES) 
+-- Could NOT find SuperLU (missing: SUPERLU_INCLUDES SUPERLU_LIBRARIES SUPERLU_VERSION_OK) (Required is at least version "4.0")
+-- Checking for one of the modules 'hwloc'
+-- A version of Pastix has been found but pastix_nompi.h does not exist in the include directory. Because Eigen tests require a version without MPI, we disable the Pastix backend.
+-- Could NOT find SPQR (missing: SPQR_INCLUDES SPQR_LIBRARIES) 
+-- Found unsuitable Qt version "" from NOTFOUND
+-- Performing Test COMPILER_SUPPORT_FASTMATH
+-- Performing Test COMPILER_SUPPORT_FASTMATH - Failed
+-- Performing Test COMPILER_SUPPORT_FPFAST
+-- Performing Test COMPILER_SUPPORT_FPFAST - Success
+CMake Warning (dev) at C:/Users/nicol/vcpkg/installed/x64-windows/share/boost/vcpkg-cmake-wrapper.cmake:3 (_find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  C:/Users/nicol/vcpkg/scripts/buildsystems/vcpkg.cmake:850 (include)
+  build/_deps/eigen-src/test/CMakeLists.txt:368 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found Boost: C:/Users/nicol/vcpkg/installed/x64-windows/share/boost/BoostConfig.cmake (found suitable version "1.88.0", minimum required is "1.53.0")
+-- Found Threads: TRUE
+-- Could NOT find GoogleHash (missing: GOOGLEHASH_INCLUDES GOOGLEHASH_COMPILE) 
+-- Could NOT find Adolc (missing: ADOLC_INCLUDES ADOLC_LIBRARIES) 
+-- Could NOT find MPFR (missing: MPFR_INCLUDES MPFR_LIBRARIES MPFR_VERSION_OK) (Required is at least version "1.0.0")
+-- Found PkgConfig: C:/Users/nicol/vcpkg/installed/x64-windows/tools/pkgconf/pkgconf.exe (found version "2.5.1")
+-- Could NOT find FFTW (missing: FFTW_INCLUDES FFTW_LIBRARIES) 
+CMake Warning (dev) at C:/Users/nicol/vcpkg/scripts/buildsystems/vcpkg.cmake:896 (_find_package):
+  Policy CMP0146 is not set: The FindCUDA module is removed.  Run "cmake
+  --help-policy CMP0146" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  build/_deps/eigen-src/unsupported/test/CMakeLists.txt:293 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CUDA_TOOLKIT_ROOT_DIR not found or specified
+-- Could NOT find CUDA (missing: CUDA_TOOLKIT_ROOT_DIR CUDA_NVCC_EXECUTABLE CUDA_INCLUDE_DIRS CUDA_CUDART_LIBRARY) (Required is at least version "7.0")
+-- Found unsuitable Qt version "" from NOTFOUND
+-- Qt4 not found, so disabling the mandelbrot and opengl demos
+-- ************************************************************
+-- ***    Eigen's unit tests configuration summary          ***
+-- ************************************************************
+-- 
+-- Build type:        Release
+-- Build site:        orion
+-- Build string:      unknownwin-19.43.34808.0-sse2-64bit
+-- Enabled backends:  Boost.Multiprecision, 
+-- Disabled backends: CHOLMOD,  UMFPACK,  KLU,  SuperLU,  PaStiX,  METIS,  SPQR,  Qt4 support,  GoogleHash,  Adolc,  MPFR C++,  fftw,  OpenGL, 
+-- Default order:     Column-major
+-- Maximal matrix/vector size: 320
+-- SSE2:              Using architecture defaults
+-- SSE3:              Using architecture defaults
+-- SSSE3:             Using architecture defaults
+-- SSE4.1:            Using architecture defaults
+-- SSE4.2:            Using architecture defaults
+-- AVX:               Using architecture defaults
+-- AVX2:              Using architecture defaults
+-- FMA:               Using architecture defaults
+-- AVX512:            Using architecture defaults
+-- AVX512DQ:          Using architecture defaults
+-- Altivec:           Using architecture defaults
+-- VSX:               Using architecture defaults
+-- MIPS MSA:          Using architecture defaults
+-- ARM NEON:          Using architecture defaults
+-- ARMv8 NEON:        Using architecture defaults
+-- S390X ZVECTOR:     Using architecture defaults
+-- C++11:             OFF
+-- SYCL:              OFF
+-- CUDA:              OFF
+-- HIP:               OFF
+-- 
+CXX:               C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.43.34808/bin/Hostx64/x64/cl.exe
+ CXX_FLAGS:         /DWIN32 /D_WINDOWS /EHsc /EHsc /wd4127 /wd4505 /wd4714 /D_CRT_SECURE_NO_WARNINGS /D_SCL_SECURE_NO_WARNINGS
+ Sparse lib flags:   
+
+-- ************************************************************
+-- 
+-- Configured Eigen 3.4.0
+-- 
+-- Available targets (use: cmake --build . --target TARGET):
+-- ---------+--------------------------------------------------------------
+-- Target   |   Description
+-- ---------+--------------------------------------------------------------
+-- install  | Install Eigen. Headers will be installed to:
+--          |     <CMAKE_INSTALL_PREFIX>/<INCLUDE_INSTALL_DIR>
+--          |   Using the following values:
+--          |     CMAKE_INSTALL_PREFIX: C:/Program Files/manus_integration
+--          |     INCLUDE_INSTALL_DIR:  include/eigen3
+--          |   Change the install location of Eigen headers using:
+--          |     cmake . -DCMAKE_INSTALL_PREFIX=yourprefix
+--          |   Or:
+--          |     cmake . -DINCLUDE_INSTALL_DIR=yourdir
+-- doc      | Generate the API documentation, requires Doxygen & LaTeX
+-- check    | Build and run the unit-tests. Read this page:
+--          |   http://eigen.tuxfamily.org/index.php?title=Tests
+-- blas     | Build BLAS library (not the same thing as Eigen)
+-- uninstall| Remove files installed by the install target
+-- ---------+--------------------------------------------------------------
+-- 
+-- Eigen selection: VENDORED (root level)
+-- ✓ Eigen3::Eigen target is available for subdirectories
+-- Found Boost via CONFIG: 1.88.0
+-- pinocchio.lib not FOUND.
+-- boost_filesystem-vc143-mt-x64-1_88.lib FOUND. boost_filesystem-vc143-mt-x64-1_88.lib at C:/Users/nicol/vcpkg/installed/x64-windows/lib/boost_filesystem-vc143-mt-x64-1_88.lib
+-- boost_serialization-vc143-mt-x64-1_88.lib FOUND. boost_serialization-vc143-mt-x64-1_88.lib at C:/Users/nicol/vcpkg/installed/x64-windows/lib/boost_serialization-vc143-mt-x64-1_88.lib
+-- boost_system-vc143-mt-x64-1_88.lib FOUND. boost_system-vc143-mt-x64-1_88.lib at C:/Users/nicol/vcpkg/installed/x64-windows/lib/boost_system-vc143-mt-x64-1_88.lib
+CMake Warning (dev) at C:/Users/nicol/vcpkg/installed/x64-windows/share/boost/vcpkg-cmake-wrapper.cmake:3 (_find_package):
+  Policy CMP0167 is not set: The FindBoost module is removed.  Run "cmake
+  --help-policy CMP0167" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+Call Stack (most recent call first):
+  C:/Users/nicol/vcpkg/scripts/buildsystems/vcpkg.cmake:850 (include)
+  C:/Program Files/CMake/share/cmake-4.1/Modules/CMakeFindDependencyMacro.cmake:78 (find_package)
+  C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v2/hand_superbuild/build/stage/pinocchio/lib/cmake/pinocchio/pinocchioConfig.cmake:157 (find_dependency)
+  C:/Users/nicol/vcpkg/scripts/buildsystems/vcpkg.cmake:896 (_find_package)
+  CMakeLists.txt:83 (find_package)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found Boost: C:/Users/nicol/vcpkg/installed/x64-windows/share/boost/BoostConfig.cmake (found version "1.88.0") found components: filesystem serialization system
+-- Default C++ standard: 201703
+-- Minimal C++ standard upgraded to 14
+-- C++ standard sufficient: Minimal required 14, currently defined: 17
+-- Found pinocchio via CONFIG: 2.6.21
+-- Found Manus SDK in repository: C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK
+-- Manus SDK include dir: C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK/SDKClient_Windows/ManusSDK/include
+-- Manus SDK library: C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK/SDKClient_Windows/ManusSDK/lib/ManusSDK.lib
+-- Manus SDK DLL: C:/Users/nicol/Alt_Bionics/GitHub/manus/MANUS_Core_3.0.0_SDK/SDKClient_Windows/ManusSDK/lib/ManusSDK.dll
+-- [hand_ik] Checking Eigen availability...
+-- [hand_ik] Eigen3::Eigen target already exists (from parent or previous subdir)
+-- [hand_ik] ✓ Eigen3::Eigen target is available
+CMake Error at hand_ik/CMakeLists.txt:116 (ExternalProject_Add):
+  Unknown CMake command "ExternalProject_Add".
+
+
+-- Configuring incomplete, errors occurred!

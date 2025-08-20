@@ -1,0 +1,136 @@
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\43CEB7FBDA84C20FAA4301F2A9EAB544\URDFDOM_HEADERS_EXT-MKDIR.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -Dcfgdir=/Release -P C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/tmp/urdfdom_headers_ext-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Release/urdfdom_headers_ext-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\43CEB7FBDA84C20FAA4301F2A9EAB544\URDFDOM_HEADERS_EXT-DOWNLOAD.RULE
+setlocal
+cd C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_headers_ext-prefix\src
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/download-urdfdom_headers_ext.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/verify-urdfdom_headers_ext.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/extract-urdfdom_headers_ext.cmake
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Release/urdfdom_headers_ext-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\43CEB7FBDA84C20FAA4301F2A9EAB544\URDFDOM_HEADERS_EXT-UPDATE_DISCONNECTED.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Release/urdfdom_headers_ext-update_disconnected
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\43CEB7FBDA84C20FAA4301F2A9EAB544\URDFDOM_HEADERS_EXT-PATCH_DISCONNECTED.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Release/urdfdom_headers_ext-patch_disconnected
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\43CEB7FBDA84C20FAA4301F2A9EAB544\URDFDOM_HEADERS_EXT-CONFIGURE.RULE
+setlocal
+cd C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_headers_ext-prefix\src\urdfdom_headers_ext-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DBUILD_SHARED_LIBS=OFF -DURDFDOM_HEADERS_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers "-GVisual Studio 17 2022" -Ax64 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community" -S C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext -B C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Release/urdfdom_headers_ext-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\43CEB7FBDA84C20FAA4301F2A9EAB544\URDFDOM_HEADERS_EXT-BUILD.RULE
+setlocal
+cd C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_headers_ext-prefix\src\urdfdom_headers_ext-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" --build . --config Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Release/urdfdom_headers_ext-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\43CEB7FBDA84C20FAA4301F2A9EAB544\URDFDOM_HEADERS_EXT-INSTALL.RULE
+setlocal
+cd C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_headers_ext-prefix\src\urdfdom_headers_ext-build
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" --build . --config Release --target install
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Release/urdfdom_headers_ext-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\1C7A663A74D1DDB98F8ED84FA57E80B0\URDFDOM_HEADERS_EXT-COMPLETE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E make_directory C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/Release
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/Release/urdfdom_headers_ext-complete
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Release/urdfdom_headers_ext-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\0B8A5A4F5E0CF5C8164ADA26B4562087\URDFDOM_HEADERS_EXT.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\HAND_IK\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitHub/manus -BC:/Users/nicol/Alt_Bionics/GitHub/manus/build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

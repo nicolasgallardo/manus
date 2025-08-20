@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -80,6 +80,7 @@ if not exist "%BUILD_DIR%\CMakeCache.txt" (
       -DVCPKG_TARGET_TRIPLET=x64-windows ^
       -DCMAKE_BUILD_TYPE=%CFG% ^
       -DUSE_SYSTEM_EIGEN=ON ^
+      -DSKIP_VENDOR_EIGEN=ON ^
       -DMANUS_BUILD_TESTS=ON ^
       %MANUS_SDK_ARG%
       
@@ -100,6 +101,7 @@ if not exist "%BUILD_DIR%\CMakeCache.txt" (
           -DVCPKG_TARGET_TRIPLET=x64-windows ^
           -DCMAKE_BUILD_TYPE=%CFG% ^
           -DUSE_SYSTEM_EIGEN=ON ^
+          -DSKIP_VENDOR_EIGEN=ON ^
           -DMANUS_BUILD_TESTS=ON ^
           %MANUS_SDK_ARG%
           
