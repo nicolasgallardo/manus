@@ -1,0 +1,10 @@
+^C:\USERS\NICOL\ALT_BIONICS\GITLAB\SURGE\FIRMWARE\APPS\PINOCCHIO_IK_V3\HAND_IK\HAND_IK\BUILD\PINOCCHIO_EXT-PREFIX\SRC\PINOCCHIO_EXT\SRC\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/pinocchio_ext-prefix/src/pinocchio_ext -BC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/pinocchio_ext-prefix/src/pinocchio_ext-build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/pinocchio_ext-prefix/src/pinocchio_ext-build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

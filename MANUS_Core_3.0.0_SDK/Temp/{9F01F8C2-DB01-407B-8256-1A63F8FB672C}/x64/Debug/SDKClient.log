@@ -1,0 +1,5 @@
+﻿  SDKClient.cpp
+C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Manus\MANUS_Core_3.0.0_SDK\SDKClient_Windows\SDKClient.cpp(2091,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Manus\MANUS_Core_3.0.0_SDK\SDKClient_Windows\SDKClient.cpp(3334,20): warning C4018: '<': signed/unsigned mismatch
+  SDKClient.vcxproj -> C:\Users\nicol\Alt_Bionics\GitLab\surge\firmware\Manus\MANUS_Core_3.0.0_SDK\Output\x64\Debug\SDKClient_Windows.exe
+          1 file(s) copied.

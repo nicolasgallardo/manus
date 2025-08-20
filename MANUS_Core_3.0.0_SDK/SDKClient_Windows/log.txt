@@ -1,0 +1,39 @@
+
+2025-05-07 14:48:19 : SDKClient_Windows.exe : DEBUG : ManusInit: creating DeviceManager and CCallbacks
+2025-05-07 14:48:19 : SDKClient_Windows.exe : DEBUG : ManusInit: finished successful
+2025-05-07 14:55:25 : SDKClient_Windows.exe : DEBUG : DeviceManager::~DeviceManager()
+2025-05-07 14:55:26 : SDKClient_Windows.exe : DEBUG : ManusExit() finished...
+
+2025-05-07 14:57:04 : SDKClient_Windows.exe : DEBUG : ManusInit: creating DeviceManager and CCallbacks
+2025-05-07 14:57:04 : SDKClient_Windows.exe : DEBUG : ManusInit: finished successful
+2025-05-07 15:04:12 : SDKClient_Windows.exe : DEBUG : DeviceManager::~DeviceManager()
+2025-05-07 15:04:13 : SDKClient_Windows.exe : DEBUG : ManusExit() finished...
+
+2025-05-07 15:04:19 : SDKClient_Windows.exe : DEBUG : ManusInit: creating DeviceManager and CCallbacks
+2025-05-07 15:04:19 : SDKClient_Windows.exe : DEBUG : ManusInit: finished successful
+2025-05-07 15:07:32 : SDKClient_Windows.exe : DEBUG : DeviceManager::~DeviceManager()
+2025-05-07 15:07:32 : SDKClient_Windows.exe : DEBUG : ManusExit() finished...
+
+2025-05-08 10:24:50 : SDKClient_Windows.exe : DEBUG : ManusInit: creating DeviceManager and CCallbacks
+2025-05-08 10:24:50 : SDKClient_Windows.exe : DEBUG : ManusInit: finished successful
+2025-05-08 10:25:22 : SDKClient_Windows.exe : DEBUG : DeviceManager::~DeviceManager()
+2025-05-08 10:25:23 : SDKClient_Windows.exe : DEBUG : ManusExit() finished...
+
+2025-05-08 10:25:26 : SDKClient_Windows.exe : DEBUG : ManusInit: creating DeviceManager and CCallbacks
+2025-05-08 10:25:26 : SDKClient_Windows.exe : DEBUG : ManusInit: finished successful
+2025-05-08 10:29:00 : SDKClient_Windows.exe : DEBUG : DeviceManager::~DeviceManager()
+2025-05-08 10:29:00 : SDKClient_Windows.exe : DEBUG : ManusExit() finished...
+
+2025-05-08 10:29:32 : SDKClient_Windows.exe : DEBUG : ManusInit: creating DeviceManager and CCallbacks
+2025-05-08 10:29:32 : SDKClient_Windows.exe : DEBUG : ManusInit: finished successful
+2025-05-08 10:30:23 : SDKClient_Windows.exe : DEBUG : DeviceManager::~DeviceManager()
+2025-05-08 10:30:24 : SDKClient_Windows.exe : DEBUG : ManusExit() finished...
+
+2025-07-21 18:25:45 : SDKClient_Windows.exe : DEBUG : ManusInit: creating DeviceManager and CCallbacks
+2025-07-21 18:25:45 : SDKClient_Windows.exe : DEBUG : ManusInit: finished successful
+2025-07-21 18:26:04 : SDKClient_Windows.exe : DEBUG : DeviceManager::~DeviceManager()
+2025-07-21 18:26:05 : SDKClient_Windows.exe : DEBUG : ManusExit() finished...
+
+2025-07-21 18:37:19 : SDKClient_Windows.exe : DEBUG : ManusInit: creating DeviceManager and CCallbacks
+2025-07-21 18:37:19 : SDKClient_Windows.exe : DEBUG : ManusInit: finished successful
+2025-07-21 18:37:21 : SDKClient_Windows.exe : DEBUG : DeviceManager::~DeviceManager()

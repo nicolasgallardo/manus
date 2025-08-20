@@ -1,0 +1,10 @@
+^C:\USERS\NICOL\ALT_BIONICS\GITLAB\SURGE\FIRMWARE\APPS\PINOCCHIO_IK_V3\HAND_IK\HAND_IK\BUILD\TINYXML2_EXT-PREFIX\SRC\TINYXML2_EXT-BUILD\CMAKEFILES\66BADC90B4FE2457EA60790130ECC843\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/tinyxml2_ext-prefix/src/tinyxml2_ext -BC:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/tinyxml2_ext-prefix/src/tinyxml2_ext-build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/nicol/Alt_Bionics/GitLab/surge/firmware/Apps/pinocchio_ik_v3/hand_ik/hand_ik/build/tinyxml2_ext-prefix/src/tinyxml2_ext-build/tinyxml2.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

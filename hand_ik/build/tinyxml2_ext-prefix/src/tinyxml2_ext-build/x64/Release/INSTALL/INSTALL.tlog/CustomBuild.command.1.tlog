@@ -1,0 +1,10 @@
+^C:\USERS\NICOL\ALT_BIONICS\GITLAB\SURGE\FIRMWARE\APPS\PINOCCHIO_IK_V3\HAND_IK\HAND_IK\BUILD\TINYXML2_EXT-PREFIX\SRC\TINYXML2_EXT-BUILD\CMAKEFILES\66BADC90B4FE2457EA60790130ECC843\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
