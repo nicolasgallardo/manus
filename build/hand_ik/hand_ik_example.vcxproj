@@ -445,7 +445,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\hand_ik\src\main_example.cpp" />
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\hand_ik\examples\hand_ik_example.cpp" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

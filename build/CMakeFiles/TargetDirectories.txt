@@ -1,3 +1,7 @@
+C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/Experimental.dir
+C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/Nightly.dir
+C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/Continuous.dir
+C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/NightlyMemoryCheck.dir
 C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/SDKClient.dir
 C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/RUN_TESTS.dir
 C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/INSTALL.dir

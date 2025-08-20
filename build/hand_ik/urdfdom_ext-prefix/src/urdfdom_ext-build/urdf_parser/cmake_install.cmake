@@ -212,12 +212,6 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/urdfdom" TYPE DIRECTORY FILES "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext/urdf_parser/include/urdf_parser")
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/urdf_parser/test/cmake_install.cmake")
-
-endif()
-
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)

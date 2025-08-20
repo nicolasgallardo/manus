@@ -122,7 +122,7 @@ events:
       The output was:
       0
       MSBuild version 17.13.9+e0f243f1e for .NET Framework
-      Build started 8/19/2025 11:18:03 PM.
+      Build started 8/19/2025 11:44:07 PM.
       
       Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\4.1.0-rc4\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -151,7 +151,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.45
+      Time Elapsed 00:00:00.66
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -1085,8 +1085,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-4uj4w0"
-      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-4uj4w0"
+      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-2sl4ol"
+      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-2sl4ol"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
@@ -1097,40 +1097,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-4uj4w0'
+        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-2sl4ol'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_50016.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_a0400.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/19/2025 11:18:04 PM.
+        Build started 8/19/2025 11:44:08 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-4uj4w0\\cmTC_50016.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-2sl4ol\\cmTC_a0400.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_50016.dir\\Debug\\".
+          Creating directory "cmTC_a0400.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-4uj4w0\\Debug\\".
-          Creating directory "cmTC_50016.dir\\Debug\\cmTC_50016.tlog\\".
+          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-2sl4ol\\Debug\\".
+          Creating directory "cmTC_a0400.dir\\Debug\\cmTC_a0400.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_50016.dir\\Debug\\cmTC_50016.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_50016.dir\\Debug\\cmTC_50016.tlog\\unsuccessfulbuild".
+          Creating "cmTC_a0400.dir\\Debug\\cmTC_a0400.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_a0400.dir\\Debug\\cmTC_a0400.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_50016.dir\\Debug\\\\" /Fd"cmTC_50016.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_a0400.dir\\Debug\\\\" /Fd"cmTC_a0400.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_50016.dir\\Debug\\\\" /Fd"cmTC_50016.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_a0400.dir\\Debug\\\\" /Fd"cmTC_a0400.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-4uj4w0\\Debug\\cmTC_50016.exe" /INCREMENTAL /ILK:"cmTC_50016.dir\\Debug\\cmTC_50016.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-4uj4w0/Debug/cmTC_50016.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-4uj4w0/Debug/cmTC_50016.lib" /MACHINE:X64  /machine:x64 cmTC_50016.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_50016.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-4uj4w0\\Debug\\cmTC_50016.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-2sl4ol\\Debug\\cmTC_a0400.exe" /INCREMENTAL /ILK:"cmTC_a0400.dir\\Debug\\cmTC_a0400.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-2sl4ol/Debug/cmTC_a0400.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeScratch/TryCompile-2sl4ol/Debug/cmTC_a0400.lib" /MACHINE:X64  /machine:x64 cmTC_a0400.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_a0400.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-2sl4ol\\Debug\\cmTC_a0400.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_50016.dir\\Debug\\cmTC_50016.tlog\\unsuccessfulbuild".
-          Touching "cmTC_50016.dir\\Debug\\cmTC_50016.tlog\\cmTC_50016.lastbuildstate".
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-4uj4w0\\cmTC_50016.vcxproj" (default targets).
+          Deleting file "cmTC_a0400.dir\\Debug\\cmTC_a0400.tlog\\unsuccessfulbuild".
+          Touching "cmTC_a0400.dir\\Debug\\cmTC_a0400.tlog\\cmTC_a0400.lastbuildstate".
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-2sl4ol\\cmTC_a0400.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.42
+        Time Elapsed 00:00:00.49
         
       exitCode: 0
   -
@@ -10514,38 +10514,38 @@ events:
       stdout: |
         Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeTmp'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0bf3a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_54bcd.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/19/2025 11:18:05 PM.
+        Build started 8/19/2025 11:44:09 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeTmp\\cmTC_0bf3a.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeTmp\\cmTC_54bcd.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_0bf3a.dir\\Debug\\".
+          Creating directory "cmTC_54bcd.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
           Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeTmp\\Debug\\".
-          Creating directory "cmTC_0bf3a.dir\\Debug\\cmTC_0bf3a.tlog\\".
+          Creating directory "cmTC_54bcd.dir\\Debug\\cmTC_54bcd.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_0bf3a.dir\\Debug\\cmTC_0bf3a.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_0bf3a.dir\\Debug\\cmTC_0bf3a.tlog\\unsuccessfulbuild".
+          Creating "cmTC_54bcd.dir\\Debug\\cmTC_54bcd.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_54bcd.dir\\Debug\\cmTC_54bcd.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D _SCL_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_0bf3a.dir\\Debug\\\\" /Fd"cmTC_0bf3a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /wd4101 /wd4250 /wd4251 /wd4275 /wd4355 /errorReport:queue  /Zc:__cplusplus "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\cmake\\tmp-cxx-standard.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D _SCL_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_54bcd.dir\\Debug\\\\" /Fd"cmTC_54bcd.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /wd4101 /wd4250 /wd4251 /wd4275 /wd4355 /errorReport:queue  /Zc:__cplusplus "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\cmake\\tmp-cxx-standard.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D _SCL_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_0bf3a.dir\\Debug\\\\" /Fd"cmTC_0bf3a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /wd4101 /wd4250 /wd4251 /wd4275 /wd4355 /errorReport:queue  /Zc:__cplusplus "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\cmake\\tmp-cxx-standard.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D _SCL_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_WARNINGS /D _CRT_SECURE_NO_DEPRECATE /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_54bcd.dir\\Debug\\\\" /Fd"cmTC_54bcd.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /wd4101 /wd4250 /wd4251 /wd4275 /wd4355 /errorReport:queue  /Zc:__cplusplus "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\cmake\\tmp-cxx-standard.cpp"
           tmp-cxx-standard.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_0bf3a.exe" /INCREMENTAL /ILK:"cmTC_0bf3a.dir\\Debug\\cmTC_0bf3a.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeTmp/Debug/cmTC_0bf3a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeTmp/Debug/cmTC_0bf3a.lib" /MACHINE:X64  /machine:x64 "cmTC_0bf3a.dir\\Debug\\tmp-cxx-standard.obj"
-          cmTC_0bf3a.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_0bf3a.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_54bcd.exe" /INCREMENTAL /ILK:"cmTC_54bcd.dir\\Debug\\cmTC_54bcd.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeTmp/Debug/cmTC_54bcd.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/CMakeFiles/CMakeTmp/Debug/cmTC_54bcd.lib" /MACHINE:X64  /machine:x64 "cmTC_54bcd.dir\\Debug\\tmp-cxx-standard.obj"
+          cmTC_54bcd.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_54bcd.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_0bf3a.dir\\Debug\\cmTC_0bf3a.tlog\\unsuccessfulbuild".
-          Touching "cmTC_0bf3a.dir\\Debug\\cmTC_0bf3a.tlog\\cmTC_0bf3a.lastbuildstate".
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeTmp\\cmTC_0bf3a.vcxproj" (default targets).
+          Deleting file "cmTC_54bcd.dir\\Debug\\cmTC_54bcd.tlog\\unsuccessfulbuild".
+          Touching "cmTC_54bcd.dir\\Debug\\cmTC_54bcd.tlog\\cmTC_54bcd.lastbuildstate".
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\pinocchio_ext-prefix\\src\\pinocchio_ext-build\\CMakeFiles\\CMakeTmp\\cmTC_54bcd.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.83
+        Time Elapsed 00:00:00.69
         
       exitCode: 0
     runResult:

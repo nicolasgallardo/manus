@@ -123,6 +123,7 @@ ExternalProject_Add(tinyxml2_ext
     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     -DCMAKE_MSVC_RUNTIME_LIBRARY=${CMAKE_MSVC_RUNTIME_LIBRARY}
     -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_TESTING=OFF
     -DCMAKE_INSTALL_PREFIX=${TINYXML2_STAGE}
   # Multi-config build commands with explicit config
   BUILD_COMMAND ${CMAKE_COMMAND} --build <BINARY_DIR> --config $<CONFIG>
@@ -151,6 +152,7 @@ ExternalProject_Add(urdfdom_headers_ext
     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     -DCMAKE_MSVC_RUNTIME_LIBRARY=${CMAKE_MSVC_RUNTIME_LIBRARY}
     -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_TESTING=OFF
     -DURDFDOM_HEADERS_BUILD_TESTS=OFF
     -DCMAKE_INSTALL_PREFIX=${URDF_HEADERS_STAGE}
   INSTALL_DIR ${URDF_HEADERS_STAGE}
@@ -170,6 +172,7 @@ ExternalProject_Add(urdfdom_ext
     -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     -DCMAKE_MSVC_RUNTIME_LIBRARY=${CMAKE_MSVC_RUNTIME_LIBRARY}
     -DBUILD_SHARED_LIBS=OFF
+    -DBUILD_TESTING=OFF
     -DURDFDOM_BUILD_TESTS=OFF
     # Use staged TinyXML2 with config-independent paths
     -DTinyXML2_DIR=${TINYXML2_STAGE}/lib/cmake/tinyxml2  # preferred: use CONFIG mode
@@ -395,32 +398,46 @@ endif()
 
 # Create example executable
 if(HAND_IK_BUILD_EXAMPLES)
-    add_executable(hand_ik_example src/main_example.cpp)
-    add_dependencies(hand_ik_example pinocchio_stage)  # use staging target
-    add_dependencies(hand_ik_example urdfdom_stage)    # also wait for urdfdom
-    target_link_libraries(hand_ik_example PRIVATE hand_ik)
-
-    # Include dirs for executables
-    target_include_directories(hand_ik_example PRIVATE
-        ${PIN_STAGE}/include
-    )
+    # Check if we have a specific example source
+    if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/examples/hand_ik_example.cpp")
+        set(EXAMPLE_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/examples/hand_ik_example.cpp")
+    elseif(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/src/main_example.cpp")
+        set(EXAMPLE_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/src/main_example.cpp")
+    else()
+        message(STATUS "No example source found, skipping hand_ik_example")
+        set(EXAMPLE_SOURCE "")
+    endif()
     
-    # Add Eigen include directory
-    if(DEFINED eigen_SOURCE_DIR)
-        target_include_directories(hand_ik_example PRIVATE ${eigen_SOURCE_DIR})
-    elseif(DEFINED EIGEN3_INCLUDE_DIR)
-        target_include_directories(hand_ik_example PRIVATE ${EIGEN3_INCLUDE_DIR})
-    endif()
+    if(EXAMPLE_SOURCE)
+        add_executable(hand_ik_example "${EXAMPLE_SOURCE}")
+        add_dependencies(hand_ik_example pinocchio_stage)  # use staging target
+        add_dependencies(hand_ik_example urdfdom_stage)    # also wait for urdfdom
+        target_link_libraries(hand_ik_example PRIVATE hand_ik)
 
-    if(WIN32)
+        # Include dirs for executables
         target_include_directories(hand_ik_example PRIVATE
-            ${VCPKG_X64}/include
+            ${PIN_STAGE}/include
         )
-        target_compile_definitions(hand_ik_example PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN)
-    endif()
+        
+        # Add Eigen include directory
+        if(DEFINED eigen_SOURCE_DIR)
+            target_include_directories(hand_ik_example PRIVATE ${eigen_SOURCE_DIR})
+        elseif(DEFINED EIGEN3_INCLUDE_DIR)
+            target_include_directories(hand_ik_example PRIVATE ${EIGEN3_INCLUDE_DIR})
+        endif()
 
-    # Auto-copy URDF for this executable
-    autocopy_urdf(hand_ik_example)
+        if(WIN32)
+            target_include_directories(hand_ik_example PRIVATE
+                ${VCPKG_X64}/include
+            )
+            target_compile_definitions(hand_ik_example PRIVATE NOMINMAX WIN32_LEAN_AND_MEAN)
+        endif()
+
+        # Auto-copy URDF for this executable
+        autocopy_urdf(hand_ik_example)
+        
+        message(STATUS "hand_ik_example will be built from: ${EXAMPLE_SOURCE}")
+    endif()
 endif()
 
 # Create test executables

@@ -178,18 +178,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Project>{135B6F75-1131-389B-9C07-D603F7F22F39}</Project>
       <Name>check_urdf</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\urdf_parser\test\gtest.vcxproj">
-      <Project>{EF620D67-B052-38DC-B740-1A438B8E0D79}</Project>
-      <Name>gtest</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\urdf_parser\test\gtest_main.vcxproj">
-      <Project>{F47A0759-9939-3095-B706-428C9C462C1B}</Project>
-      <Name>gtest_main</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\urdf_parser\test\urdf_double_convert.vcxproj">
-      <Project>{1BD8455A-7E12-3D2B-9B92-7F4CF0F9544B}</Project>
-      <Name>urdf_double_convert</Name>
-    </ProjectReference>
     <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\urdf_parser\urdf_mem_test.vcxproj">
       <Project>{0661E5E5-BF93-35A6-A5A8-8E39E965D00B}</Project>
       <Name>urdf_mem_test</Name>
@@ -201,14 +189,6 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\urdf_parser\urdf_to_graphviz.vcxproj">
       <Project>{98155F2A-706E-3794-86DD-8CF6833F96F6}</Project>
       <Name>urdf_to_graphviz</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\urdf_parser\test\urdf_unit_test.vcxproj">
-      <Project>{0C9C1DD0-544F-37E0-8572-3319B6734B8C}</Project>
-      <Name>urdf_unit_test</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\urdf_parser\test\urdf_version_test.vcxproj">
-      <Project>{9D4B9A37-7C24-347D-B3F1-C2C87C93A0DE}</Project>
-      <Name>urdf_version_test</Name>
     </ProjectReference>
     <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\urdf_parser\urdfdom_model.vcxproj">
       <Project>{8147759B-0AD5-3BA7-8D0E-14F27FA47EE5}</Project>

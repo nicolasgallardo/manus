@@ -400,7 +400,7 @@ cd C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_headers_ext-pre
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DBUILD_SHARED_LIBS=OFF -DURDFDOM_HEADERS_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers "-GVisual Studio 17 2022" -Ax64 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community" -S C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext -B C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF -DURDFDOM_HEADERS_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers "-GVisual Studio 17 2022" -Ax64 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community" -S C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext -B C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Debug/urdfdom_headers_ext-configure
 if %errorlevel% neq 0 goto :cmEnd
@@ -419,7 +419,7 @@ cd C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_headers_ext-pre
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DBUILD_SHARED_LIBS=OFF -DURDFDOM_HEADERS_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers "-GVisual Studio 17 2022" -Ax64 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community" -S C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext -B C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF -DURDFDOM_HEADERS_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers "-GVisual Studio 17 2022" -Ax64 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community" -S C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext -B C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/Release/urdfdom_headers_ext-configure
 if %errorlevel% neq 0 goto :cmEnd
@@ -438,7 +438,7 @@ cd C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_headers_ext-pre
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DBUILD_SHARED_LIBS=OFF -DURDFDOM_HEADERS_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers "-GVisual Studio 17 2022" -Ax64 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community" -S C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext -B C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF -DURDFDOM_HEADERS_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers "-GVisual Studio 17 2022" -Ax64 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community" -S C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext -B C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/MinSizeRel/urdfdom_headers_ext-configure
 if %errorlevel% neq 0 goto :cmEnd
@@ -457,7 +457,7 @@ cd C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_headers_ext-pre
 if %errorlevel% neq 0 goto :cmEnd
 C:
 if %errorlevel% neq 0 goto :cmEnd
-"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DBUILD_SHARED_LIBS=OFF -DURDFDOM_HEADERS_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers "-GVisual Studio 17 2022" -Ax64 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community" -S C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext -B C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build
+"C:\Program Files\CMake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreadedDLL -DBUILD_SHARED_LIBS=OFF -DBUILD_TESTING=OFF -DURDFDOM_HEADERS_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom_headers "-GVisual Studio 17 2022" -Ax64 "-DCMAKE_GENERATOR_INSTANCE:INTERNAL=C:/Program Files/Microsoft Visual Studio/2022/Community" -S C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext -B C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-build
 if %errorlevel% neq 0 goto :cmEnd
 "C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_headers_ext-prefix/src/urdfdom_headers_ext-stamp/RelWithDebInfo/urdfdom_headers_ext-configure
 if %errorlevel% neq 0 goto :cmEnd

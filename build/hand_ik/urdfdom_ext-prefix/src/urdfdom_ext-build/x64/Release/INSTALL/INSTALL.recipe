@@ -14,9 +14,6 @@
       <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\check_urdf.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_double_convert.exe</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
       <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_mem_test.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
@@ -24,12 +21,6 @@
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_to_graphviz.exe</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
-      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_unit_test.exe</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
-      <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdf_version_test.exe</FullPath>
     </ProjectOutput>
     <ProjectOutput>
       <FullPath>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext-build\bin\Release\urdfdom_model_state.dll</FullPath>

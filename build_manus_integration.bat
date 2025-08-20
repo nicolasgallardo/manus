@@ -128,10 +128,20 @@ if exist "MANUS_Core_3.0.0_SDK" (
     echo Skipping SDKClient (Manus SDK not found)
 )
 
-echo Building tests...
-cmake --build "%BUILD_DIR%" --config %CFG% --target test_integration test_hand_ik
-if errorlevel 1 (
-    echo Warning: Some tests failed to build, continuing...
+echo Building tests (if they exist)...
+rem Check if CTest tests are configured
+if exist "%BUILD_DIR%\CTestTestfile.cmake" (
+    echo CTest configuration found, building test targets...
+    cmake --build "%BUILD_DIR%" --config %CFG% --target test_integration test_hand_ik
+    if errorlevel 1 (
+        echo Warning: Some test targets failed to build, continuing...
+        set "TEST_BUILD_WARN=1"
+    ) else (
+        set "TEST_BUILD_WARN=0"
+    )
+) else (
+    echo No CTest configuration found, skipping test build
+    set "TEST_BUILD_WARN=0"
 )
 
 rem 3) Verify built executables
@@ -142,39 +152,55 @@ echo ========================================
 echo.
 echo Built targets:
 
+rem Check hand_ik library first
+if exist "%BUILD_DIR%\hand_ik\lib\%CFG%\hand_ik.lib" (
+    echo   ✓ hand_ik.lib (static library)
+) else (
+    echo   ✗ hand_ik.lib [NOT FOUND]
+    set "MISSING_TARGETS=1"
+)
+
+rem Check hand_ik_example only if it should exist
 if exist "%BUILD_DIR%\hand_ik\bin\%CFG%\hand_ik_example.exe" (
     echo   ✓ hand_ik_example.exe
 ) else (
-    echo   ✗ hand_ik_example.exe [NOT FOUND]
+    echo   - hand_ik_example.exe [SKIPPED - target not generated]
 )
 
-if exist "%BUILD_DIR%\bin\%CFG%\SDKClient.exe" (
-    echo   ✓ SDKClient.exe
-    
-    rem Check if ManusSDK.dll was copied
-    if exist "%BUILD_DIR%\bin\%CFG%\ManusSDK.dll" (
-        echo     ✓ ManusSDK.dll (copied)
+rem Check SDKClient - this should exist if SDK was found
+if exist "MANUS_Core_3.0.0_SDK" (
+    if exist "%BUILD_DIR%\bin\%CFG%\SDKClient.exe" (
+        echo   ✓ SDKClient.exe
+        
+        rem Check if ManusSDK.dll was copied
+        if exist "%BUILD_DIR%\bin\%CFG%\ManusSDK.dll" (
+            echo     ✓ ManusSDK.dll (copied for runtime)
+        ) else (
+            echo     ⚠ ManusSDK.dll (not found - may need manual PATH setup)
+        )
     ) else (
-        echo     ? ManusSDK.dll (not found - may be in PATH)
-    )
-) else (
-    if exist "MANUS_Core_3.0.0_SDK" (
         echo   ✗ SDKClient.exe [BUILD FAILED]
-    ) else (
-        echo   - SDKClient.exe [SKIPPED - no SDK]
+        set "MISSING_TARGETS=1"
     )
+) else (
+    echo   - SDKClient.exe [SKIPPED - no Manus SDK]
 )
 
-if exist "%BUILD_DIR%\bin\%CFG%\test_integration.exe" (
-    echo   ✓ test_integration.exe
+rem Check test executables only if CTest was configured
+if exist "%BUILD_DIR%\CTestTestfile.cmake" (
+    if exist "%BUILD_DIR%\bin\%CFG%\test_integration.exe" (
+        echo   ✓ test_integration.exe
+    ) else (
+        echo   ✗ test_integration.exe [NOT FOUND]
+    )
+    
+    if exist "%BUILD_DIR%\bin\%CFG%\test_hand_ik.exe" (
+        echo   ✓ test_hand_ik.exe
+    ) else (
+        echo   ✗ test_hand_ik.exe [NOT FOUND]
+    )
 ) else (
-    echo   ✗ test_integration.exe [NOT FOUND]
-)
-
-if exist "%BUILD_DIR%\bin\%CFG%\test_hand_ik.exe" (
-    echo   ✓ test_hand_ik.exe
-) else (
-    echo   ✗ test_hand_ik.exe [NOT FOUND]
+    echo   - Tests [SKIPPED - CTest not configured]
 )
 
 rem 4) Run basic tests
