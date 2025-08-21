@@ -82,12 +82,26 @@ if(BUILD_MANUS_INTEGRATION)
     # Link to hand_ik library
     target_link_libraries(SDKClient PRIVATE hand_ik)
     
+    # Add project include directories (for ManusHandIKBridge.h etc.)
+    target_include_directories(SDKClient PRIVATE "${CMAKE_SOURCE_DIR}/include")
+    
     # Add Manus SDK includes and libraries
     target_include_directories(SDKClient PRIVATE "${MANUS_SDK_INCLUDE_DIR}")
     target_link_libraries(SDKClient PRIVATE "${MANUS_SDK_LIBRARY}")
     
     # Link system libraries
     target_link_libraries(SDKClient PRIVATE Threads::Threads)
+    
+    # CRITICAL: Add preprocessor definitions to fix Pinocchio/Boost conflicts
+    target_compile_definitions(SDKClient PRIVATE 
+        MANUS_SDK_AVAILABLE
+        NOMINMAX                    # Prevent min/max macro conflicts
+        WIN32_LEAN_AND_MEAN        # Reduce Windows header conflicts
+        BOOST_ALL_NO_LIB           # Prevent Boost auto-linking
+        BOOST_DISABLE_ASSERTS      # Disable Boost assertions that can conflict
+        _SCL_SECURE_NO_WARNINGS    # Disable secure CRT warnings
+        _CRT_SECURE_NO_WARNINGS    # Disable CRT warnings
+    )
     
     # Optional: copy DLL next to the exe if MANUS_SDK_DLL resolved
     if(MANUS_SDK_DLL)
@@ -98,14 +112,8 @@ if(BUILD_MANUS_INTEGRATION)
         COMMENT "Copying ManusSDK.dll to output directory")
     endif()
     
-    # Preprocessor definition to enable Manus integration
-    target_compile_definitions(SDKClient PRIVATE MANUS_SDK_AVAILABLE)
-    
     message(STATUS "SDKClient will be built with Manus SDK integration")
-else()
-    message(STATUS "Manus SDK not found - SDKClient will not be built")
 endif()
-
 # Configuration summary
 message(STATUS "=== Manus Integration Configuration Summary ===")
 message(STATUS "Manus Integration: ${BUILD_MANUS_INTEGRATION}")

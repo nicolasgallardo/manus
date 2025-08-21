@@ -83,9 +83,13 @@ if(BUILD_MANUS_INTEGRATION)
     target_link_libraries(SDKClient PRIVATE hand_ik)
     
     # Add project include directories (for ManusHandIKBridge.h etc.)
+    # Use absolute paths to ensure they're found
+    set(PROJECT_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/include")
+    set(HAND_IK_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/hand_ik/include")
+    
     target_include_directories(SDKClient PRIVATE 
-        "${CMAKE_SOURCE_DIR}/include"
-        "${CMAKE_SOURCE_DIR}/hand_ik/include"
+        ${PROJECT_INCLUDE_DIR}
+        ${HAND_IK_INCLUDE_DIR}
     )
     
     # Add Manus SDK includes and libraries
@@ -94,6 +98,39 @@ if(BUILD_MANUS_INTEGRATION)
     
     # Link system libraries
     target_link_libraries(SDKClient PRIVATE Threads::Threads)
+    
+    # Debug: Print include directories being used
+    message(STATUS "SDKClient include directories:")
+    message(STATUS "  Project include: ${PROJECT_INCLUDE_DIR}")
+    message(STATUS "  Hand IK include: ${HAND_IK_INCLUDE_DIR}")
+    message(STATUS "  Manus SDK include: ${MANUS_SDK_INCLUDE_DIR}")
+    
+    # Debug: Check if the header file exists
+    if(EXISTS "${PROJECT_INCLUDE_DIR}/ManusHandIKBridge.h")
+        message(STATUS "  ✓ Found: ManusHandIKBridge.h")
+    elseif(EXISTS "${PROJECT_INCLUDE_DIR}/ManusIKBridge.h")
+        message(STATUS "  ✓ Found: ManusIKBridge.h (filename mismatch?)")
+    else()
+        message(WARNING "  ✗ Header file not found in ${PROJECT_INCLUDE_DIR}/")
+        # List what files are actually in the include directory
+        file(GLOB INCLUDE_FILES "${PROJECT_INCLUDE_DIR}/*.h" "${PROJECT_INCLUDE_DIR}/*.hpp")
+        message(STATUS "  Available header files in include/:")
+        foreach(HEADER ${INCLUDE_FILES})
+            get_filename_component(HEADER_NAME ${HEADER} NAME)
+            message(STATUS "    - ${HEADER_NAME}")
+        endforeach()
+    endif()
+    
+    # Additional debugging: Force set the include directories using a different method
+    set_target_properties(SDKClient PROPERTIES
+        INCLUDE_DIRECTORIES "${PROJECT_INCLUDE_DIR};${HAND_IK_INCLUDE_DIR};${MANUS_SDK_INCLUDE_DIR}")
+        
+    # Also try using INTERFACE_INCLUDE_DIRECTORIES for the hand_ik target
+    # This ensures that linking to hand_ik also brings in its include directories
+    get_target_property(HAND_IK_INCLUDES hand_ik INTERFACE_INCLUDE_DIRECTORIES)
+    if(HAND_IK_INCLUDES)
+        message(STATUS "  Hand IK provides includes: ${HAND_IK_INCLUDES}")
+    endif()
     
     # Optional: copy DLL next to the exe if MANUS_SDK_DLL resolved
     if(MANUS_SDK_DLL)
