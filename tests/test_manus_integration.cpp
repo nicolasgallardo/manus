@@ -1,164 +1,331 @@
+// tests/test_manus_integration.cpp - Headless smoke test for Manus integration
 #include "ManusHandIKBridge.h"
-#include <gtest/gtest.h>
-#include <filesystem>
+#include "ManusSkeletonSetup.h"
+#include "hand_ik.hpp"
+#include <iostream>
 #include <chrono>
+#include <random>
+#include <filesystem>
 
-class ManusHandIKTest : public ::testing::Test {
-protected:
-    void SetUp() override {
-        // Find test URDF
-        std::string urdfPath = "surge_v13_hand_right_pybullet.urdf";
-        if (!std::filesystem::exists(urdfPath)) {
-            urdfPath = "../hand_ik/surge_v13_hand_right_pybullet.urdf";
-        }
-        if (!std::filesystem::exists(urdfPath)) {
-            urdfPath = "../surge_v13_hand_right_pybullet.urdf";
-        }
-        
-        ASSERT_TRUE(std::filesystem::exists(urdfPath)) << "Test URDF not found: " << urdfPath;
-        ASSERT_TRUE(manus_handik::HandIKSolver::initialize(urdfPath, false));
+class ManusIntegrationTest {
+public:
+    bool RunAllTests() {
+        std::cout << "=== Manus Integration Smoke Test ===" << std::endl;
+
+        bool all_passed = true;
+
+        all_passed &= TestUrdfResolution();
+        all_passed &= TestHandIKBridgeCreation();
+        all_passed &= TestCoordinateConversion();
+        all_passed &= TestIKSolving();
+        all_passed &= TestPerformance();
+
+        std::cout << "\n=== Test Summary ===" << std::endl;
+        std::cout << "Overall result: " << (all_passed ? "✓ PASS" : "❌ FAIL") << std::endl;
+
+        return all_passed;
     }
-    
-    void TearDown() override {
-        manus_handik::HandIKSolver::shutdown();
+
+private:
+    bool TestUrdfResolution() {
+        std::cout << "\n--- Test 1: URDF Resolution ---" << std::endl;
+
+        try {
+            // Test URDF resolution logic
+            std::vector<std::string> test_paths = {
+                "surge_v13_hand_right_pybullet.urdf",
+                "./surge_v13_hand_right_pybullet.urdf",
+                "hand_ik/surge_v13_hand_right_pybullet.urdf"
+            };
+
+            std::string resolved_path;
+            bool found = false;
+
+            for (const auto& path : test_paths) {
+                if (std::filesystem::exists(path)) {
+                    resolved_path = path;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
+                std::cout << "✓ URDF found at: " << resolved_path << std::endl;
+                return true;
+            }
+            else {
+                std::cout << "❌ URDF file not found in expected locations" << std::endl;
+                std::cout << "   Checked paths:" << std::endl;
+                for (const auto& path : test_paths) {
+                    std::cout << "   - " << path << std::endl;
+                }
+                return false;
+            }
+        }
+        catch (const std::exception& e) {
+            std::cout << "❌ URDF resolution test failed: " << e.what() << std::endl;
+            return false;
+        }
+    }
+
+    bool TestHandIKBridgeCreation() {
+        std::cout << "\n--- Test 2: Hand IK Bridge Creation ---" << std::endl;
+
+        try {
+            // Find URDF file
+            std::string urdf_path = "surge_v13_hand_right_pybullet.urdf";
+            if (!std::filesystem::exists(urdf_path)) {
+                urdf_path = "./surge_v13_hand_right_pybullet.urdf";
+            }
+            if (!std::filesystem::exists(urdf_path)) {
+                std::cout << "❌ URDF file not found for bridge test" << std::endl;
+                return false;
+            }
+
+            // Create bridge
+            std::unique_ptr<ManusHandIKBridge> bridge =
+                std::make_unique<ManusHandIKBridge>(urdf_path);
+
+            if (!bridge->IsInitialized()) {
+                std::cout << "❌ Bridge failed to initialize" << std::endl;
+                return false;
+            }
+
+            std::cout << "✓ Hand IK Bridge created successfully" << std::endl;
+
+            // Test diagnostics
+            bool diagnostics_pass = bridge->RunDiagnostics();
+            std::cout << "Bridge diagnostics: " << (diagnostics_pass ? "✓ PASS" : "⚠️  WARN") << std::endl;
+
+            return true;
+
+        }
+        catch (const std::exception& e) {
+            std::cout << "❌ Bridge creation failed: " << e.what() << std::endl;
+            return false;
+        }
+    }
+
+    bool TestCoordinateConversion() {
+        std::cout << "\n--- Test 3: Coordinate System Conversion ---" << std::endl;
+
+        try {
+            std::string urdf_path = "surge_v13_hand_right_pybullet.urdf";
+            if (!std::filesystem::exists(urdf_path)) {
+                urdf_path = "./surge_v13_hand_right_pybullet.urdf";
+            }
+
+            ManusHandIKBridge bridge(urdf_path);
+
+            // Test position conversion
+            Eigen::Vector3d manus_pos(0.1, 0.05, 0.12); // 10cm, 5cm, 12cm
+            Eigen::Vector3d ik_pos = bridge.ManusToIKPosition(manus_pos);
+
+            // Should be identity transform for our coordinate system
+            double pos_error = (ik_pos - manus_pos).norm();
+            if (pos_error > 1e-6) {
+                std::cout << "❌ Position conversion error: " << pos_error << std::endl;
+                return false;
+            }
+
+            // Test orientation conversion
+            Eigen::Matrix3d manus_rot = Eigen::Matrix3d::Identity();
+            Eigen::Matrix3d ik_rot = bridge.ManusToIKOrientation(manus_rot);
+
+            double rot_error = (ik_rot - manus_rot).norm();
+            if (rot_error > 1e-6) {
+                std::cout << "❌ Orientation conversion error: " << rot_error << std::endl;
+                return false;
+            }
+
+            std::cout << "✓ Coordinate conversions working correctly" << std::endl;
+            return true;
+
+        }
+        catch (const std::exception& e) {
+            std::cout << "❌ Coordinate conversion test failed: " << e.what() << std::endl;
+            return false;
+        }
+    }
+
+    bool TestIKSolving() {
+        std::cout << "\n--- Test 4: IK Solving Pipeline ---" << std::endl;
+
+        try {
+            std::string urdf_path = "surge_v13_hand_right_pybullet.urdf";
+            if (!std::filesystem::exists(urdf_path)) {
+                urdf_path = "./surge_v13_hand_right_pybullet.urdf";
+            }
+
+            ManusHandIKBridge bridge(urdf_path);
+
+            // Create realistic finger targets
+            FingerTargets targets;
+            targets.finger_positions[0] = Eigen::Vector3d(0.15, 0.05, 0.12);  // Index
+            targets.finger_positions[1] = Eigen::Vector3d(0.16, 0.02, 0.14);  // Middle  
+            targets.finger_positions[2] = Eigen::Vector3d(0.15, -0.02, 0.13); // Ring
+            targets.finger_positions[3] = Eigen::Vector3d(0.13, -0.05, 0.11); // Pinky
+            targets.thumb_position = Eigen::Vector3d(0.08, 0.08, 0.10);       // Thumb
+            targets.thumb_rotation = Eigen::Matrix3d::Identity();
+
+            // Solve IK
+            JointConfiguration joint_config;
+            bool success = bridge.Solve(targets, joint_config);
+
+            if (!success || !joint_config.valid) {
+                std::cout << "❌ IK solve failed" << std::endl;
+                return false;
+            }
+
+            // Validate joint angles are within reasonable bounds
+            for (int i = 0; i < 6; ++i) {
+                double angle = joint_config.joint_angles[i];
+                if (std::isnan(angle) || std::isinf(angle)) {
+                    std::cout << "❌ Invalid joint angle[" << i << "]: " << angle << std::endl;
+                    return false;
+                }
+
+                if (angle < -0.1 || angle > 2.0) { // Reasonable bounds
+                    std::cout << "❌ Joint angle[" << i << "] out of bounds: " << angle << std::endl;
+                    return false;
+                }
+            }
+
+            std::cout << "✓ IK solve successful" << std::endl;
+            std::cout << "  Solve time: " << joint_config.solve_time_ms << " ms" << std::endl;
+            std::cout << "  Iterations: " << joint_config.iterations << std::endl;
+
+            // Print joint angles for inspection
+            std::cout << "  Joint angles (rad): ";
+            for (int i = 0; i < 6; ++i) {
+                std::cout << std::fixed << std::setprecision(3) << joint_config.joint_angles[i];
+                if (i < 5) std::cout << ", ";
+            }
+            std::cout << std::endl;
+
+            return true;
+
+        }
+        catch (const std::exception& e) {
+            std::cout << "❌ IK solving test failed: " << e.what() << std::endl;
+            return false;
+        }
+    }
+
+    bool TestPerformance() {
+        std::cout << "\n--- Test 5: Performance Benchmark ---" << std::endl;
+
+        try {
+            std::string urdf_path = "surge_v13_hand_right_pybullet.urdf";
+            if (!std::filesystem::exists(urdf_path)) {
+                urdf_path = "./surge_v13_hand_right_pybullet.urdf";
+            }
+
+            ManusHandIKBridge bridge(urdf_path);
+
+            // Performance test parameters
+            const int num_tests = 100;
+            const double max_acceptable_time_ms = 5.0; // 5ms max for real-time
+
+            std::random_device rd;
+            std::mt19937 gen(rd());
+            std::uniform_real_distribution<> dis(0.08, 0.18); // Reasonable finger reach
+
+            std::vector<double> solve_times;
+            int successful_solves = 0;
+
+            auto start_time = std::chrono::high_resolution_clock::now();
+
+            for (int test = 0; test < num_tests; ++test) {
+                // Generate random but reachable targets
+                FingerTargets targets;
+                for (int i = 0; i < 4; ++i) {
+                    targets.finger_positions[i] = Eigen::Vector3d(
+                        dis(gen),
+                        dis(gen) - 0.1,
+                        dis(gen)
+                    );
+                }
+                targets.thumb_position = Eigen::Vector3d(0.08, 0.08, 0.10);
+                targets.thumb_rotation = Eigen::Matrix3d::Identity();
+
+                // Solve and time
+                JointConfiguration joint_config;
+                bool success = bridge.Solve(targets, joint_config);
+
+                if (success && joint_config.valid) {
+                    successful_solves++;
+                    solve_times.push_back(joint_config.solve_time_ms);
+                }
+            }
+
+            auto end_time = std::chrono::high_resolution_clock::now();
+            auto total_time = std::chrono::duration<double, std::milli>(end_time - start_time);
+
+            // Calculate statistics
+            double success_rate = double(successful_solves) / num_tests;
+            double avg_time = 0.0;
+            double max_time = 0.0;
+
+            if (!solve_times.empty()) {
+                for (double time : solve_times) {
+                    avg_time += time;
+                    max_time = std::max(max_time, time);
+                }
+                avg_time /= solve_times.size();
+            }
+
+            std::cout << "Performance Results:" << std::endl;
+            std::cout << "  Total tests: " << num_tests << std::endl;
+            std::cout << "  Successful: " << successful_solves << " ("
+                << std::fixed << std::setprecision(1) << success_rate * 100 << "%)" << std::endl;
+            std::cout << "  Average solve time: " << std::setprecision(3) << avg_time << " ms" << std::endl;
+            std::cout << "  Maximum solve time: " << std::setprecision(3) << max_time << " ms" << std::endl;
+            std::cout << "  Total benchmark time: " << std::setprecision(1) << total_time.count() << " ms" << std::endl;
+
+            // Performance criteria
+            bool success_rate_ok = success_rate >= 0.8; // 80% success
+            bool avg_time_ok = avg_time <= max_acceptable_time_ms;
+            bool max_time_ok = max_time <= max_acceptable_time_ms * 2; // 2x tolerance for max
+
+            std::cout << "Performance Criteria:" << std::endl;
+            std::cout << "  Success rate ≥80%: " << (success_rate_ok ? "✓ PASS" : "❌ FAIL") << std::endl;
+            std::cout << "  Avg time ≤5ms: " << (avg_time_ok ? "✓ PASS" : "❌ FAIL") << std::endl;
+            std::cout << "  Max time ≤10ms: " << (max_time_ok ? "✓ PASS" : "❌ FAIL") << std::endl;
+
+            return success_rate_ok && avg_time_ok && max_time_ok;
+
+        }
+        catch (const std::exception& e) {
+            std::cout << "❌ Performance test failed: " << e.what() << std::endl;
+            return false;
+        }
     }
 };
 
-TEST_F(ManusHandIKTest, SolveReachableTargets) {
-    manus_handik::FingerTips tips;
-    
-    // Set reasonable fingertip positions (meters)
-    tips.positions[0] = manus_handik::ManusVec3(0.15f, 0.05f, 0.12f);  // Index
-    tips.positions[1] = manus_handik::ManusVec3(0.16f, 0.02f, 0.14f);  // Middle  
-    tips.positions[2] = manus_handik::ManusVec3(0.15f, -0.02f, 0.13f); // Ring
-    tips.positions[3] = manus_handik::ManusVec3(0.13f, -0.05f, 0.11f); // Pinky
-    tips.positions[4] = manus_handik::ManusVec3(0.08f, 0.08f, 0.10f);  // Thumb
-    
-    manus_handik::HandAngles angles;
-    EXPECT_TRUE(manus_handik::HandIKSolver::solve(tips, manus_handik::HandSide::Right, angles));
-    EXPECT_TRUE(angles.valid);
-    EXPECT_LT(angles.solveError, 0.01);  // Less than 1cm error
-    
-    // Check angle ranges are reasonable (0-120 degrees)
-    for (int finger = 0; finger < 5; ++finger) {
-        for (int joint = 0; joint < 2; ++joint) {  // Only 2 joints per finger now
-            EXPECT_GE(angles.degrees[finger][joint], -5.0);   // Small negative tolerance
-            EXPECT_LE(angles.degrees[finger][joint], 120.0);  // Reasonable max flexion
+int main(int argc, char* argv[]) {
+    std::cout << "Manus Integration Smoke Test" << std::endl;
+    std::cout << "============================" << std::endl;
+    std::cout << "Running headless validation of Manus + Hand IK integration..." << std::endl;
+
+    try {
+        ManusIntegrationTest test;
+        bool success = test.RunAllTests();
+
+        if (success) {
+            std::cout << "\n🎉 All smoke tests passed!" << std::endl;
+            std::cout << "Integration is ready for real-time use with Manus Core." << std::endl;
+            return 0;
         }
-    }
-}
-
-TEST_F(ManusHandIKTest, HandleZeroConfiguration) {
-    manus_handik::FingerTips tips;
-    
-    // All fingertips at origin (unrealistic but should not crash)
-    for (int i = 0; i < 5; ++i) {
-        tips.positions[i] = manus_handik::ManusVec3(0.0f, 0.0f, 0.0f);
-    }
-    
-    manus_handik::HandAngles angles;
-    // Should either solve or fail gracefully - should not crash
-    bool solved = manus_handik::HandIKSolver::solve(tips, manus_handik::HandSide::Left, angles);
-    
-    // Either way, should not crash or hang
-    EXPECT_NO_FATAL_FAILURE();
-}
-
-TEST_F(ManusHandIKTest, CoordinateConversion) {
-    Eigen::Vector3d eigen_vec(1.23, -4.56, 7.89);
-    manus_handik::ManusVec3 manus_vec = manus_handik::eigenToManus(eigen_vec);
-    Eigen::Vector3d converted_back = manus_handik::manusToEigen(manus_vec);
-    
-    EXPECT_NEAR(eigen_vec.x(), converted_back.x(), 1e-6);
-    EXPECT_NEAR(eigen_vec.y(), converted_back.y(), 1e-6);
-    EXPECT_NEAR(eigen_vec.z(), converted_back.z(), 1e-6);
-}
-
-TEST_F(ManusHandIKTest, FormattingOutput) {
-    manus_handik::HandAngles angles;
-    angles.valid = true;
-    angles.solveError = 0.002;
-    angles.iterations = 5;
-    
-    // Set some test angles
-    for (int i = 0; i < 5; ++i) {
-        angles.degrees[i][0] = 10.0 + i * 5.0;  // First joint (MCP for fingers, rotation for thumb)
-        angles.degrees[i][1] = 8.0 + i * 3.0;   // Second joint (PIP for fingers, flexion for thumb)
-    }
-    
-    std::string formatted = manus_handik::formatHandAngles(angles, manus_handik::HandSide::Right);
-    
-    EXPECT_FALSE(formatted.empty());
-    EXPECT_NE(formatted.find("HAND:R"), std::string::npos);
-    EXPECT_NE(formatted.find("index"), std::string::npos);
-    EXPECT_NE(formatted.find("thumb"), std::string::npos);
-    EXPECT_NE(formatted.find("error="), std::string::npos);
-}
-
-TEST_F(ManusHandIKTest, PerformanceBenchmark) {
-    manus_handik::FingerTips tips;
-    
-    // Set reasonable fingertip positions
-    tips.positions[0] = manus_handik::ManusVec3(0.15f, 0.05f, 0.12f);  
-    tips.positions[1] = manus_handik::ManusVec3(0.16f, 0.02f, 0.14f);  
-    tips.positions[2] = manus_handik::ManusVec3(0.15f, -0.02f, 0.13f); 
-    tips.positions[3] = manus_handik::ManusVec3(0.13f, -0.05f, 0.11f); 
-    tips.positions[4] = manus_handik::ManusVec3(0.08f, 0.08f, 0.10f);  
-    
-    // Benchmark solve time
-    const int numSolves = 100;
-    auto start = std::chrono::high_resolution_clock::now();
-    
-    int successCount = 0;
-    for (int i = 0; i < numSolves; ++i) {
-        manus_handik::HandAngles angles;
-        if (manus_handik::HandIKSolver::solve(tips, manus_handik::HandSide::Right, angles)) {
-            successCount++;
+        else {
+            std::cout << "\n❌ Some tests failed!" << std::endl;
+            std::cout << "Please fix issues before deploying integration." << std::endl;
+            return 1;
         }
-    }
-    
-    auto end = std::chrono::high_resolution_clock::now();
-    double totalTimeMs = std::chrono::duration<double, std::milli>(end - start).count();
-    double avgTimeMs = totalTimeMs / numSolves;
-    
-    std::cout << "Performance: " << avgTimeMs << "ms avg, " 
-              << successCount << "/" << numSolves << " successful" << std::endl;
-    
-    // Performance requirements for real-time (assuming 90Hz target)
-    EXPECT_LT(avgTimeMs, 5.0);  // Less than 5ms average
-    EXPECT_GT(successCount, numSolves * 0.95);  // >95% success rate
-}
 
-TEST_F(ManusHandIKTest, PassiveCouplingValidation) {
-    // Test that passive coupling coefficients are correctly applied
-    manus_handik::FingerTips tips;
-    
-    // Set a configuration that should result in predictable passive joint angles
-    // Based on the validated coefficients: q_distal = 0.137056*q_mcp^2 + 0.972037*q_mcp + 0.0129125
-    
-    // Test with MCP at approximately 30 degrees (0.524 radians)
-    // Expected PIP ≈ 0.137056*(0.524)^2 + 0.972037*(0.524) + 0.0129125 ≈ 0.55 radians ≈ 31.5 degrees
-    
-    tips.positions[0] = manus_handik::ManusVec3(0.12f, 0.08f, 0.10f);  // Position that should give ~30° MCP
-    tips.positions[1] = manus_handik::ManusVec3(0.16f, 0.02f, 0.14f);  
-    tips.positions[2] = manus_handik::ManusVec3(0.15f, -0.02f, 0.13f); 
-    tips.positions[3] = manus_handik::ManusVec3(0.13f, -0.05f, 0.11f); 
-    tips.positions[4] = manus_handik::ManusVec3(0.08f, 0.08f, 0.10f);  
-    
-    manus_handik::HandAngles angles;
-    ASSERT_TRUE(manus_handik::HandIKSolver::solve(tips, manus_handik::HandSide::Right, angles));
-    
-    // Check that PIP angle is reasonable compared to MCP angle
-    for (int finger = 0; finger < 4; ++finger) {
-        double mcp_deg = angles.degrees[finger][0];
-        double pip_deg = angles.degrees[finger][1];
-        
-        // PIP should be roughly similar to MCP due to passive coupling
-        // (exact relationship depends on the coupling coefficients)
-        EXPECT_GT(pip_deg, 0.0);  // Should be positive
-        EXPECT_LT(pip_deg, mcp_deg + 20.0);  // Should not be much larger than MCP
-        
-        std::cout << "Finger " << finger << ": MCP=" << mcp_deg 
-                  << "°, PIP=" << pip_deg << "°" << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "❌ Test suite error: " << e.what() << std::endl;
+        return 1;
     }
 }

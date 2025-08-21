@@ -1,392 +1,182 @@
+﻿// File: src/ManusHandIKBridge.cpp (REPLACE your existing manushandikbridge.cpp)
 #include "ManusHandIKBridge.h"
-#include "hand_ik.hpp"
 #include "math_constants.hpp"
 #include <iostream>
-#include <sstream>
-#include <memory>
-#include <filesystem>
-#include <numeric>
-#include <algorithm>
-#include <mutex>
+#include <chrono>
+#include <iomanip>
 
-namespace manus_handik {
+ManusHandIKBridge::ManusHandIKBridge(const std::string& urdf_path) {
+    InitializeConfig();
+    SetupCoordinateTransform();
 
-// Performance monitoring class
-class PerformanceMonitor {
-private:
-    std::vector<double> solveTimes_;
-    std::chrono::steady_clock::time_point lastReport_;
-    mutable std::mutex mutex_;
-    
-public:
-    PerformanceMonitor() : lastReport_(std::chrono::steady_clock::now()) {}
-    
-    void recordSolveTime(double timeMs) {
-        std::lock_guard<std::mutex> lock(mutex_);
-        solveTimes_.push_back(timeMs);
-        
-        auto now = std::chrono::steady_clock::now();
-        if (now - lastReport_ > std::chrono::seconds(10)) {
-            reportStats();
-            solveTimes_.clear();
-            lastReport_ = now;
-        }
-    }
-    
-    void getStats(double& avgTimeMs, double& maxTimeMs, size_t& count) const {
-        std::lock_guard<std::mutex> lock(mutex_);
-        if (solveTimes_.empty()) {
-            avgTimeMs = maxTimeMs = 0.0;
-            count = 0;
-            return;
-        }
-        
-        double sum = std::accumulate(solveTimes_.begin(), solveTimes_.end(), 0.0);
-        avgTimeMs = sum / solveTimes_.size();
-        maxTimeMs = *std::max_element(solveTimes_.begin(), solveTimes_.end());
-        count = solveTimes_.size();
-    }
-    
-private:
-    void reportStats() {
-        if (solveTimes_.empty()) return;
-        
-        double sum = std::accumulate(solveTimes_.begin(), solveTimes_.end(), 0.0);
-        double avg = sum / solveTimes_.size();
-        double maxTime = *std::max_element(solveTimes_.begin(), solveTimes_.end());
-        
-        std::cout << "[HandIK] Performance - Avg: " << std::fixed << std::setprecision(2) 
-                  << avg << "ms, Max: " << maxTime << "ms, Solves: " << solveTimes_.size() << std::endl;
-    }
-};
-
-class HandIKSolver::HandIKSolverImpl {
-public:
-    std::unique_ptr<hand_ik::HandIK> leftHandIK;
-    std::unique_ptr<hand_ik::HandIK> rightHandIK;
-    hand_ik::HandIKConfig config;
-    std::string lastError;
-    bool initialized = false;
-    PerformanceMonitor perfMonitor;
-    
-    // Cache for warm-start
-    std::array<Eigen::VectorXd, 2> lastSolutions;  // [left=0, right=1]
-    std::array<FingerTips, 2> lastTargets;
-    
-    HandIKSolverImpl() {
-        lastSolutions[0] = Eigen::VectorXd::Zero(6);
-        lastSolutions[1] = Eigen::VectorXd::Zero(6);
-    }
-    
-    bool initializeConfig() {
-        // Use your existing validated config
-        config.mcp_joint_names = {
-            "Index_MCP_Joint", "Middle_MCP_Joint", "Ring_MCP_Joint", "Pinky_MCP_Joint"
-        };
-        config.distal_joint_names = {
-            "Index_PIP_Joint", "Middle_PIP_Joint", "Ring_PIP_Joint", "Pinky_PIP_Joint"
-        };
-        config.fingertip_frame_names = {
-            "Index_Distal", "Middle_Distal", "Ring_Distal", "Pinky_Distal"
-        };
-        
-        config.thumb_rot_joint_name = "Metacarpal_Joint";
-        config.thumb_flex_joint_name = "Thumb_Joint";
-        config.thumb_tip_frame_name = "Thumb";
-        
-        // Use your validated passive coupling coefficients (LOCKED VALUES)
-        constexpr double b_coeff = 0.137056;     // quadratic coefficient 
-        constexpr double c_coeff = 0.972037;     // linear coefficient
-        constexpr double d_coeff = 0.0129125;    // constant offset
-        
-        for (int i = 0; i < 4; ++i) {
-            config.passive_coeffs[i] = {
-                0.0,       // no cubic term
-                b_coeff,   // quadratic coefficient 
-                c_coeff,   // linear coefficient
-                d_coeff    // constant offset
-            };
-        }
-        
-        // Joint limits from your URDF
-        for (int i = 0; i < 4; ++i) {
-            config.mcp_limits[i] = { 0.0, 1.774 };
-        }
-        config.thumb_rot_limits = { 0.0, 1.774 };
-        config.thumb_flex_limits = { 0.0, 1.774 };
-        
-        // Solver parameters - optimized for real-time
-        config.max_iterations = 50;           // Reduced for speed
-        config.residual_tolerance = 1e-3;     // Relaxed for real-time
-        config.step_tolerance = 1e-6;
-        config.damping_init = 1e-3;
-        config.plane_tolerance = 0.005;       // 5mm out-of-plane tolerance
-        
-        // Weights
-        config.thumb_pos_weight = 1.0;
-        config.thumb_rot_weight = 0.1;        // Reduced orientation weight
-        config.finger_weights = { 1.0, 1.0, 1.0, 1.0 };
-        
-        return true;
-    }
-    
-    double calculateMovement(const FingerTips& current, const FingerTips& previous) {
-        double totalMovement = 0.0;
-        for (int i = 0; i < 5; ++i) {
-            auto& curr = current.positions[i];
-            auto& prev = previous.positions[i];
-            double dx = curr.x - prev.x;
-            double dy = curr.y - prev.y;  
-            double dz = curr.z - prev.z;
-            totalMovement += std::sqrt(dx*dx + dy*dy + dz*dz);
-        }
-        return totalMovement;
-    }
-};
-
-HandIKSolver::HandIKSolverImpl* HandIKSolver::impl_ = nullptr;
-
-bool HandIKSolver::initialize(const std::string& urdfPath, bool verbose) {
     try {
-        // Clean up any existing instance
-        if (impl_) {
-            delete impl_;
-        }
-        
-        impl_ = new HandIKSolverImpl();
-        impl_->config.verbose = verbose;
-        
-        // Verify URDF exists
-        if (!std::filesystem::exists(urdfPath)) {
-            impl_->lastError = "URDF file not found: " + urdfPath;
-            return false;
-        }
-        
-        if (!impl_->initializeConfig()) {
-            impl_->lastError = "Failed to initialize configuration";
-            return false;
-        }
-        
-        // Create left and right hand solvers
-        impl_->leftHandIK = std::make_unique<hand_ik::HandIK>(impl_->config, urdfPath);
-        impl_->rightHandIK = std::make_unique<hand_ik::HandIK>(impl_->config, urdfPath);
-        
-        // Validate with Jacobian test
-        Eigen::VectorXd testQa = Eigen::VectorXd::Zero(6);
-        bool leftJacOk = impl_->leftHandIK->checkJacobianFiniteDiff(testQa, 1e-3);
-        bool rightJacOk = impl_->rightHandIK->checkJacobianFiniteDiff(testQa, 1e-3);
-        
-        if (!leftJacOk || !rightJacOk) {
-            impl_->lastError = "Jacobian validation failed";
-            return false;
-        }
-        
-        impl_->initialized = true;
-        
-        if (verbose) {
-            std::cout << "[HandIK] Initialized successfully with URDF: " << urdfPath << std::endl;
-            std::cout << "[HandIK] Passive coupling: q_distal = " 
-                      << impl_->config.passive_coeffs[0].b << "*q_mcp^2 + "
-                      << impl_->config.passive_coeffs[0].c << "*q_mcp + "
-                      << impl_->config.passive_coeffs[0].d << std::endl;
-        }
-        
-        return true;
-        
-    } catch (const std::exception& e) {
-        if (impl_) {
-            impl_->lastError = std::string("Initialization failed: ") + e.what();
-        }
-        return false;
+        ik_solver_ = std::make_unique<hand_ik::HandIK>(config_, urdf_path);
+        std::cout << "✓ Hand IK bridge initialized with URDF: " << urdf_path << std::endl;
+    }
+    catch (const std::exception& e) {
+        std::cerr << "❌ Failed to initialize Hand IK solver: " << e.what() << std::endl;
+        throw;
     }
 }
 
-bool HandIKSolver::solve(const FingerTips& tips, HandSide side, HandAngles& outAngles) {
-    if (!impl_ || !impl_->initialized) {
-        return false;
-    }
-    
-    auto start = std::chrono::high_resolution_clock::now();
-    
-    try {
-        // Select the appropriate hand solver
-        auto& solver = (side == HandSide::Left) ? impl_->leftHandIK : impl_->rightHandIK;
-        int sideIndex = (side == HandSide::Left) ? 0 : 1;
-        
-        // Check for minimal movement (optimization)
-        double movement = impl_->calculateMovement(tips, impl_->lastTargets[sideIndex]);
-        const double minMovementThreshold = 0.001; // 1mm total movement
-        
-        if (movement < minMovementThreshold && impl_->lastSolutions[sideIndex].size() == 6) {
-            // Use cached solution for minimal movement
-            outAngles.valid = true;
-            outAngles.solveError = 0.0;
-            outAngles.iterations = 0;
-            
-            // Convert cached solution to output format
-            auto& qa = impl_->lastSolutions[sideIndex];
-            for (int i = 0; i < 6; ++i) {
-                outAngles.activeParams[i] = qa[i];
-            }
-            
-            // Convert to joint angles
-            for (int finger = 0; finger < 4; ++finger) {
-                double mcp_rad = qa[finger];
-                double pip_rad = impl_->config.passive_coeffs[finger].eval(mcp_rad);
-                
-                outAngles.degrees[finger][0] = hand_ik::radToDeg(mcp_rad);
-                outAngles.degrees[finger][1] = hand_ik::radToDeg(pip_rad);
-            }
-            
-            // Thumb
-            outAngles.degrees[4][0] = hand_ik::radToDeg(qa[4]);  // rotation
-            outAngles.degrees[4][1] = hand_ik::radToDeg(qa[5]);  // flexion
-            
-            return true;
-        }
-        
-        // Convert Manus fingertip positions to hand_ik targets
-        hand_ik::Targets targets;
-        
-        // Apply coordinate transform if needed (Manus to hand_ik coordinate system)
-        auto transformPos = [side](const ManusVec3& pos) -> Eigen::Vector3d {
-            Eigen::Vector3d result = manusToEigen(pos);
-            
-            // Apply any necessary coordinate transforms here
-            // For example, if left hand needs mirroring:
-            if (side == HandSide::Left) {
-                // result.y() *= -1.0;  // Uncomment if mirroring needed
-            }
-            
-            return result;
+void ManusHandIKBridge::InitializeConfig() {
+    // Use the same configuration as our validated tests
+    config_.mcp_joint_names = {
+        "Index_MCP_Joint", "Middle_MCP_Joint", "Ring_MCP_Joint", "Pinky_MCP_Joint"
+    };
+    config_.distal_joint_names = {
+        "Index_PIP_Joint", "Middle_PIP_Joint", "Ring_PIP_Joint", "Pinky_PIP_Joint"
+    };
+    config_.fingertip_frame_names = {
+        "Index_Distal", "Middle_Distal", "Ring_Distal", "Pinky_Distal"
+    };
+
+    config_.thumb_rot_joint_name = "Metacarpal_Joint";
+    config_.thumb_flex_joint_name = "Thumb_Joint";
+    config_.thumb_tip_frame_name = "Thumb";
+
+    // Verified passive coupling coefficients (locked from validation)
+    constexpr double b_expected = 0.137056;
+    constexpr double c_expected = 0.972037;
+    constexpr double d_expected = 0.0129125;
+
+    for (int i = 0; i < 4; ++i) {
+        config_.passive_coeffs[i] = {
+            0.0,         // a: no cubic term
+            b_expected,  // b: quadratic coefficient 
+            c_expected,  // c: linear coefficient
+            d_expected   // d: constant offset
         };
-        
-        // Map Manus order to hand_ik order
-        // Manus: Index=0, Middle=1, Ring=2, Pinky=3, Thumb=4
-        // hand_ik: Index=0, Middle=1, Ring=2, Pinky=3
-        for (int i = 0; i < 4; ++i) {
-            targets.p_fingers[i] = transformPos(tips.positions[i]);
-        }
-        
-        // Thumb position (hand_ik expects position + optional orientation)
-        targets.p_thumb = transformPos(tips.positions[4]);
-        // Don't constrain thumb orientation for now
-        targets.R_thumb = std::nullopt;
-        
-        // Use warm-start from previous solution
-        Eigen::VectorXd qa_solution = impl_->lastSolutions[sideIndex];
-        if (qa_solution.size() != 6) {
-            qa_solution = Eigen::VectorXd::Zero(6); // Fallback to neutral
-        }
-        
-        hand_ik::SolveReport report;
-        
-        // Solve IK
-        bool success = solver->solve(targets, qa_solution, &report);
-        
-        // Record timing
-        auto end = std::chrono::high_resolution_clock::now();
-        double timeMs = std::chrono::duration<double, std::milli>(end - start).count();
-        impl_->perfMonitor.recordSolveTime(timeMs);
-        
-        // Fill output structure
-        outAngles.valid = success;
-        outAngles.solveError = report.final_error;
-        outAngles.iterations = report.iterations;
-        
-        if (success) {
-            // Cache solution and targets
-            impl_->lastSolutions[sideIndex] = qa_solution;
-            impl_->lastTargets[sideIndex] = tips;
-            
-            // Copy active parameters
-            for (int i = 0; i < 6; ++i) {
-                outAngles.activeParams[i] = qa_solution[i];
-            }
-            
-            // Convert to individual joint angles (degrees)
-            // Fingers: MCP (active), PIP (passive computed from MCP)
-            for (int finger = 0; finger < 4; ++finger) {
-                double mcp_rad = qa_solution[finger];
-                double pip_rad = impl_->config.passive_coeffs[finger].eval(mcp_rad);
-                
-                outAngles.degrees[finger][0] = hand_ik::radToDeg(mcp_rad);      // MCP (active)
-                outAngles.degrees[finger][1] = hand_ik::radToDeg(pip_rad);      // PIP (passive)
-            }
-            
-            // Thumb: 2 active joints
-            outAngles.degrees[4][0] = hand_ik::radToDeg(qa_solution[4]);  // rotation (active)
-            outAngles.degrees[4][1] = hand_ik::radToDeg(qa_solution[5]);  // flexion (active)
-        }
-        
-        // Log warnings for out-of-plane targets
-        if (impl_->config.verbose && success) {
-            for (int i = 0; i < 4; ++i) {
-                if (report.out_of_plane_flags[i]) {
-                    std::cout << "[HandIK] Warning: Finger " << i << " target out of flexion plane by "
-                              << report.out_of_plane_distances[i] << " m" << std::endl;
-                }
-            }
-        }
-        
-        return success;
-        
-    } catch (const std::exception& e) {
-        impl_->lastError = std::string("Solve failed: ") + e.what();
-        outAngles.valid = false;
+    }
+
+    // Joint limits (from URDF)
+    for (int i = 0; i < 4; ++i) {
+        config_.mcp_limits[i] = { 0.0, 1.774 };
+    }
+    config_.thumb_rot_limits = { 0.0, 1.774 };
+    config_.thumb_flex_limits = { 0.0, 1.774 };
+
+    // Optimized solver parameters for real-time performance
+    config_.max_iterations = 30;           // Reduced for real-time
+    config_.residual_tolerance = 5e-4;     // Slightly relaxed for speed
+    config_.step_tolerance = 1e-6;
+    config_.damping_init = 1e-4;
+    config_.damping_factor = 2.0;
+    config_.line_search_factor = 0.5;
+    config_.max_line_search_steps = 6;     // Reduced for speed
+
+    // Weights and tolerances
+    config_.thumb_pos_weight = 1.0;
+    config_.thumb_rot_weight = 0.1;        // Reduced orientation weight
+    config_.finger_weights = { 1.0, 1.0, 1.0, 1.0 };
+    config_.plane_tolerance = 0.008;       // 8mm tolerance
+
+    config_.verbose = false; // Disable for real-time performance
+}
+
+void ManusHandIKBridge::SetupCoordinateTransform() {
+    // Manus Core uses right-handed, Z-up coordinate system (same as our IK)
+    // So transformation should be identity, but we set it up for flexibility
+    coord_transform_ = Eigen::Matrix3d::Identity();
+    position_scale_ = 1.0; // Both systems use meters
+}
+
+bool ManusHandIKBridge::Solve(const FingerTargets& manus_targets, JointConfiguration& joint_config) {
+    if (!ik_solver_) {
         return false;
     }
+
+    auto start_time = std::chrono::high_resolution_clock::now();
+
+    // Convert Manus targets to Hand IK format
+    hand_ik::Targets ik_targets = ConvertTargets(manus_targets);
+
+    // Solve IK
+    Eigen::VectorXd qa_solution = Eigen::VectorXd::Zero(6);
+    hand_ik::SolveReport report;
+    bool success = ik_solver_->solve(ik_targets, qa_solution, &report);
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    auto solve_time = std::chrono::duration<double, std::milli>(end_time - start_time);
+
+    // Update performance tracking
+    solve_count_++;
+    total_solve_time_ms_ += solve_time.count();
+
+    // Fill result structure
+    joint_config.valid = success && report.converged;
+    joint_config.solve_time_ms = solve_time.count();
+    joint_config.iterations = report.iterations;
+
+    if (joint_config.valid) {
+        for (int i = 0; i < 6; ++i) {
+            joint_config.joint_angles[i] = qa_solution[i];
+        }
+    }
+
+    return joint_config.valid;
 }
 
-std::string HandIKSolver::getLastError() {
-    return impl_ ? impl_->lastError : "Not initialized";
+Eigen::Vector3d ManusHandIKBridge::ManusToIKPosition(const Eigen::Vector3d& manus_pos) const {
+    // Apply coordinate transformation and scaling
+    return coord_transform_ * (manus_pos * position_scale_);
 }
 
-void HandIKSolver::getPerformanceStats(double& avgTimeMs, double& maxTimeMs, size_t& solveCount) {
-    if (impl_) {
-        impl_->perfMonitor.getStats(avgTimeMs, maxTimeMs, solveCount);
-    } else {
-        avgTimeMs = maxTimeMs = 0.0;
-        solveCount = 0;
+Eigen::Matrix3d ManusHandIKBridge::ManusToIKOrientation(const Eigen::Matrix3d& manus_rot) const {
+    // Apply coordinate transformation to rotation matrix
+    return coord_transform_ * manus_rot * coord_transform_.transpose();
+}
+
+hand_ik::Targets ManusHandIKBridge::ConvertTargets(const FingerTargets& manus_targets) const {
+    hand_ik::Targets ik_targets;
+
+    // Convert finger positions
+    for (int i = 0; i < 4; ++i) {
+        ik_targets.p_fingers[i] = ManusToIKPosition(manus_targets.finger_positions[i]);
+    }
+
+    // Convert thumb position and orientation
+    ik_targets.p_thumb = ManusToIKPosition(manus_targets.thumb_position);
+    ik_targets.R_thumb = ManusToIKOrientation(manus_targets.thumb_rotation);
+
+    return ik_targets;
+}
+
+void ManusHandIKBridge::SetVerbose(bool verbose) {
+    config_.verbose = verbose;
+    if (ik_solver_) {
+        // Note: Would need to update HandIK to support runtime verbose changes
+        // For now, this just updates our local config
     }
 }
 
-void HandIKSolver::shutdown() {
-    delete impl_;
-    impl_ = nullptr;
-}
-
-// Utility functions
-ManusVec3 eigenToManus(const Eigen::Vector3d& v) {
-    return ManusVec3(static_cast<float>(v.x()), static_cast<float>(v.y()), static_cast<float>(v.z()));
-}
-
-Eigen::Vector3d manusToEigen(const ManusVec3& v) {
-    return Eigen::Vector3d(static_cast<double>(v.x), static_cast<double>(v.y), static_cast<double>(v.z));
-}
-
-std::string formatHandAngles(const HandAngles& angles, HandSide side) {
-    if (!angles.valid) {
-        return "";
+bool ManusHandIKBridge::RunDiagnostics() {
+    if (!ik_solver_) {
+        std::cerr << "❌ IK solver not initialized" << std::endl;
+        return false;
     }
-    
-    std::ostringstream ss;
-    ss << "HAND:" << (side == HandSide::Left ? "L" : "R") << ";";
-    
-    const char* fingerNames[] = {"index", "middle", "ring", "pinky", "thumb"};
-    
-    for (int i = 0; i < 5; ++i) {
-        ss << fingerNames[i] << "("
-           << std::fixed << std::setprecision(1)
-           << angles.degrees[i][0] << ","
-           << angles.degrees[i][1] << ")";
-        if (i < 4) ss << ";";
-    }
-    
-    ss << ";error=" << std::setprecision(3) << angles.solveError
-       << ";iter=" << angles.iterations;
-    
-    return ss.str();
-}
 
-} // namespace manus_handik
+    std::cout << "\n=== Hand IK Bridge Diagnostics ===" << std::endl;
+
+    // Test Jacobian computation
+    Eigen::VectorXd qa_test = Eigen::VectorXd::Zero(6);
+    bool jacobian_ok = ik_solver_->checkJacobianFiniteDiff(qa_test, 1e-3);
+    std::cout << "Jacobian validation: " << (jacobian_ok ? "✓ PASS" : "❌ FAIL") << std::endl;
+
+    // Test reachability
+    bool reachability_ok = ik_solver_->testReachability(20, 0.1); // Quick test
+    std::cout << "Reachability test: " << (reachability_ok ? "✓ PASS" : "❌ FAIL") << std::endl;
+
+    // Performance statistics
+    if (solve_count_ > 0) {
+        double avg_solve_time = total_solve_time_ms_ / solve_count_;
+        std::cout << "Performance stats:" << std::endl;
+        std::cout << "  • Total solves: " << solve_count_ << std::endl;
+        std::cout << "  • Average solve time: " << std::fixed << std::setprecision(3)
+            << avg_solve_time << " ms" << std::endl;
+    }
+
+    std::cout << "===============================" << std::endl;
+
+    return jacobian_ok && reachability_ok;
+}

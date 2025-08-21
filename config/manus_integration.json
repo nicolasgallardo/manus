@@ -1,0 +1,108 @@
+{
+  "manus_integration": {
+    "connection": {
+      "host": "127.0.0.1",
+      "port": 9004,
+      "timeout_ms": 5000,
+      "retry_attempts": 3
+    },
+    "coordinate_system": {
+      "handedness": "right",
+      "up_axis": "positive_z",
+      "view_axis": "z_from_viewer",
+      "units": "meters"
+    },
+    "hands": {
+      "active_sides": ["right"],
+      "left_hand": {
+        "enabled": false,
+        "skeleton_name": "left_hand_ik"
+      },
+      "right_hand": {
+        "enabled": true,
+        "skeleton_name": "right_hand_ik"
+      }
+    },
+    "hand_ik": {
+      "urdf_path": "surge_v13_hand_right_pybullet.urdf",
+      "solver_params": {
+        "max_iterations": 30,
+        "residual_tolerance": 0.0005,
+        "step_tolerance": 0.000001,
+        "damping_init": 0.0001,
+        "damping_factor": 2.0,
+        "line_search_factor": 0.5,
+        "max_line_search_steps": 6
+      },
+      "weights": {
+        "thumb_position": 1.0,
+        "thumb_orientation": 0.1,
+        "finger_weights": [1.0, 1.0, 1.0, 1.0],
+        "plane_tolerance": 0.008
+      },
+      "joint_limits": {
+        "mcp_limits": [0.0, 1.774],
+        "thumb_rotation_limits": [0.0, 1.774],
+        "thumb_flexion_limits": [0.0, 1.774]
+      },
+      "passive_coupling": {
+        "coefficients": {
+          "a": 0.0,
+          "b": 0.137056,
+          "c": 0.972037,
+          "d": 0.0129125
+        },
+        "comment": "q_distal = a*q_mcp^3 + b*q_mcp^2 + c*q_mcp + d (radians)"
+      }
+    },
+    "node_mapping": {
+      "fingertips": {
+        "index": ["index_tip", "Index_Distal"],
+        "middle": ["middle_tip", "Middle_Distal"],
+        "ring": ["ring_tip", "Ring_Distal"],
+        "pinky": ["pinky_tip", "little_tip", "Pinky_Distal"],
+        "thumb": ["thumb_tip", "Thumb"]
+      },
+      "joints": {
+        "mcp_joints": ["index_mcp", "middle_mcp", "ring_mcp", "pinky_mcp"],
+        "thumb_joints": ["thumb_rotation", "thumb_flexion"]
+      }
+    },
+    "performance": {
+      "target_fps": 60,
+      "stats_interval_seconds": 5,
+      "max_solve_time_ms": 5.0,
+      "queue_size": 10
+    },
+    "logging": {
+      "level": "info",
+      "verbose_ik": false,
+      "performance_stats": true,
+      "skeleton_debug": false,
+      "coordinate_debug": false
+    },
+    "simulation": {
+      "enabled": false,
+      "trajectory_type": "sinusoidal",
+      "amplitude": 0.2,
+      "frequency": 0.5,
+      "phase_offset": [0.0, 0.5, 1.0, 1.5]
+    },
+    "calibration": {
+      "finger_offsets": {
+        "index": [0.0, 0.0, 0.0],
+        "middle": [0.0, 0.0, 0.0],
+        "ring": [0.0, 0.0, 0.0],
+        "pinky": [0.0, 0.0, 0.0],
+        "thumb": [0.0, 0.0, 0.0]
+      },
+      "rest_pose": {
+        "mcp_angles": [0.0, 0.0, 0.0, 0.0],
+        "thumb_rotation": 0.0,
+        "thumb_flexion": 0.0
+      },
+      "auto_calibrate": false,
+      "calibration_samples": 100
+    }
+  }
+}

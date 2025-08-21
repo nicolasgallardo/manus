@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/cmake_install.cmake",
-		"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/urdf_parser/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

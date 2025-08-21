@@ -1,230 +1,325 @@
+﻿// File: src/ManusSkeletonSetup.cpp (REPLACE your existing manusskeletonsetup.cpp)
 #include "ManusSkeletonSetup.h"
+#include "ManusHandIKBridge.h"
 #include <iostream>
-#include <vector>
+#include <algorithm>
+#include <cstring>
 
-// You'll need to include your actual Manus SDK headers here
-// #include "CoreSdk.h"
-// For now, we'll use placeholders that match the Manus SDK API
+ManusSkeletonSetup::~ManusSkeletonSetup() {
+    CleanupSkeletons();
+}
 
-// Placeholder declarations - replace with your actual Manus SDK includes
-extern "C" {
-    enum class SDKReturnCode : int { SDKReturnCode_Success = 0 };
-    enum class NodeType : int { NodeType_Joint = 0 };
-    enum class ChainType : int { 
-        ChainType_Hand = 0, 
-        ChainType_FingerIndex = 1,
-        ChainType_FingerMiddle = 2, 
-        ChainType_FingerRing = 3,
-        ChainType_FingerPinky = 4,
-        ChainType_FingerThumb = 5
+bool ManusSkeletonSetup::CreateSkeletons(HandSide side) {
+    CleanupSkeletons(); // Clean up any existing skeletons
+
+    bool success = true;
+
+    if (side == HandSide::Left || side == HandSide::Both) {
+        uint32_t left_skeleton_id;
+        if (CreateHandSkeleton(true, left_skeleton_id)) {
+            skeleton_ids_.push_back(left_skeleton_id);
+            std::cout << "✓ Created left hand skeleton (ID: " << left_skeleton_id << ")" << std::endl;
+        }
+        else {
+            std::cerr << "❌ Failed to create left hand skeleton" << std::endl;
+            success = false;
+        }
+    }
+
+    if (side == HandSide::Right || side == HandSide::Both) {
+        uint32_t right_skeleton_id;
+        if (CreateHandSkeleton(false, right_skeleton_id)) {
+            skeleton_ids_.push_back(right_skeleton_id);
+            std::cout << "✓ Created right hand skeleton (ID: " << right_skeleton_id << ")" << std::endl;
+        }
+        else {
+            std::cerr << "❌ Failed to create right hand skeleton" << std::endl;
+            success = false;
+        }
+    }
+
+    // Validate all created skeletons
+    for (uint32_t skeleton_id : skeleton_ids_) {
+        if (!ValidateSkeletonStructure(skeleton_id)) {
+            std::cerr << "⚠️  Warning: Skeleton " << skeleton_id << " structure validation failed" << std::endl;
+        }
+
+        if (!EnsureFingertipNodes(skeleton_id)) {
+            std::cerr << "⚠️  Warning: Failed to ensure fingertip nodes for skeleton " << skeleton_id << std::endl;
+        }
+    }
+
+    return success && !skeleton_ids_.empty();
+}
+
+bool ManusSkeletonSetup::CreateHandSkeleton(bool is_left_hand, uint32_t& skeleton_id) {
+    // Create skeleton setup information
+    SkeletonSetupInfo skeleton_setup = {};
+
+    // Set skeleton name
+    std::string skeleton_name = is_left_hand ? "left_hand" : "right_hand";
+    strncpy(skeleton_setup.name, skeleton_name.c_str(), sizeof(skeleton_setup.name) - 1);
+    skeleton_setup.name[sizeof(skeleton_setup.name) - 1] = '\0';
+
+    // Set skeleton type to hand
+    skeleton_setup.type = SkeletonType::SkeletonType_Hand;
+    skeleton_setup.side = is_left_hand ? Side::Side_Left : Side::Side_Right;
+
+    // Create the skeleton
+    SDKReturnCode result = CoreSdk_CreateSkeleton(&skeleton_setup, &skeleton_id);
+    if (result != SDKReturnCode::SDKReturnCode_Success) {
+        std::cerr << "Failed to create " << skeleton_name << " skeleton: " << static_cast<int>(result) << std::endl;
+        return false;
+    }
+
+    // Set up the hand nodes
+    if (!SetupHandNodes(skeleton_id, is_left_hand)) {
+        std::cerr << "Failed to setup nodes for " << skeleton_name << " skeleton" << std::endl;
+        CleanupSkeleton(skeleton_id);
+        return false;
+    }
+
+    return true;
+}
+
+bool ManusSkeletonSetup::SetupHandNodes(uint32_t skeleton_id, bool is_left_hand) {
+    // Define the basic hand node structure
+    std::vector<NodeSetupInfo> hand_nodes;
+
+    // Root node (wrist)
+    NodeSetupInfo wrist_node = {};
+    strncpy(wrist_node.name, "wrist", sizeof(wrist_node.name) - 1);
+    wrist_node.type = NodeType::NodeType_Joint;
+    wrist_node.parentID = 0; // Root node
+    wrist_node.transform.position = { 0.0f, 0.0f, 0.0f };
+    wrist_node.transform.rotation = { 0.0f, 0.0f, 0.0f, 1.0f }; // Identity quaternion
+    hand_nodes.push_back(wrist_node);
+
+    // Define finger structure: MCP -> PIP -> DIP -> Tip
+    std::vector<std::string> finger_names = { "index", "middle", "ring", "pinky" };
+    std::vector<std::string> joint_types = { "mcp", "pip", "dip" };
+
+    uint32_t node_id = 1; // Start after wrist
+
+    for (const auto& finger : finger_names) {
+        uint32_t finger_root_id = node_id;
+        uint32_t parent_id = 0; // Connect to wrist
+
+        // Estimate finger base positions
+        ManusVec3 finger_base_pos = EstimateFingerBasePosition(finger, is_left_hand);
+
+        for (size_t joint_idx = 0; joint_idx < joint_types.size(); ++joint_idx) {
+            NodeSetupInfo joint_node = {};
+            std::string joint_name = finger + "_" + joint_types[joint_idx];
+            strncpy(joint_node.name, joint_name.c_str(), sizeof(joint_node.name) - 1);
+            joint_node.type = NodeType::NodeType_Joint;
+            joint_node.parentID = parent_id;
+
+            // Position joints along finger
+            float joint_offset = (joint_idx + 1) * 0.025f; // 2.5cm between joints
+            joint_node.transform.position = {
+                finger_base_pos.x,
+                finger_base_pos.y + joint_offset,
+                finger_base_pos.z
+            };
+            joint_node.transform.rotation = { 0.0f, 0.0f, 0.0f, 1.0f };
+
+            hand_nodes.push_back(joint_node);
+            parent_id = node_id++;
+        }
+    }
+
+    // Add thumb structure (simplified)
+    NodeSetupInfo thumb_mcp = {};
+    strncpy(thumb_mcp.name, "thumb_mcp", sizeof(thumb_mcp.name) - 1);
+    thumb_mcp.type = NodeType::NodeType_Joint;
+    thumb_mcp.parentID = 0; // Connect to wrist
+    ManusVec3 thumb_pos = EstimateFingerBasePosition("thumb", is_left_hand);
+    thumb_mcp.transform.position = thumb_pos;
+    thumb_mcp.transform.rotation = { 0.0f, 0.0f, 0.0f, 1.0f };
+    hand_nodes.push_back(thumb_mcp);
+    uint32_t thumb_parent_id = node_id++;
+
+    NodeSetupInfo thumb_ip = {};
+    strncpy(thumb_ip.name, "thumb_ip", sizeof(thumb_ip.name) - 1);
+    thumb_ip.type = NodeType::NodeType_Joint;
+    thumb_ip.parentID = thumb_parent_id;
+    thumb_ip.transform.position = { thumb_pos.x, thumb_pos.y + 0.03f, thumb_pos.z };
+    thumb_ip.transform.rotation = { 0.0f, 0.0f, 0.0f, 1.0f };
+    hand_nodes.push_back(thumb_ip);
+
+    // Create all nodes in the skeleton
+    for (const auto& node : hand_nodes) {
+        uint32_t created_node_id;
+        SDKReturnCode result = CoreSdk_AddNodeToSkeleton(skeleton_id, &node, &created_node_id);
+        if (result != SDKReturnCode::SDKReturnCode_Success) {
+            std::cerr << "Failed to add node " << node.name << " to skeleton: "
+                << static_cast<int>(result) << std::endl;
+            return false;
+        }
+    }
+
+    return true;
+}
+
+ManusVec3 ManusSkeletonSetup::EstimateFingerBasePosition(const std::string& finger, bool is_left_hand) const {
+    // Estimate finger base positions relative to wrist
+    float hand_width = 0.08f; // 8cm hand width
+    float side_multiplier = is_left_hand ? -1.0f : 1.0f;
+
+    if (finger == "index") {
+        return { side_multiplier * 0.025f, 0.08f, 0.0f };
+    }
+    else if (finger == "middle") {
+        return { side_multiplier * 0.008f, 0.085f, 0.0f };
+    }
+    else if (finger == "ring") {
+        return { side_multiplier * -0.008f, 0.08f, 0.0f };
+    }
+    else if (finger == "pinky") {
+        return { side_multiplier * -0.025f, 0.07f, 0.0f };
+    }
+    else if (finger == "thumb") {
+        return { side_multiplier * 0.04f, 0.02f, 0.01f };
+    }
+
+    return { 0.0f, 0.0f, 0.0f }; // Default
+}
+
+bool ManusSkeletonSetup::EnsureFingertipNodes(uint32_t skeleton_id) {
+    std::vector<std::string> required_tips = GetRequiredFingertipNodes(false); // Assume right hand for now
+
+    bool all_tips_exist = true;
+
+    for (const auto& tip_name : required_tips) {
+        uint32_t tip_node_id = FindNodeByName(skeleton_id, tip_name);
+
+        if (tip_node_id == 0) {
+            // Tip node doesn't exist, try to create it
+            std::string finger_name = tip_name.substr(0, tip_name.find("_tip"));
+            std::string parent_name = finger_name + "_dip"; // Attach to DIP joint
+
+            uint32_t parent_id = FindNodeByName(skeleton_id, parent_name);
+            if (parent_id == 0) {
+                std::cerr << "Cannot find parent node " << parent_name << " for tip " << tip_name << std::endl;
+                all_tips_exist = false;
+                continue;
+            }
+
+            ManusVec3 tip_offset = EstimateFingertipOffset(finger_name);
+            if (!AddFingertipNode(skeleton_id, tip_name, parent_id, tip_offset)) {
+                std::cerr << "Failed to add fingertip node " << tip_name << std::endl;
+                all_tips_exist = false;
+            }
+            else {
+                std::cout << "✓ Added missing fingertip node: " << tip_name << std::endl;
+            }
+        }
+    }
+
+    return all_tips_exist;
+}
+
+bool ManusSkeletonSetup::AddFingertipNode(uint32_t skeleton_id, const std::string& finger_name,
+    uint32_t parent_node_id, const ManusVec3& offset) {
+    NodeSetupInfo tip_node = {};
+    strncpy(tip_node.name, finger_name.c_str(), sizeof(tip_node.name) - 1);
+    tip_node.name[sizeof(tip_node.name) - 1] = '\0';
+    tip_node.type = NodeType::NodeType_Joint;
+    tip_node.parentID = parent_node_id;
+    tip_node.transform.position = offset;
+    tip_node.transform.rotation = { 0.0f, 0.0f, 0.0f, 1.0f }; // Identity quaternion
+
+    uint32_t created_node_id;
+    SDKReturnCode result = CoreSdk_AddNodeToSkeleton(skeleton_id, &tip_node, &created_node_id);
+
+    return result == SDKReturnCode::SDKReturnCode_Success;
+}
+
+uint32_t ManusSkeletonSetup::FindNodeByName(uint32_t skeleton_id, const std::string& node_name) const {
+    SkeletonStreamInfo skeleton_info;
+    SDKReturnCode result = CoreSdk_GetSkeletonStreamData(skeleton_id, &skeleton_info);
+
+    if (result != SDKReturnCode::SDKReturnCode_Success) {
+        return 0;
+    }
+
+    for (uint32_t i = 0; i < skeleton_info.nodesCount; ++i) {
+        if (std::string(skeleton_info.nodes[i].id.name) == node_name) {
+            return skeleton_info.nodes[i].id.id;
+        }
+    }
+
+    return 0; // Not found
+}
+
+std::vector<std::string> ManusSkeletonSetup::GetRequiredFingertipNodes(bool is_left_hand) const {
+    return {
+        "index_tip",
+        "middle_tip",
+        "ring_tip",
+        "pinky_tip",
+        "thumb_tip"
     };
-    enum class Side : int { Side_Left = 0, Side_Right = 1 };
-    
-    struct SkeletonNode {
-        struct { float x, y, z; } position;
-        struct { float w, x, y, z; } rotation;
+}
+
+ManusVec3 ManusSkeletonSetup::EstimateFingertipOffset(const std::string& finger_name) const {
+    // Estimate fingertip offset from DIP joint
+    if (finger_name == "thumb") {
+        return { 0.0f, 0.025f, 0.0f }; // 2.5cm for thumb
+    }
+    else {
+        return { 0.0f, 0.02f, 0.0f };  // 2cm for fingers
+    }
+}
+
+bool ManusSkeletonSetup::ValidateSkeletonStructure(uint32_t skeleton_id) const {
+    SkeletonStreamInfo skeleton_info;
+    SDKReturnCode result = CoreSdk_GetSkeletonStreamData(skeleton_id, &skeleton_info);
+
+    if (result != SDKReturnCode::SDKReturnCode_Success) {
+        return false;
+    }
+
+    // Check minimum required nodes
+    std::vector<std::string> required_nodes = {
+        "wrist", "index_mcp", "middle_mcp", "ring_mcp", "pinky_mcp", "thumb_mcp"
     };
-    
-    // Function declarations - replace with your actual Manus SDK
-    SDKReturnCode CoreSdk_CreateSkeletonSetup(uint32_t* setupIndex);
-    SDKReturnCode CoreSdk_AddNodeToSkeletonSetup(uint32_t setupIndex, uint32_t nodeId, 
-                                                  float x, float y, float z, NodeType type);
-    SDKReturnCode CoreSdk_AddChainToSkeletonSetup(uint32_t setupIndex, uint32_t chainId,
-                                                   uint32_t nodeIdStart, uint32_t nodeIdEnd,
-                                                   ChainType type, Side side);
-    SDKReturnCode CoreSdk_LoadSkeleton(uint32_t setupIndex, uint32_t* skeletonId);
-    SDKReturnCode CoreSdk_GetSkeletonData(uint32_t skeletonIndex, SkeletonNode* nodes, uint32_t nodeCount);
-}
 
-namespace manus_skeleton {
+    for (const auto& required_node : required_nodes) {
+        bool found = false;
+        for (uint32_t i = 0; i < skeleton_info.nodesCount; ++i) {
+            if (std::string(skeleton_info.nodes[i].id.name) == required_node) {
+                found = true;
+                break;
+            }
+        }
 
-bool HandSkeletonSetup::createHandSkeletons(SkeletonIDs& outIds) {
-    std::cout << "[Skeleton] Creating hand skeletons with fingertip nodes..." << std::endl;
-    
-    // Setup left hand
-    if (!setupLeftHand(outIds.leftHandId)) {
-        std::cerr << "[Skeleton] Failed to setup left hand" << std::endl;
-        return false;
+        if (!found) {
+            std::cerr << "Required node " << required_node << " not found in skeleton " << skeleton_id << std::endl;
+            return false;
+        }
     }
-    
-    // Setup right hand  
-    if (!setupRightHand(outIds.rightHandId)) {
-        std::cerr << "[Skeleton] Failed to setup right hand" << std::endl;
-        return false;
-    }
-    
-    outIds.valid = true;
-    
-    std::cout << "[Skeleton] Hand skeletons created successfully:" << std::endl;
-    std::cout << "  Left hand ID: " << outIds.leftHandId << std::endl;
-    std::cout << "  Right hand ID: " << outIds.rightHandId << std::endl;
-    
+
     return true;
 }
 
-bool HandSkeletonSetup::setupLeftHand(uint32_t& skeletonId) {
-    uint32_t setupIndex = 0;
-    
-    if (CoreSdk_CreateSkeletonSetup(&setupIndex) != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
-    }
-    
-    if (!addHandNodes(setupIndex)) {
-        return false;
-    }
-    
-    if (!addHandChains(setupIndex, Side::Side_Left)) {
-        return false;
-    }
-    
-    return CoreSdk_LoadSkeleton(setupIndex, &skeletonId) == SDKReturnCode::SDKReturnCode_Success;
+bool ManusSkeletonSetup::IsSkeletonValid(uint32_t skeleton_id) const {
+    auto it = std::find(skeleton_ids_.begin(), skeleton_ids_.end(), skeleton_id);
+    return it != skeleton_ids_.end();
 }
 
-bool HandSkeletonSetup::setupRightHand(uint32_t& skeletonId) {
-    uint32_t setupIndex = 0;
-    
-    if (CoreSdk_CreateSkeletonSetup(&setupIndex) != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
+void ManusSkeletonSetup::CleanupSkeletons() {
+    for (uint32_t skeleton_id : skeleton_ids_) {
+        CleanupSkeleton(skeleton_id);
     }
-    
-    if (!addHandNodes(setupIndex)) {
-        return false;
-    }
-    
-    if (!addHandChains(setupIndex, Side::Side_Right)) {
-        return false;
-    }
-    
-    return CoreSdk_LoadSkeleton(setupIndex, &skeletonId) == SDKReturnCode::SDKReturnCode_Success;
+    skeleton_ids_.clear();
 }
 
-bool HandSkeletonSetup::addHandNodes(uint32_t setupIndex) {
-    // Hand skeleton with 21 nodes:
-    // Node 0: Wrist
-    // Nodes 1-4: Index finger (metacarpal, proximal, intermediate, distal) - TIP = 4
-    // Nodes 5-8: Middle finger - TIP = 8  
-    // Nodes 9-12: Ring finger - TIP = 12
-    // Nodes 13-16: Pinky finger - TIP = 16
-    // Nodes 17-20: Thumb - TIP = 20
-    
-    // Wrist (root)
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 0, 0.0f, 0.0f, 0.0f, NodeType::NodeType_Joint) 
-        != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
+void ManusSkeletonSetup::CleanupSkeleton(uint32_t skeleton_id) {
+    SDKReturnCode result = CoreSdk_DestroyTemplate(skeleton_id);
+    if (result != SDKReturnCode::SDKReturnCode_Success) {
+        std::cerr << "Warning: Failed to cleanup skeleton " << skeleton_id
+            << ": " << static_cast<int>(result) << std::endl;
     }
-    
-    // Index finger chain: 1->2->3->4 (tip)
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 1, 0.095f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 2, 0.04f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 3, 0.025f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 4, 0.02f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false; // INDEX TIP
-    
-    // Middle finger chain: 5->6->7->8 (tip)
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 5, 0.095f, 0.0f, 0.03f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 6, 0.045f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 7, 0.025f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 8, 0.022f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false; // MIDDLE TIP
-    
-    // Ring finger chain: 9->10->11->12 (tip)
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 9, 0.095f, 0.0f, -0.03f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 10, 0.04f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 11, 0.025f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 12, 0.02f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false; // RING TIP
-    
-    // Pinky finger chain: 13->14->15->16 (tip)
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 13, 0.095f, 0.0f, -0.055f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 14, 0.032f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 15, 0.02f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 16, 0.018f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false; // PINKY TIP
-    
-    // Thumb chain: 17->18->19->20 (tip)
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 17, 0.025f, 0.0f, 0.055f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 18, 0.035f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 19, 0.03f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false;
-    if (CoreSdk_AddNodeToSkeletonSetup(setupIndex, 20, 0.025f, 0.0f, 0.0f, NodeType::NodeType_Joint) != SDKReturnCode::SDKReturnCode_Success) return false; // THUMB TIP
-    
-    return true;
 }
-
-bool HandSkeletonSetup::addHandChains(uint32_t setupIndex, Side handSide) {
-    // Chain 0: Hand (wrist only)
-    if (CoreSdk_AddChainToSkeletonSetup(setupIndex, 0, 0, 0, ChainType::ChainType_Hand, handSide) 
-        != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
-    }
-    
-    // Chain 1: Index finger (nodes 1-4)
-    if (CoreSdk_AddChainToSkeletonSetup(setupIndex, 1, 0, 1, ChainType::ChainType_FingerIndex, handSide) 
-        != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
-    }
-    
-    // Chain 2: Middle finger (nodes 5-8)
-    if (CoreSdk_AddChainToSkeletonSetup(setupIndex, 2, 0, 5, ChainType::ChainType_FingerMiddle, handSide) 
-        != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
-    }
-    
-    // Chain 3: Ring finger (nodes 9-12)
-    if (CoreSdk_AddChainToSkeletonSetup(setupIndex, 3, 0, 9, ChainType::ChainType_FingerRing, handSide) 
-        != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
-    }
-    
-    // Chain 4: Pinky finger (nodes 13-16)
-    if (CoreSdk_AddChainToSkeletonSetup(setupIndex, 4, 0, 13, ChainType::ChainType_FingerPinky, handSide) 
-        != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
-    }
-    
-    // Chain 5: Thumb (nodes 17-20)
-    if (CoreSdk_AddChainToSkeletonSetup(setupIndex, 5, 0, 17, ChainType::ChainType_FingerThumb, handSide) 
-        != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
-    }
-    
-    return true;
-}
-
-bool HandSkeletonSetup::extractFingerTips(uint32_t skeletonId, float* fingerTips, size_t maxNodes) {
-    if (maxNodes < 21) {
-        return false; // Need at least 21 nodes
-    }
-    
-    std::vector<SkeletonNode> nodes(maxNodes);
-    if (CoreSdk_GetSkeletonData(skeletonId, nodes.data(), maxNodes) != SDKReturnCode::SDKReturnCode_Success) {
-        return false;
-    }
-    
-    // Extract fingertip positions
-    // Order: Index=0, Middle=1, Ring=2, Pinky=3, Thumb=4 (15 floats total)
-    
-    // Index tip (node 4)
-    fingerTips[0] = nodes[4].position.x;
-    fingerTips[1] = nodes[4].position.y;
-    fingerTips[2] = nodes[4].position.z;
-    
-    // Middle tip (node 8)
-    fingerTips[3] = nodes[8].position.x;
-    fingerTips[4] = nodes[8].position.y;
-    fingerTips[5] = nodes[8].position.z;
-    
-    // Ring tip (node 12)
-    fingerTips[6] = nodes[12].position.x;
-    fingerTips[7] = nodes[12].position.y;
-    fingerTips[8] = nodes[12].position.z;
-    
-    // Pinky tip (node 16)
-    fingerTips[9] = nodes[16].position.x;
-    fingerTips[10] = nodes[16].position.y;
-    fingerTips[11] = nodes[16].position.z;
-    
-    // Thumb tip (node 20)
-    fingerTips[12] = nodes[20].position.x;
-    fingerTips[13] = nodes[20].position.y;
-    fingerTips[14] = nodes[20].position.z;
-    
-    return true;
-}
-
-} // namespace manus_skeleton
