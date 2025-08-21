@@ -1,0 +1,625 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BF70FA95-2D21-381B-A730-5673DE5CAE0C}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>pinocchio</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\src\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pinocchio.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pinocchio</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\src\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pinocchio.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pinocchio</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\src\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">pinocchio.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">pinocchio</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\src\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">pinocchio.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">pinocchio</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include/eigen3" /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include" /external:I "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom/include/urdfdom" /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include/urdfdom_headers" /Zc:__cplusplus /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4101;4250;4251;4275;4355</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN32;_WINDOWS;PINOCCHIO_WITH_URDFDOM;BOOST_MPL_LIMIT_LIST_SIZE=30;BOOST_MPL_LIMIT_VECTOR_SIZE=30;NOMINMAX;PINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR;PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR;CMAKE_INTDIR="Debug";pinocchio_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_WINDOWS;PINOCCHIO_WITH_URDFDOM;BOOST_MPL_LIMIT_LIST_SIZE=30;BOOST_MPL_LIMIT_VECTOR_SIZE=30;NOMINMAX;PINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR;PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR;CMAKE_INTDIR=\"Debug\";pinocchio_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;C:\Users\nicol\vcpkg\installed\x64-windows\include\eigen3;C:\Users\nicol\vcpkg\installed\x64-windows\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\include\urdfdom;C:\Users\nicol\vcpkg\installed\x64-windows\include\urdfdom_headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;C:\Users\nicol\vcpkg\installed\x64-windows\include\eigen3;C:\Users\nicol\vcpkg\installed\x64-windows\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\include\urdfdom;C:\Users\nicol\vcpkg\installed\x64-windows\include\urdfdom_headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_filesystem-vc143-mt-x64-1_88.lib;C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_system-vc143-mt-x64-1_88.lib;C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_serialization-vc143-mt-x64-1_88.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_sensor.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_model.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_world.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/Debug/pinocchio.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/Debug/pinocchio.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+      <Version>2.6</Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include/eigen3" /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include" /external:I "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom/include/urdfdom" /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include/urdfdom_headers" /Zc:__cplusplus /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4101;4250;4251;4275;4355</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN32;_WINDOWS;NDEBUG;PINOCCHIO_WITH_URDFDOM;BOOST_MPL_LIMIT_LIST_SIZE=30;BOOST_MPL_LIMIT_VECTOR_SIZE=30;NOMINMAX;PINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR;PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR;CMAKE_INTDIR="Release";pinocchio_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_WINDOWS;NDEBUG;PINOCCHIO_WITH_URDFDOM;BOOST_MPL_LIMIT_LIST_SIZE=30;BOOST_MPL_LIMIT_VECTOR_SIZE=30;NOMINMAX;PINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR;PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR;CMAKE_INTDIR=\"Release\";pinocchio_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;C:\Users\nicol\vcpkg\installed\x64-windows\include\eigen3;C:\Users\nicol\vcpkg\installed\x64-windows\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\include\urdfdom;C:\Users\nicol\vcpkg\installed\x64-windows\include\urdfdom_headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;C:\Users\nicol\vcpkg\installed\x64-windows\include\eigen3;C:\Users\nicol\vcpkg\installed\x64-windows\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\include\urdfdom;C:\Users\nicol\vcpkg\installed\x64-windows\include\urdfdom_headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_filesystem-vc143-mt-x64-1_88.lib;C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_system-vc143-mt-x64-1_88.lib;C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_serialization-vc143-mt-x64-1_88.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_sensor.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_model.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_world.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/Release/pinocchio.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/Release/pinocchio.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+      <Version>2.6</Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include/eigen3" /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include" /external:I "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom/include/urdfdom" /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include/urdfdom_headers" /Zc:__cplusplus /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DisableSpecificWarnings>4101;4250;4251;4275;4355</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN32;_WINDOWS;NDEBUG;PINOCCHIO_WITH_URDFDOM;BOOST_MPL_LIMIT_LIST_SIZE=30;BOOST_MPL_LIMIT_VECTOR_SIZE=30;NOMINMAX;PINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR;PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR;CMAKE_INTDIR="MinSizeRel";pinocchio_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_WINDOWS;NDEBUG;PINOCCHIO_WITH_URDFDOM;BOOST_MPL_LIMIT_LIST_SIZE=30;BOOST_MPL_LIMIT_VECTOR_SIZE=30;NOMINMAX;PINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR;PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR;CMAKE_INTDIR=\"MinSizeRel\";pinocchio_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;C:\Users\nicol\vcpkg\installed\x64-windows\include\eigen3;C:\Users\nicol\vcpkg\installed\x64-windows\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\include\urdfdom;C:\Users\nicol\vcpkg\installed\x64-windows\include\urdfdom_headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;C:\Users\nicol\vcpkg\installed\x64-windows\include\eigen3;C:\Users\nicol\vcpkg\installed\x64-windows\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\include\urdfdom;C:\Users\nicol\vcpkg\installed\x64-windows\include\urdfdom_headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_filesystem-vc143-mt-x64-1_88.lib;C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_system-vc143-mt-x64-1_88.lib;C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_serialization-vc143-mt-x64-1_88.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_sensor.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_model.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_world.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/MinSizeRel/pinocchio.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/MinSizeRel/pinocchio.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+      <Version>2.6</Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include/eigen3" /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include" /external:I "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/stage/urdfdom/include/urdfdom" /external:I "C:/Users/nicol/vcpkg/installed/x64-windows/include/urdfdom_headers" /Zc:__cplusplus /bigobj</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4101;4250;4251;4275;4355</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <MinimalRebuild></MinimalRebuild>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <SupportJustMyCode></SupportJustMyCode>
+      <SuppressStartupBanner></SuppressStartupBanner>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;WIN32;_WINDOWS;NDEBUG;PINOCCHIO_WITH_URDFDOM;BOOST_MPL_LIMIT_LIST_SIZE=30;BOOST_MPL_LIMIT_VECTOR_SIZE=30;NOMINMAX;PINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR;PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR;CMAKE_INTDIR="RelWithDebInfo";pinocchio_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_SCL_SECURE_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_WINDOWS;NDEBUG;PINOCCHIO_WITH_URDFDOM;BOOST_MPL_LIMIT_LIST_SIZE=30;BOOST_MPL_LIMIT_VECTOR_SIZE=30;NOMINMAX;PINOCCHIO_URDFDOM_TYPEDEF_SHARED_PTR;PINOCCHIO_URDFDOM_USE_STD_SHARED_PTR;CMAKE_INTDIR=\"RelWithDebInfo\";pinocchio_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;C:\Users\nicol\vcpkg\installed\x64-windows\include\eigen3;C:\Users\nicol\vcpkg\installed\x64-windows\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\include\urdfdom;C:\Users\nicol\vcpkg\installed\x64-windows\include\urdfdom_headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include;C:\Users\nicol\vcpkg\installed\x64-windows\include\eigen3;C:\Users\nicol\vcpkg\installed\x64-windows\include;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\include\urdfdom;C:\Users\nicol\vcpkg\installed\x64-windows\include\urdfdom_headers;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_filesystem-vc143-mt-x64-1_88.lib;C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_system-vc143-mt-x64-1_88.lib;C:\Users\nicol\vcpkg\installed\x64-windows\lib\boost_serialization-vc143-mt-x64-1_88.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_sensor.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_model.lib;C:\Users\nicol\Alt_Bionics\GitHub\manus\build\stage\urdfdom\lib\urdfdom_world.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/RelWithDebInfo/pinocchio.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/RelWithDebInfo/pinocchio.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem></SubSystem>
+      <Version>2.6</Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\src\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext -BC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext -BC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext -BC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext/src/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext -BC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/pinocchio_ext-prefix/src/pinocchio_ext-build/src/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\src\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\src\utils\file-explorer.cpp" />
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\src\parsers\urdf\model.cpp" />
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\src\parsers\urdf\geometry.cpp" />
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\src\parsers\urdf\utils.cpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\deprecated-macros.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\motion-dense.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\explog.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\explog-quaternion.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\log.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\spatial-axis.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\symmetric3.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\act-on-set.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\fwd.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\se3-base.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\cartesian-axis.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\motion.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\motion-ref.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\force-ref.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\skew.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\force-base.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\motion-zero.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\force-tpl.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\force.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\force-dense.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\inertia.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\log.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\motion-tpl.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\se3-tpl.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\act-on-set.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\se3.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\spatial\motion-base.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\check.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\crba.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\dynamics.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\kinematics.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\aba-derivatives.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\centroidal-derivatives.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\contact-dynamics.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\regressor.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\frames.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\joint-configuration.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\energy.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\center-of-mass.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\geometry.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\center-of-mass-derivatives.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\aba.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\cholesky.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\kinematics.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\rnea.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\regressor.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\frames.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\kinematics-derivatives.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\jacobian.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\rnea-derivatives.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\rnea-second-order-derivatives.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\joint-configuration.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\model.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\contact-dynamics.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\centroidal.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\model.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\rnea-derivatives.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\compute-all-terms.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\jacobian.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\rnea-second-order-derivatives.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\copy.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\centroidal.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\kinematics-derivatives.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\check.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\energy.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\geometry.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\rnea.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\parallel\geometry.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\parallel\aba.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\parallel\rnea.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\centroidal-derivatives.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\cholesky.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\default-check.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\center-of-mass.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\frames-derivatives.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\aba-derivatives.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\crba.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\compute-all-terms.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\aba.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\center-of-mass-derivatives.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\algorithm\frames-derivatives.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\codegen\code-generator-algo.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\codegen\cppadcg.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\codegen\code-generator-base.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\macros.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\casadi\spatial\se3-tpl.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\casadi\utils\static-if.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\casadi\math\matrix.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\casadi\math\quaternion.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\cppad.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\cppad\spatial\log.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\cppad\spatial\se3-tpl.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\cppad\algorithm\aba.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\cppad\utils\static-if.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\cppad\math\eigen_plugin.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\cppad\math\quaternion.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\autodiff\casadi.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\string-generator.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\version.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\openmp.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\helpers.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\axis-label.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\file-explorer.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\cast.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\eigen-fix.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\static-if.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\utils\timer.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\deprecated-namespaces.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\comparison-operators.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\multiprecision.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\tensor.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\cppadcg.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\rpy.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\cppad.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\fwd.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\taylor-expansion.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\matrix-block.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\matrix.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\multiprecision-mpfr.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\casadi.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\sign.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\sincos.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\rotation.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\quaternion.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\math\rpy.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\container\boost-container-limits.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\container\aligned-vector.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\fwd.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\data.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\vector.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\static-buffer.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\frame.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\geometry.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\joints-constraint.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\joints-model.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\symmetric3.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\archive.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\joints-motion.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\model.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\fwd.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\motion.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\eigen.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\joints-data.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\spatial.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\joints-transform.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\force.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\joints.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\serializable.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\inertia.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\aligned-vector.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\serialization\se3.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\constraint-generic.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\data.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\frame.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\geometry.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\pool\geometry.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\pool\model.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\visitor.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\constraint-base.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\fcl.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\model.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\liegroup-base.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\liegroup-algo.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\special-euclidean.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\liegroup-base.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\liegroup.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\cartesian-product-variant.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\liegroup-algo.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\fwd.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\liegroup-variant-visitors.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\special-orthogonal.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\cartesian-product-variant.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\liegroup-generic.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\cartesian-product.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\liegroup-collection.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\vector-space.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\liegroup\liegroup-variant-visitors.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\model.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\fwd.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\force-set.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-spherical.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-data-base.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-revolute-unaligned.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-planar.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-composite.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-basic-visitors.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-free-flyer.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-common-operations.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-model-base.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-prismatic.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-spherical-ZYX.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-composite.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-translation.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\fwd.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-mimic.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-base.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-prismatic-unaligned.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-revolute.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-revolute-unbounded.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-generic.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joints.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-basic-visitors.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-revolute-unbounded-unaligned.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\joint\joint-collection.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\geometry.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\fcl.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\constraint.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\visitor\joint-unary-visitor.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\visitor\fusion.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\visitor\joint-binary-visitor.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\multibody\data.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\eigen-macros.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\deprecation.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\core\unary-op.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\core\binary-op.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\urdf.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\sample-models.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\utils.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\urdf\types.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\urdf\utils.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\urdf\model.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\urdf\geometry.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\srdf.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\sample-models.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext\include\pinocchio\parsers\srdf.hxx" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include\pinocchio\config.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include\pinocchio\deprecated.hpp" />
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\include\pinocchio\warning.hpp" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\pinocchio_ext-prefix\src\pinocchio_ext-build\ZERO_CHECK.vcxproj">
+      <Project>{BBAEEA98-212A-3F96-8952-23509285E39D}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

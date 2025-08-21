@@ -1,0 +1,10 @@
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\HAND_IK\TINYXML2_EXT-PREFIX\SRC\TINYXML2_EXT-BUILD\CMAKEFILES\7251EC6A019289991A9FD90B818029D4\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/tinyxml2_ext-prefix/src/tinyxml2_ext -BC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/tinyxml2_ext-prefix/src/tinyxml2_ext-build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/tinyxml2_ext-prefix/src/tinyxml2_ext-build/tinyxml2.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

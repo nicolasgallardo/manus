@@ -1,0 +1,18 @@
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\CMAKEFILES\0B8A5A4F5E0CF5C8164ADA26B4562087\URDFDOM_STAGE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\HAND_IK\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitHub/manus -BC:/Users/nicol/Alt_Bionics/GitHub/manus/build --check-stamp-file C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

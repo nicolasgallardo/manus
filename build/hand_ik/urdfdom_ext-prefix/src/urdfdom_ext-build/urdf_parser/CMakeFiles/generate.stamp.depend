@@ -1,0 +1,4 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-4.1/Modules/CTest.cmake
+C:/Program Files/CMake/share/cmake-4.1/Modules/CTestUseLaunchers.cmake
+C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext/urdf_parser/CMakeLists.txt

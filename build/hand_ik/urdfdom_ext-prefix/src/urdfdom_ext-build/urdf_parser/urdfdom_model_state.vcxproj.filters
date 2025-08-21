@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext\urdf_parser\src\urdf_model_state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext\urdf_parser\src\twist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\urdfdom_ext-prefix\src\urdfdom_ext\urdf_parser\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{63476609-7464-3709-A5DE-B0A60D594141}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

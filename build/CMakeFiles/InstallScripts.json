@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/cmake_install.cmake",
+		"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

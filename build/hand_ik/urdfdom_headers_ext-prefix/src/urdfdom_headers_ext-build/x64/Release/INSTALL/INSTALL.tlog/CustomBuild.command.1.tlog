@@ -1,0 +1,10 @@
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\HAND_IK\URDFDOM_HEADERS_EXT-PREFIX\SRC\URDFDOM_HEADERS_EXT-BUILD\CMAKEFILES\00A9629351C6D786300D0C0262BDF786\INSTALL_FORCE.RULE
+setlocal
+cd .
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

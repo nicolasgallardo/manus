@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/urdfdom_ext"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/0b8a5a4f5e0cf5c8164ada26b4562087/urdfdom_ext.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/1c7a663a74d1ddb98f8ed84fa57e80b0/urdfdom_ext-complete.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/22a2a6de63b37451ae071663bf655e2b/urdfdom_ext-build.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/22a2a6de63b37451ae071663bf655e2b/urdfdom_ext-configure.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/22a2a6de63b37451ae071663bf655e2b/urdfdom_ext-download.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/22a2a6de63b37451ae071663bf655e2b/urdfdom_ext-install.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/22a2a6de63b37451ae071663bf655e2b/urdfdom_ext-mkdir.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/22a2a6de63b37451ae071663bf655e2b/urdfdom_ext-patch_disconnected.rule"
+		},
+		{
+			"file" : "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/22a2a6de63b37451ae071663bf655e2b/urdfdom_ext-update_disconnected.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"urdfdom_ext"
+		],
+		"name" : "urdfdom_ext"
+	}
+}

@@ -1,0 +1,10 @@
+^C:\USERS\NICOL\ALT_BIONICS\GITHUB\MANUS\BUILD\HAND_IK\URDFDOM_EXT-PREFIX\SRC\URDFDOM_EXT-BUILD\CMAKEFILES\FE258B1E7F8690878483581CC293966A\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext -BC:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/urdfdom.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

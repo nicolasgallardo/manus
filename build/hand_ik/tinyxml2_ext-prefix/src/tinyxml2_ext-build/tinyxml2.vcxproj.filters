@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\tinyxml2_ext-prefix\src\tinyxml2_ext\tinyxml2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\tinyxml2_ext-prefix\src\tinyxml2_ext\tinyxml2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\build\hand_ik\tinyxml2_ext-prefix\src\tinyxml2_ext\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{F736C4F6-53E7-3B35-A2B9-73A080DA2084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{72CB80BA-2C22-3DCB-9934-38A25298BF22}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
