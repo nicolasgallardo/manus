@@ -75,14 +75,19 @@ find_package(Eigen3 REQUIRED)
 # Add hand_ik subdirectory (preserves the working build structure)
 add_subdirectory(hand_ik)
 
-# Main SDKClient target (preserves the previous working target structure)
+# FIXED: SDKClient target creation with ALL source files including config
 if(BUILD_MANUS_INTEGRATION)
-    add_executable(SDKClient src/SDKClientIntegration.cpp)
+    # Create the executable with ALL source files
+    add_executable(SDKClient 
+        src/SDKClientIntegration.cpp
+        src/ManusHandIKBridge.cpp
+        src/ManusConfig.cpp
+    )
     
     # Link to hand_ik library
     target_link_libraries(SDKClient PRIVATE hand_ik)
     
-    # Add project include directories (for ManusHandIKBridge.h etc.)
+    # Add project include directories (for ManusHandIKBridge.h, ManusConfig.h etc.)
     target_include_directories(SDKClient PRIVATE "${CMAKE_SOURCE_DIR}/include")
     
     # Add Manus SDK includes and libraries
@@ -103,6 +108,12 @@ if(BUILD_MANUS_INTEGRATION)
         _CRT_SECURE_NO_WARNINGS    # Disable CRT warnings
     )
     
+    # FIX 1: Force UTF-8 on MSVC so Unicode literals (emoji) compile cleanly
+    # MOVED: This must come AFTER add_executable()
+    if (MSVC)
+        target_compile_options(SDKClient PRIVATE /utf-8)
+    endif()
+    
     # Optional: copy DLL next to the exe if MANUS_SDK_DLL resolved
     if(MANUS_SDK_DLL)
       add_custom_command(TARGET SDKClient POST_BUILD
@@ -112,8 +123,21 @@ if(BUILD_MANUS_INTEGRATION)
         COMMENT "Copying ManusSDK.dll to output directory")
     endif()
     
-    message(STATUS "SDKClient will be built with Manus SDK integration")
+    # Copy config file to output directory
+    add_custom_command(TARGET SDKClient POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                "${CMAKE_SOURCE_DIR}/config/manus_integration.json"
+                "$<TARGET_FILE_DIR:SDKClient>/config/manus_integration.json"
+        COMMENT "Copying config file to output directory")
+        
+    # Create config directory in output
+    add_custom_command(TARGET SDKClient POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:SDKClient>/config"
+        COMMENT "Creating config directory")
+    
+    message(STATUS "SDKClient will be built with Manus SDK integration and configuration support")
 endif()
+
 # Configuration summary
 message(STATUS "=== Manus Integration Configuration Summary ===")
 message(STATUS "Manus Integration: ${BUILD_MANUS_INTEGRATION}")
@@ -124,6 +148,7 @@ if(BUILD_MANUS_INTEGRATION)
     if(MANUS_SDK_DLL)
         message(STATUS "Manus DLL: ${MANUS_SDK_DLL}")
     endif()
+    message(STATUS "Config Support: Enabled")
 endif()
 message(STATUS "Hand IK: Managed by hand_ik/CMakeLists.txt")
 message(STATUS "==============================================")

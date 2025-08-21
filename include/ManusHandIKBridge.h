@@ -2,6 +2,7 @@
 #pragma once
 
 #include "hand_ik.hpp"
+#include "ManusConfig.h"
 #include <Eigen/Dense>
 #include <memory>
 
@@ -29,7 +30,8 @@ struct JointConfiguration {
 // Bridge between Manus coordinate system and Hand IK
 class ManusHandIKBridge {
 public:
-    explicit ManusHandIKBridge(const std::string& urdf_path);
+    // Constructor with config file support
+    explicit ManusHandIKBridge(const std::string& urdf_path, const std::string& config_path = "");
     ~ManusHandIKBridge() = default;
 
     // Main solving interface
@@ -44,9 +46,13 @@ public:
     void SetVerbose(bool verbose);
     bool RunDiagnostics();
 
+    // Access to loaded configuration
+    const ManusIntegrationConfig& GetConfig() const { return manus_config_; }
+
 private:
     std::unique_ptr<hand_ik::HandIK> ik_solver_;
     hand_ik::HandIKConfig config_;
+    ManusIntegrationConfig manus_config_;
 
     // Coordinate system parameters
     double position_scale_ = 1.0;    // Manus to IK position scaling

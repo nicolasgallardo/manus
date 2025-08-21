@@ -118,7 +118,7 @@ events:
       The output was:
       0
       MSBuild version 17.13.9+e0f243f1e for .NET Framework
-      Build started 8/20/2025 10:21:21 PM.
+      Build started 8/20/2025 11:21:44 PM.
       
       Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\4.1.0-rc4\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -147,7 +147,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.95
+      Time Elapsed 00:00:00.81
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -1006,7 +1006,7 @@ events:
       The output was:
       0
       MSBuild version 17.13.9+e0f243f1e for .NET Framework
-      Build started 8/20/2025 10:21:22 PM.
+      Build started 8/20/2025 11:21:45 PM.
       
       Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\4.1.0-rc4\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -1035,7 +1035,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.90
+      Time Elapsed 00:00:00.76
       
       
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
@@ -1206,8 +1206,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-27y0hp"
-      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-27y0hp"
+      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-pp5yw8"
+      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-pp5yw8"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
       CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
@@ -1217,40 +1217,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-27y0hp'
+        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-pp5yw8'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_398bd.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_c8b58.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/20/2025 10:21:24 PM.
+        Build started 8/20/2025 11:21:46 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-27y0hp\\cmTC_398bd.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-pp5yw8\\cmTC_c8b58.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_398bd.dir\\Debug\\".
+          Creating directory "cmTC_c8b58.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-27y0hp\\Debug\\".
-          Creating directory "cmTC_398bd.dir\\Debug\\cmTC_398bd.tlog\\".
+          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-pp5yw8\\Debug\\".
+          Creating directory "cmTC_c8b58.dir\\Debug\\cmTC_c8b58.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_398bd.dir\\Debug\\cmTC_398bd.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_398bd.dir\\Debug\\cmTC_398bd.tlog\\unsuccessfulbuild".
+          Creating "cmTC_c8b58.dir\\Debug\\cmTC_c8b58.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_c8b58.dir\\Debug\\cmTC_c8b58.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_398bd.dir\\Debug\\\\" /Fd"cmTC_398bd.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_c8b58.dir\\Debug\\\\" /Fd"cmTC_c8b58.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_398bd.dir\\Debug\\\\" /Fd"cmTC_398bd.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_c8b58.dir\\Debug\\\\" /Fd"cmTC_c8b58.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-27y0hp\\Debug\\cmTC_398bd.exe" /INCREMENTAL /ILK:"cmTC_398bd.dir\\Debug\\cmTC_398bd.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-27y0hp/Debug/cmTC_398bd.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-27y0hp/Debug/cmTC_398bd.lib" /MACHINE:X64  /machine:x64 cmTC_398bd.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_398bd.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-27y0hp\\Debug\\cmTC_398bd.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-pp5yw8\\Debug\\cmTC_c8b58.exe" /INCREMENTAL /ILK:"cmTC_c8b58.dir\\Debug\\cmTC_c8b58.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-pp5yw8/Debug/cmTC_c8b58.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-pp5yw8/Debug/cmTC_c8b58.lib" /MACHINE:X64  /machine:x64 cmTC_c8b58.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_c8b58.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-pp5yw8\\Debug\\cmTC_c8b58.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_398bd.dir\\Debug\\cmTC_398bd.tlog\\unsuccessfulbuild".
-          Touching "cmTC_398bd.dir\\Debug\\cmTC_398bd.tlog\\cmTC_398bd.lastbuildstate".
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-27y0hp\\cmTC_398bd.vcxproj" (default targets).
+          Deleting file "cmTC_c8b58.dir\\Debug\\cmTC_c8b58.tlog\\unsuccessfulbuild".
+          Touching "cmTC_c8b58.dir\\Debug\\cmTC_c8b58.tlog\\cmTC_c8b58.lastbuildstate".
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-pp5yw8\\cmTC_c8b58.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.79
+        Time Elapsed 00:00:00.70
         
       exitCode: 0
   -
@@ -1290,8 +1290,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-7hbf0o"
-      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-7hbf0o"
+      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-gzwkfh"
+      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-gzwkfh"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
@@ -1300,40 +1300,40 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-7hbf0o'
+        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-gzwkfh'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_2d385.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_c1b42.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/20/2025 10:21:25 PM.
+        Build started 8/20/2025 11:21:47 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-7hbf0o\\cmTC_2d385.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-gzwkfh\\cmTC_c1b42.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_2d385.dir\\Debug\\".
+          Creating directory "cmTC_c1b42.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-7hbf0o\\Debug\\".
-          Creating directory "cmTC_2d385.dir\\Debug\\cmTC_2d385.tlog\\".
+          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-gzwkfh\\Debug\\".
+          Creating directory "cmTC_c1b42.dir\\Debug\\cmTC_c1b42.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_2d385.dir\\Debug\\cmTC_2d385.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_2d385.dir\\Debug\\cmTC_2d385.tlog\\unsuccessfulbuild".
+          Creating "cmTC_c1b42.dir\\Debug\\cmTC_c1b42.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_c1b42.dir\\Debug\\cmTC_c1b42.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_2d385.dir\\Debug\\\\" /Fd"cmTC_2d385.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_c1b42.dir\\Debug\\\\" /Fd"cmTC_c1b42.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_2d385.dir\\Debug\\\\" /Fd"cmTC_2d385.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_c1b42.dir\\Debug\\\\" /Fd"cmTC_c1b42.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCCompilerABI.c"
           CMakeCCompilerABI.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-7hbf0o\\Debug\\cmTC_2d385.exe" /INCREMENTAL /ILK:"cmTC_2d385.dir\\Debug\\cmTC_2d385.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-7hbf0o/Debug/cmTC_2d385.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-7hbf0o/Debug/cmTC_2d385.lib" /MACHINE:X64  /machine:x64 cmTC_2d385.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_2d385.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-7hbf0o\\Debug\\cmTC_2d385.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-gzwkfh\\Debug\\cmTC_c1b42.exe" /INCREMENTAL /ILK:"cmTC_c1b42.dir\\Debug\\cmTC_c1b42.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-gzwkfh/Debug/cmTC_c1b42.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-gzwkfh/Debug/cmTC_c1b42.lib" /MACHINE:X64  /machine:x64 cmTC_c1b42.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_c1b42.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-gzwkfh\\Debug\\cmTC_c1b42.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_2d385.dir\\Debug\\cmTC_2d385.tlog\\unsuccessfulbuild".
-          Touching "cmTC_2d385.dir\\Debug\\cmTC_2d385.tlog\\cmTC_2d385.lastbuildstate".
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-7hbf0o\\cmTC_2d385.vcxproj" (default targets).
+          Deleting file "cmTC_c1b42.dir\\Debug\\cmTC_c1b42.tlog\\unsuccessfulbuild".
+          Touching "cmTC_c1b42.dir\\Debug\\cmTC_c1b42.tlog\\cmTC_c1b42.lastbuildstate".
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-gzwkfh\\cmTC_c1b42.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.92
+        Time Elapsed 00:00:00.87
         
       exitCode: 0
   -
@@ -1374,8 +1374,8 @@ events:
     checks:
       - "Performing Test HAS_VISIBILITY"
     directories:
-      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-rwyoe1"
-      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-rwyoe1"
+      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-89oqj8"
+      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-89oqj8"
     cmakeVariables:
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
       CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
@@ -1384,46 +1384,46 @@ events:
       variable: "HAS_VISIBILITY"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-rwyoe1'
+        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-89oqj8'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_fc9b2.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_056d1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/20/2025 10:21:27 PM.
+        Build started 8/20/2025 11:21:48 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\cmTC_fc9b2.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\cmTC_056d1.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_fc9b2.dir\\Debug\\".
+          Creating directory "cmTC_056d1.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\Debug\\".
-          Creating directory "cmTC_fc9b2.dir\\Debug\\cmTC_fc9b2.tlog\\".
+          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\Debug\\".
+          Creating directory "cmTC_056d1.dir\\Debug\\cmTC_056d1.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_fc9b2.dir\\Debug\\cmTC_fc9b2.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_fc9b2.dir\\Debug\\cmTC_fc9b2.tlog\\unsuccessfulbuild".
+          Creating "cmTC_056d1.dir\\Debug\\cmTC_056d1.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_056d1.dir\\Debug\\cmTC_056d1.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAS_VISIBILITY /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_fc9b2.dir\\Debug\\\\" /Fd"cmTC_fc9b2.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue  -fvisibility=hidden "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\src.c"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAS_VISIBILITY /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_056d1.dir\\Debug\\\\" /Fd"cmTC_056d1.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue  -fvisibility=hidden "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\src.c"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAS_VISIBILITY /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_fc9b2.dir\\Debug\\\\" /Fd"cmTC_fc9b2.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue  -fvisibility=hidden "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\src.c"
-        cl : command line  warning D9002: ignoring unknown option '-fvisibility=hidden' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\cmTC_fc9b2.vcxproj]
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D HAS_VISIBILITY /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Fo"cmTC_056d1.dir\\Debug\\\\" /Fd"cmTC_056d1.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue  -fvisibility=hidden "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\src.c"
+        cl : command line  warning D9002: ignoring unknown option '-fvisibility=hidden' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\cmTC_056d1.vcxproj]
           src.c
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\Debug\\cmTC_fc9b2.exe" /INCREMENTAL /ILK:"cmTC_fc9b2.dir\\Debug\\cmTC_fc9b2.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-rwyoe1/Debug/cmTC_fc9b2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-rwyoe1/Debug/cmTC_fc9b2.lib" /MACHINE:X64  /machine:x64 cmTC_fc9b2.dir\\Debug\\src.obj
-          cmTC_fc9b2.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\Debug\\cmTC_fc9b2.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\Debug\\cmTC_056d1.exe" /INCREMENTAL /ILK:"cmTC_056d1.dir\\Debug\\cmTC_056d1.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-89oqj8/Debug/cmTC_056d1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/urdfdom_ext-prefix/src/urdfdom_ext-build/CMakeFiles/CMakeScratch/TryCompile-89oqj8/Debug/cmTC_056d1.lib" /MACHINE:X64  /machine:x64 cmTC_056d1.dir\\Debug\\src.obj
+          cmTC_056d1.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\Debug\\cmTC_056d1.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_fc9b2.dir\\Debug\\cmTC_fc9b2.tlog\\unsuccessfulbuild".
-          Touching "cmTC_fc9b2.dir\\Debug\\cmTC_fc9b2.tlog\\cmTC_fc9b2.lastbuildstate".
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\cmTC_fc9b2.vcxproj" (default targets).
+          Deleting file "cmTC_056d1.dir\\Debug\\cmTC_056d1.tlog\\unsuccessfulbuild".
+          Touching "cmTC_056d1.dir\\Debug\\cmTC_056d1.tlog\\cmTC_056d1.lastbuildstate".
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\cmTC_056d1.vcxproj" (default targets).
         
         Build succeeded.
         
-        "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\cmTC_fc9b2.vcxproj" (default target) (1) ->
+        "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\cmTC_056d1.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          cl : command line  warning D9002: ignoring unknown option '-fvisibility=hidden' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-rwyoe1\\cmTC_fc9b2.vcxproj]
+          cl : command line  warning D9002: ignoring unknown option '-fvisibility=hidden' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\urdfdom_ext-prefix\\src\\urdfdom_ext-build\\CMakeFiles\\CMakeScratch\\TryCompile-89oqj8\\cmTC_056d1.vcxproj]
         
             1 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.76
+        Time Elapsed 00:00:00.65
         
       exitCode: 0
   -

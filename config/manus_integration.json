@@ -13,7 +13,7 @@
       "units": "meters"
     },
     "hands": {
-      "active_sides": ["right"],
+      "active_sides": [ "right" ],
       "left_hand": {
         "enabled": false,
         "skeleton_name": "left_hand_ik"
@@ -26,24 +26,24 @@
     "hand_ik": {
       "urdf_path": "surge_v13_hand_right_pybullet.urdf",
       "solver_params": {
-        "max_iterations": 30,
-        "residual_tolerance": 0.0005,
-        "step_tolerance": 0.000001,
-        "damping_init": 0.0001,
-        "damping_factor": 2.0,
-        "line_search_factor": 0.5,
-        "max_line_search_steps": 6
+        "max_iterations": 50,
+        "residual_tolerance": 0.005,
+        "step_tolerance": 0.00001,
+        "damping_init": 0.01,
+        "damping_factor": 5.0,
+        "line_search_factor": 0.8,
+        "max_line_search_steps": 8
       },
       "weights": {
         "thumb_position": 1.0,
-        "thumb_orientation": 0.1,
-        "finger_weights": [1.0, 1.0, 1.0, 1.0],
-        "plane_tolerance": 0.008
+        "thumb_orientation": 0.05,
+        "finger_weights": [ 1.0, 1.0, 1.0, 1.0 ],
+        "plane_tolerance": 0.050
       },
       "joint_limits": {
-        "mcp_limits": [0.0, 1.774],
-        "thumb_rotation_limits": [0.0, 1.774],
-        "thumb_flexion_limits": [0.0, 1.774]
+        "mcp_limits": [ 0.0, 1.4 ],
+        "thumb_rotation_limits": [ 0.0, 1.4 ],
+        "thumb_flexion_limits": [ 0.0, 1.4 ]
       },
       "passive_coupling": {
         "coefficients": {
@@ -57,21 +57,21 @@
     },
     "node_mapping": {
       "fingertips": {
-        "index": ["index_tip", "Index_Distal"],
-        "middle": ["middle_tip", "Middle_Distal"],
-        "ring": ["ring_tip", "Ring_Distal"],
-        "pinky": ["pinky_tip", "little_tip", "Pinky_Distal"],
-        "thumb": ["thumb_tip", "Thumb"]
+        "index": [ "index_tip", "Index_Distal" ],
+        "middle": [ "middle_tip", "Middle_Distal" ],
+        "ring": [ "ring_tip", "Ring_Distal" ],
+        "pinky": [ "pinky_tip", "little_tip", "Pinky_Distal" ],
+        "thumb": [ "thumb_tip", "Thumb" ]
       },
       "joints": {
-        "mcp_joints": ["index_mcp", "middle_mcp", "ring_mcp", "pinky_mcp"],
-        "thumb_joints": ["thumb_rotation", "thumb_flexion"]
+        "mcp_joints": [ "index_mcp", "middle_mcp", "ring_mcp", "pinky_mcp" ],
+        "thumb_joints": [ "thumb_rotation", "thumb_flexion" ]
       }
     },
     "performance": {
-      "target_fps": 60,
+      "target_fps": 30,
       "stats_interval_seconds": 5,
-      "max_solve_time_ms": 5.0,
+      "max_solve_time_ms": 50.0,
       "queue_size": 10
     },
     "logging": {
@@ -86,18 +86,18 @@
       "trajectory_type": "sinusoidal",
       "amplitude": 0.2,
       "frequency": 0.5,
-      "phase_offset": [0.0, 0.5, 1.0, 1.5]
+      "phase_offset": [ 0.0, 0.5, 1.0, 1.5 ]
     },
     "calibration": {
       "finger_offsets": {
-        "index": [0.0, 0.0, 0.0],
-        "middle": [0.0, 0.0, 0.0],
-        "ring": [0.0, 0.0, 0.0],
-        "pinky": [0.0, 0.0, 0.0],
-        "thumb": [0.0, 0.0, 0.0]
+        "index": [ 0.0, 0.0, 0.0 ],
+        "middle": [ 0.0, 0.0, 0.0 ],
+        "ring": [ 0.0, 0.0, 0.0 ],
+        "pinky": [ 0.0, 0.0, 0.0 ],
+        "thumb": [ 0.0, 0.0, 0.0 ]
       },
       "rest_pose": {
-        "mcp_angles": [0.0, 0.0, 0.0, 0.0],
+        "mcp_angles": [ 0.0, 0.0, 0.0, 0.0 ],
         "thumb_rotation": 0.0,
         "thumb_flexion": 0.0
       },

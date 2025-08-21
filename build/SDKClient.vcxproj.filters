@@ -4,6 +4,12 @@
     <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\src\SDKClientIntegration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\src\ManusHandIKBridge.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\src\ManusConfig.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\nicol\Alt_Bionics\GitHub\manus\CMakeLists.txt" />
