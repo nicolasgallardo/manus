@@ -171,120 +171,66 @@ namespace hand_ik {
         computeForwardKinematics(qfull_);
     }
 
-    PlaneSet HandIK::computePlanes(const Eigen::VectorXd& qa_seed) const {
+    (const Eigen::VectorXd& qa_seed) const {
         PlaneSet planes;
-        const double delta = 1e-4; // Small perturbation for numerical differentiation
-
-        // Update kinematics at the seed configuration
-        Eigen::VectorXd q_full = expandActiveToFull(qa_seed);
-        computeForwardKinematics(q_full);
 
         if (config_.verbose) {
-            std::cout << "Computing frozen planes at qa: " << qa_seed.transpose() << std::endl;
+            std::cout << "Computing robust planes at qa: " << qa_seed.transpose() << std::endl;
         }
 
+        // FIXED: Use robust plane construction from joint axes
         for (int i = 0; i < 4; ++i) {
-            // Get baseline fingertip position
-            Eigen::Vector3d tip_base = data_.oMf[fingertip_frame_ids_[i]].translation();
+            pinocchio::JointIndex mcp_joint = mcp_joint_ids_[i];
 
-            // Perturb MCP joint to estimate motion direction
-            Eigen::VectorXd qa_plus = qa_seed;
-            Eigen::VectorXd qa_minus = qa_seed;
+            if (mcp_joint != 0 && mcp_joint < model_.joints.size()) {
+                // FIXED: Get joint axis from model instead of computing cross products
+                // For revolute joints, the axis is typically the Z-axis of the joint frame
+                pinocchio::SE3 joint_placement = data_.oMi[mcp_joint];
 
-            qa_plus[i] += delta;
-            qa_minus[i] -= delta;
+                // Extract Z-axis (typical rotation axis for finger flexion)
+                Eigen::Vector3d joint_z_axis = joint_placement.rotation().col(2);
 
-            // Clamp to limits
-            qa_plus[i] = std::max(config_.mcp_limits[i][0],
-                std::min(config_.mcp_limits[i][1], qa_plus[i]));
-            qa_minus[i] = std::max(config_.mcp_limits[i][0],
-                std::min(config_.mcp_limits[i][1], qa_minus[i]));
-
-            // Compute perturbed fingertip positions
-            Eigen::VectorXd q_plus = expandActiveToFull(qa_plus);
-            computeForwardKinematics(q_plus);
-            Eigen::Vector3d tip_plus = data_.oMf[fingertip_frame_ids_[i]].translation();
-
-            Eigen::VectorXd q_minus = expandActiveToFull(qa_minus);
-            computeForwardKinematics(q_minus);
-            Eigen::Vector3d tip_minus = data_.oMf[fingertip_frame_ids_[i]].translation();
-
-            // Estimate motion direction (tangent to the flexion arc)
-            Eigen::Vector3d motion_dir = (tip_plus - tip_minus);
-            double motion_magnitude = motion_dir.norm();
-
-            if (motion_magnitude < 1e-8) {
-                // Fallback: use a default flexion axis (roughly Y)
-                planes.flexion_axes[i] = Eigen::Vector3d::UnitY();
-                planes.mcp_origins[i] = tip_base - 0.1 * Eigen::Vector3d::UnitX();
-                if (config_.verbose) {
-                    std::cout << "  Finger " << i << ": minimal motion, using default axis" << std::endl;
-                }
-            }
-            else {
-                motion_dir.normalize();
-
-                // Estimate center of rotation (MCP joint center)
-                Eigen::Vector3d chord = tip_plus - tip_minus;
-                Eigen::Vector3d midpoint = (tip_plus + tip_minus) * 0.5;
-                Eigen::Vector3d to_base = tip_base - midpoint;
-
-                double chord_length = chord.norm();
-                double angle_change = (qa_plus[i] - qa_minus[i]);
-
-                if (chord_length > 1e-6 && std::abs(angle_change) > 1e-6) {
-                    // Estimate radius using small angle approximation
-                    double radius = chord_length / (2.0 * std::sin(std::abs(angle_change) / 2.0));
-
-                    // The perpendicular direction in the plane of motion
-                    Eigen::Vector3d perpendicular = to_base - (to_base.dot(motion_dir)) * motion_dir;
-                    if (perpendicular.norm() > 1e-6) {
-                        perpendicular.normalize();
-                        planes.mcp_origins[i] = tip_base - radius * perpendicular;
-                    }
-                    else {
-                        // Fallback: use a point close to the fingertip
-                        planes.mcp_origins[i] = tip_base - 0.1 * to_base;
-                    }
-                }
-                else {
-                    // Fallback for very small motion
-                    planes.mcp_origins[i] = tip_base - 0.1 * to_base;
+                // Ensure consistent orientation (pointing roughly in +Y direction)
+                if (joint_z_axis.y() < 0) {
+                    joint_z_axis *= -1.0;
                 }
 
-                // The flexion axis is perpendicular to the motion direction and the radial direction
-                Eigen::Vector3d radial_dir = (tip_base - planes.mcp_origins[i]).normalized();
-                Eigen::Vector3d flexion_axis = motion_dir.cross(radial_dir);
+                planes.flexion_axes[i] = joint_z_axis.normalized();
 
-                if (flexion_axis.norm() < 1e-6) {
-                    // Fallback: use default axis
-                    planes.flexion_axes[i] = Eigen::Vector3d::UnitY();
-                    if (config_.verbose) {
-                        std::cout << "  Finger " << i << ": degenerate cross product, using default axis" << std::endl;
-                    }
-                }
-                else {
-                    planes.flexion_axes[i] = flexion_axis.normalized();
-
-                    // Ensure consistent orientation (flexion axis roughly in +Y direction)
-                    if (planes.flexion_axes[i].y() < 0) {
-                        planes.flexion_axes[i] *= -1.0;
-                    }
-                }
+                // Use joint origin as the plane reference point
+                planes.mcp_origins[i] = joint_placement.translation();
 
                 if (config_.verbose) {
-                    std::cout << "  Finger " << i << ": axis=" << planes.flexion_axes[i].transpose()
+                    std::cout << "  Finger " << i << ": axis from joint=" << planes.flexion_axes[i].transpose()
                         << ", origin=" << planes.mcp_origins[i].transpose() << std::endl;
                 }
             }
+            else {
+                // Fallback: use default axis
+                planes.flexion_axes[i] = Eigen::Vector3d::UnitY();
+                planes.mcp_origins[i] = Eigen::Vector3d::Zero();
 
-            // Compute projection matrix: P = I - n*n^T
-            planes.projection_matrices[i] = Eigen::Matrix3d::Identity() -
-                planes.flexion_axes[i] * planes.flexion_axes[i].transpose();
+                if (config_.verbose) {
+                    std::cout << "  Finger " << i << ": using default axis (invalid joint)" << std::endl;
+                }
+            }
+
+            // FIXED: Robust projection matrix computation
+            Eigen::Vector3d n = planes.flexion_axes[i];
+            double n_norm = n.norm();
+
+            if (n_norm > 1e-6) {
+                n.normalize();
+                planes.projection_matrices[i] = Eigen::Matrix3d::Identity() - n * n.transpose();
+            }
+            else {
+                // Degenerate case: use identity (no projection)
+                planes.projection_matrices[i] = Eigen::Matrix3d::Identity();
+                if (config_.verbose) {
+                    std::cout << "  WARNING: Degenerate flexion axis for finger " << i << std::endl;
+                }
+            }
         }
-
-        // Restore original configuration
-        computeForwardKinematics(q_full);
 
         return planes;
     }
@@ -361,7 +307,7 @@ namespace hand_ik {
         // Build residual first using the frozen planes
         buildPlaneProjectedResidual(targets, planes, residual);
 
-        // Initialize Jacobian
+        // Initialize Jacobian with correct size
         J_red.resize(residual.size(), N_ACTIVE);
         J_red.setZero();
 
@@ -369,43 +315,63 @@ namespace hand_ik {
         bool use_thumb_orientation = targets.R_thumb.has_value();
 
         if (config_.verbose) {
-            std::cout << "Building analytical Jacobian (PROPER Pinocchio method):" << std::endl;
+            std::cout << "Building analytical Jacobian:" << std::endl;
             std::cout << "  Residual size: " << residual.size() << std::endl;
-            std::cout << "  Model nv: " << model_.nv << std::endl;
+            std::cout << "  Active DOFs: " << N_ACTIVE << std::endl;
         }
 
-        // CRITICAL FIX: Use proper Pinocchio analytical Jacobian computation
-        // Process each finger with frozen plane projection
+        // CRITICAL FIX: Process each finger with proper Pinocchio Jacobian computation
         for (int finger = 0; finger < 4; ++finger) {
-            // Get frame Jacobian at fingertip frame in LOCAL_WORLD_ALIGNED
+            pinocchio::FrameIndex frame_id = fingertip_frame_ids_[finger];
+
+            // FIXED: Use proper Pinocchio API for frame Jacobian
             Eigen::Matrix<double, 6, Eigen::Dynamic> J_frame(6, model_.nv);
-            pinocchio::getFrameJacobian(model_, data_, fingertip_frame_ids_[finger],
+            J_frame.setZero();
+
+            // Compute frame Jacobian in world coordinates
+            pinocchio::computeFrameJacobian(model_, data_, qfull_, frame_id,
                 pinocchio::LOCAL_WORLD_ALIGNED, J_frame);
 
             // Extract translational part (3x model_.nv)
             auto J_trans = J_frame.topRows(3);
 
-            // Get velocity column indices for MCP and distal joints
-            int mcp_v_idx = model_.joints[mcp_joint_ids_[finger]].idx_v();
-            int distal_v_idx = model_.joints[distal_joint_ids_[finger]].idx_v();
+            // FIXED: Get velocity indices properly
+            pinocchio::JointIndex mcp_joint = mcp_joint_ids_[finger];
+            pinocchio::JointIndex distal_joint = distal_joint_ids_[finger];
+
+            // Check joint validity
+            if (mcp_joint == 0 || distal_joint == 0 ||
+                mcp_joint >= model_.joints.size() || distal_joint >= model_.joints.size()) {
+                std::cerr << "Invalid joint indices for finger " << finger << std::endl;
+                continue;
+            }
+
+            int mcp_v_idx = model_.joints[mcp_joint].idx_v();
+            int distal_v_idx = model_.joints[distal_joint].idx_v();
+
+            // Validate velocity indices
+            if (mcp_v_idx >= model_.nv || distal_v_idx >= model_.nv ||
+                mcp_v_idx < 0 || distal_v_idx < 0) {
+                std::cerr << "Invalid velocity indices for finger " << finger << std::endl;
+                continue;
+            }
 
             if (config_.verbose) {
                 std::cout << "  Finger " << finger << ": mcp_v_idx=" << mcp_v_idx
                     << ", distal_v_idx=" << distal_v_idx << std::endl;
             }
 
-            // Extract individual Jacobian columns (these are analytical, not FD!)
-            Eigen::Vector3d J_mcp = J_trans.col(mcp_v_idx);
-            Eigen::Vector3d J_distal = J_trans.col(distal_v_idx);
+            // Extract Jacobian columns safely
+            Eigen::Vector3d J_mcp = (mcp_v_idx < J_trans.cols()) ?
+                J_trans.col(mcp_v_idx) : Eigen::Vector3d::Zero();
+            Eigen::Vector3d J_distal = (distal_v_idx < J_trans.cols()) ?
+                J_trans.col(distal_v_idx) : Eigen::Vector3d::Zero();
 
-            // Chain rule: effective Jacobian column for active MCP parameter
-            // q_distal = passive_coupling(q_mcp), so dq_distal/dq_mcp = derivative
-            double q_mcp = qfull_[model_.joints[mcp_joint_ids_[finger]].idx_q()];
+            // FIXED: Chain rule for passive coupling
+            double q_mcp = qfull_[model_.joints[mcp_joint].idx_q()];
             double df_dq = config_.passive_coeffs[finger].derivative(q_mcp);
 
-            // CRITICAL: The effective Jacobian for the active MCP joint is:
-            // J_eff = J_mcp + (df/dq_mcp) * J_distal
-            // This accounts for both direct motion of MCP and indirect motion via passive distal
+            // Effective Jacobian: J_eff = J_mcp + (df/dq_mcp) * J_distal
             Eigen::Vector3d J_eff = J_mcp + df_dq * J_distal;
 
             if (config_.verbose) {
@@ -414,68 +380,82 @@ namespace hand_ik {
                     << ", J_eff norm=" << J_eff.norm() << std::endl;
             }
 
-            // Apply frozen plane projection: J_projected = w_i * P_i * J_eff
-            Eigen::Vector3d J_projected = planes.projection_matrices[finger] * J_eff;
-
-            if (config_.verbose) {
-                std::cout << "    J_projected norm=" << J_projected.norm()
-                    << ", weight=" << config_.finger_weights[finger] << std::endl;
+            // FIXED: Apply robust plane projection
+            Eigen::Vector3d J_projected;
+            if (planes.projection_matrices[finger].norm() > 1e-6) {
+                J_projected = planes.projection_matrices[finger] * J_eff;
+            }
+            else {
+                // Fallback: use effective Jacobian directly if projection is degenerate
+                J_projected = J_eff;
+                if (config_.verbose) {
+                    std::cout << "    Using direct J_eff (degenerate projection)" << std::endl;
+                }
             }
 
-            // Set the Jacobian column with weight and correct sign for (target - current)
-            J_red.block<3, 1>(row_idx, finger) = -config_.finger_weights[finger] * J_projected;
+            // Set the Jacobian column with weight
+            J_red.block<3, 1>(row_idx, finger) = config_.finger_weights[finger] * J_projected;
             row_idx += 3;
         }
 
-        // Process thumb position using proper analytical Jacobian
-        {
+        // FIXED: Process thumb with proper joint indices
+        pinocchio::FrameIndex thumb_frame = thumb_tip_frame_id_;
+        if (thumb_frame != 0 && thumb_frame < model_.frames.size()) {
             Eigen::Matrix<double, 6, Eigen::Dynamic> J_thumb(6, model_.nv);
-            pinocchio::getFrameJacobian(model_, data_, thumb_tip_frame_id_,
+            J_thumb.setZero();
+
+            pinocchio::computeFrameJacobian(model_, data_, qfull_, thumb_frame,
                 pinocchio::LOCAL_WORLD_ALIGNED, J_thumb);
 
             auto J_thumb_trans = J_thumb.topRows(3);
-            int thumb_rot_v_idx = model_.joints[thumb_rot_joint_id_].idx_v();
-            int thumb_flex_v_idx = model_.joints[thumb_flex_joint_id_].idx_v();
-
-            if (config_.verbose) {
-                std::cout << "  Thumb: rot_v_idx=" << thumb_rot_v_idx
-                    << ", flex_v_idx=" << thumb_flex_v_idx << std::endl;
-                std::cout << "    J_thumb_rot norm=" << J_thumb_trans.col(thumb_rot_v_idx).norm()
-                    << ", J_thumb_flex norm=" << J_thumb_trans.col(thumb_flex_v_idx).norm() << std::endl;
-            }
-
-            // Thumb position Jacobian columns (no plane projection for thumb)
-            // CRITICAL FIX: Use negative sign to match residual convention (target - current)
-            J_red.block<3, 1>(row_idx, 4) = -config_.thumb_pos_weight * J_thumb_trans.col(thumb_rot_v_idx);
-            J_red.block<3, 1>(row_idx, 5) = -config_.thumb_pos_weight * J_thumb_trans.col(thumb_flex_v_idx);
-            row_idx += 3;
-        }
-
-        // Process thumb orientation using proper analytical Jacobian
-        if (use_thumb_orientation) {
-            Eigen::Matrix<double, 6, Eigen::Dynamic> J_thumb(6, model_.nv);
-            pinocchio::getFrameJacobian(model_, data_, thumb_tip_frame_id_,
-                pinocchio::LOCAL_WORLD_ALIGNED, J_thumb);
-
             auto J_thumb_rot = J_thumb.bottomRows(3);
-            int thumb_rot_v_idx = model_.joints[thumb_rot_joint_id_].idx_v();
-            int thumb_flex_v_idx = model_.joints[thumb_flex_joint_id_].idx_v();
 
-            if (config_.verbose) {
-                std::cout << "    Thumb orientation Jacobian:" << std::endl;
-                std::cout << "      rot column norm=" << J_thumb_rot.col(thumb_rot_v_idx).norm() << std::endl;
-                std::cout << "      flex column norm=" << J_thumb_rot.col(thumb_flex_v_idx).norm() << std::endl;
+            // FIXED: Validate thumb joint indices
+            if (thumb_rot_joint_id_ != 0 && thumb_flex_joint_id_ != 0 &&
+                thumb_rot_joint_id_ < model_.joints.size() &&
+                thumb_flex_joint_id_ < model_.joints.size()) {
+
+                int thumb_rot_v_idx = model_.joints[thumb_rot_joint_id_].idx_v();
+                int thumb_flex_v_idx = model_.joints[thumb_flex_joint_id_].idx_v();
+
+                if (thumb_rot_v_idx < model_.nv && thumb_flex_v_idx < model_.nv &&
+                    thumb_rot_v_idx >= 0 && thumb_flex_v_idx >= 0) {
+
+                    // Thumb position Jacobian columns
+                    J_red.block<3, 1>(row_idx, 4) = config_.thumb_pos_weight *
+                        J_thumb_trans.col(thumb_rot_v_idx);
+                    J_red.block<3, 1>(row_idx, 5) = config_.thumb_pos_weight *
+                        J_thumb_trans.col(thumb_flex_v_idx);
+
+                    if (config_.verbose) {
+                        std::cout << "  Thumb pos: rot_v_idx=" << thumb_rot_v_idx
+                            << ", flex_v_idx=" << thumb_flex_v_idx << std::endl;
+                        std::cout << "    Rot column norm=" << J_thumb_trans.col(thumb_rot_v_idx).norm()
+                            << ", Flex column norm=" << J_thumb_trans.col(thumb_flex_v_idx).norm() << std::endl;
+                    }
+                }
             }
+            row_idx += 3;
 
-            // CRITICAL FIX: For orientation, use consistent sign convention
-            // The Jacobian needs to match the log3(R_current^T * R_target) residual
-            J_red.block<3, 1>(row_idx, 4) = -config_.thumb_rot_weight * J_thumb_rot.col(thumb_rot_v_idx);
-            J_red.block<3, 1>(row_idx, 5) = -config_.thumb_rot_weight * J_thumb_rot.col(thumb_flex_v_idx);
+            // Process thumb orientation if specified
+            if (use_thumb_orientation) {
+                if (thumb_rot_joint_id_ != 0 && thumb_flex_joint_id_ != 0) {
+                    int thumb_rot_v_idx = model_.joints[thumb_rot_joint_id_].idx_v();
+                    int thumb_flex_v_idx = model_.joints[thumb_flex_joint_id_].idx_v();
+
+                    if (thumb_rot_v_idx < model_.nv && thumb_flex_v_idx < model_.nv) {
+                        J_red.block<3, 1>(row_idx, 4) = config_.thumb_rot_weight *
+                            J_thumb_rot.col(thumb_rot_v_idx);
+                        J_red.block<3, 1>(row_idx, 5) = config_.thumb_rot_weight *
+                            J_thumb_rot.col(thumb_flex_v_idx);
+                    }
+                }
+            }
         }
 
         if (config_.verbose) {
             std::cout << "  Final Jacobian norm: " << J_red.norm() << std::endl;
-            std::cout << "  Final Jacobian max element: " << J_red.array().abs().maxCoeff() << std::endl;
+            std::cout << "  Non-zero elements: " << (J_red.array().abs() > 1e-12).count() << std::endl;
         }
     }
 
@@ -667,46 +647,44 @@ namespace hand_ik {
 
     // Jacobian finite difference check - must match solver exactly  
     bool HandIK::checkJacobianFiniteDiff(const Eigen::VectorXd& qa, double tolerance) const {
-        // Step 1: Update internal state and ensure FK is computed
+        // FIXED: Update internal state first
         const_cast<HandIK*>(this)->updateInternalState(qa);
 
-        // Step 2: Compute frozen planes at this configuration - same as solver does
+        // FIXED: Compute frozen planes at this configuration
         PlaneSet frozen_planes = computePlanes(qa);
 
-        // Step 3: Create targets OFFSET from current fingertip positions
-        // This ensures non-zero residual and meaningful Jacobian
+        // FIXED: Create offset targets to ensure non-zero residual
         Targets test_targets;
-        const double target_offset = 0.01; // 1cm offset to create meaningful residual
+        const double target_offset = 0.01; // 1cm offset
 
         for (int i = 0; i < 4; ++i) {
             Eigen::Vector3d current_tip = getFingerTip(i);
-            // Add small offset in X direction to create meaningful residual
+            // Add small offset in X direction
             test_targets.p_fingers[i] = current_tip + target_offset * Eigen::Vector3d::UnitX();
         }
         test_targets.p_thumb = getThumbTip() + target_offset * Eigen::Vector3d::UnitY();
-        test_targets.R_thumb = getThumbOrientation(); // Keep orientation unchanged
+        test_targets.R_thumb = getThumbOrientation();
 
-        // Step 4: Build analytic Jacobian using frozen planes - exactly what solver uses
+        // FIXED: Build analytic Jacobian using frozen planes
         Eigen::MatrixXd J_analytic;
         Eigen::VectorXd residual_base;
         buildPlaneProjectedJacobian(test_targets, frozen_planes, J_analytic, residual_base);
 
-        // Step 5: Compute finite difference Jacobian using the same frozen planes
-        const double eps = 1e-6;  // Match the prompt specification
+        // FIXED: Compute finite difference Jacobian using same frozen planes
+        const double eps = 1e-6;
         Eigen::MatrixXd J_fd = Eigen::MatrixXd::Zero(J_analytic.rows(), N_ACTIVE);
 
         for (int j = 0; j < N_ACTIVE; ++j) {
-            // Perturb active parameter by +/- eps
             Eigen::VectorXd qa_plus = qa;
             Eigen::VectorXd qa_minus = qa;
             qa_plus[j] += eps;
             qa_minus[j] -= eps;
 
-            // Clamp to limits to avoid discontinuities
+            // Clamp to limits
             const_cast<HandIK*>(this)->clampActiveJoints(qa_plus);
             const_cast<HandIK*>(this)->clampActiveJoints(qa_minus);
 
-            // Compute residuals using frozen planes - key: same planes, only qa changes
+            // Compute residuals using frozen planes
             const_cast<HandIK*>(this)->updateInternalState(qa_plus);
             Eigen::VectorXd res_plus;
             buildPlaneProjectedResidual(test_targets, frozen_planes, res_plus);
@@ -715,44 +693,22 @@ namespace hand_ik {
             Eigen::VectorXd res_minus;
             buildPlaneProjectedResidual(test_targets, frozen_planes, res_minus);
 
-            // Central difference: dR/dqa[j] = (R(qa + eps*e_j) - R(qa - eps*e_j)) / (2*eps)
+            // Central difference
             J_fd.col(j) = (res_plus - res_minus) / (2.0 * eps);
         }
 
-        // Step 6: Compare analytical vs finite difference
+        // Compare analytical vs finite difference
         Eigen::MatrixXd diff = J_analytic - J_fd;
         double max_error = diff.array().abs().maxCoeff();
 
-        // Step 7: Detailed diagnostics
         if (config_.verbose) {
             std::cout << "Jacobian FD check: max error = " << std::scientific << max_error << std::endl;
             std::cout << "Base residual norm: " << residual_base.norm() << std::endl;
-            std::cout << "Target offset used: " << target_offset << " m" << std::endl;
-
-            // Report per-column errors for diagnostics
-            std::cout << "Per-column errors:" << std::endl;
-            for (int j = 0; j < N_ACTIVE; ++j) {
-                double col_error = (J_analytic.col(j) - J_fd.col(j)).norm();
-                double col_norm_analytic = J_analytic.col(j).norm();
-                double col_norm_fd = J_fd.col(j).norm();
-                std::cout << "  Column " << j << ": error=" << col_error
-                    << ", analytic_norm=" << col_norm_analytic
-                    << ", fd_norm=" << col_norm_fd << std::endl;
-            }
-
-            // Additional debugging: Check if analytical Jacobian is computed properly
-            std::cout << "Analytical J matrix stats:" << std::endl;
-            std::cout << "  Size: " << J_analytic.rows() << "x" << J_analytic.cols() << std::endl;
-            std::cout << "  Norm: " << J_analytic.norm() << std::endl;
-            std::cout << "  Max element: " << J_analytic.array().abs().maxCoeff() << std::endl;
-
-            std::cout << "FD J matrix stats:" << std::endl;
-            std::cout << "  Size: " << J_fd.rows() << "x" << J_fd.cols() << std::endl;
-            std::cout << "  Norm: " << J_fd.norm() << std::endl;
-            std::cout << "  Max element: " << J_fd.array().abs().maxCoeff() << std::endl;
+            std::cout << "Analytic J norm: " << J_analytic.norm() << std::endl;
+            std::cout << "FD J norm: " << J_fd.norm() << std::endl;
         }
 
-        // Step 8: Restore original state
+        // Restore original state
         const_cast<HandIK*>(this)->updateInternalState(qa);
 
         return max_error < tolerance;
