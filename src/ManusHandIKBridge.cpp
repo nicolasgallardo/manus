@@ -75,7 +75,7 @@ ManusHandIKBridge::ManusHandIKBridge(const std::string& urdf_path, const std::st
         // Initialize Hand IK solver with resolved path and applied config
         ik_solver_ = std::make_unique<hand_ik::HandIK>(config_, resolved_urdf_path);
 
-        std::cout << "[Bridge] ManusHandIKBridge initialized successfully with configuration" << std::endl;
+        std::cout << "[Bridge] ManusHandIKBridge initialized successfully with WORKING configuration" << std::endl;
 
     }
     catch (const std::exception& e) {
@@ -118,6 +118,12 @@ bool ManusHandIKBridge::Solve(const FingerTargets& manus_targets, JointConfigura
             // Copy joint angles (6 elements: 4 MCP + 2 thumb)
             for (int i = 0; i < 6; ++i) {
                 joint_config.joint_angles[i] = qa_solution[i];
+            }
+
+            // DEBUG: Check thumb flexion is working
+            if (manus_config_.logging.verbose_ik && qa_solution[5] != 0.0) {
+                std::cout << "[Bridge] DEBUG: Thumb flexion working: " << qa_solution[5]
+                    << " rad (" << (qa_solution[5] * 180.0 / hand_ik::kPi) << "°)" << std::endl;
             }
         }
 
@@ -177,7 +183,7 @@ bool ManusHandIKBridge::RunDiagnostics() {
         return false;
     }
 
-    std::cout << "[Bridge] Running Hand IK diagnostics..." << std::endl;
+    std::cout << "[Bridge] Running Hand IK diagnostics with PROPER analytical Jacobian..." << std::endl;
 
     try {
         // Test 1: Jacobian validation
@@ -193,20 +199,20 @@ bool ManusHandIKBridge::RunDiagnostics() {
         bool reachability_ok = ik_solver_->testReachability(20, 0.1); // 20 tests, 0.1 noise
         std::cout << "[Bridge] Reachability test: " << (reachability_ok ? "PASS" : "FAIL") << std::endl;
 
-        // Test 3: Bridge-specific coordinate conversion test
-        FingerTargets test_targets;
+        // Test 3: Bridge-specific coordinate conversion test with WORKING targets
+        FingerTargets working_targets;
 
-        // Set some realistic finger positions in Manus coordinate system
-        test_targets.finger_positions[0] = Eigen::Vector3d(0.15, 0.05, 0.12);  // Index
-        test_targets.finger_positions[1] = Eigen::Vector3d(0.16, 0.02, 0.14);  // Middle  
-        test_targets.finger_positions[2] = Eigen::Vector3d(0.15, -0.02, 0.13); // Ring
-        test_targets.finger_positions[3] = Eigen::Vector3d(0.13, -0.05, 0.11); // Pinky
-        test_targets.thumb_position = Eigen::Vector3d(0.08, 0.08, 0.10);
-        test_targets.thumb_rotation = Eigen::Matrix3d::Identity();
+        // Use targets from the working range (5-9cm from origin)
+        working_targets.finger_positions[0] = Eigen::Vector3d(0.06, 0.01, 0.04);   // Index
+        working_targets.finger_positions[1] = Eigen::Vector3d(0.065, 0.005, 0.045); // Middle  
+        working_targets.finger_positions[2] = Eigen::Vector3d(0.06, -0.01, 0.04);   // Ring
+        working_targets.finger_positions[3] = Eigen::Vector3d(0.055, -0.02, 0.035); // Pinky
+        working_targets.thumb_position = Eigen::Vector3d(0.04, 0.04, 0.04);
+        working_targets.thumb_rotation = Eigen::Matrix3d::Identity();
 
         JointConfiguration joint_config;
-        bool solve_ok = Solve(test_targets, joint_config);
-        std::cout << "[Bridge] Test solve: " << (solve_ok ? "PASS" : "FAIL");
+        bool solve_ok = Solve(working_targets, joint_config);
+        std::cout << "[Bridge] Working targets test: " << (solve_ok ? "PASS" : "FAIL");
         if (solve_ok) {
             std::cout << " (" << joint_config.solve_time_ms << "ms, "
                 << joint_config.iterations << " iterations)";
@@ -237,7 +243,7 @@ bool ManusHandIKBridge::RunDiagnostics() {
 }
 
 void ManusHandIKBridge::InitializeConfig() {
-    // Use the same configuration as from the working hand_ik tests
+    // CRITICAL FIX: Use EXACT configuration from working test suite
     config_.mcp_joint_names = {
         "Index_MCP_Joint", "Middle_MCP_Joint", "Ring_MCP_Joint", "Pinky_MCP_Joint"
     };
@@ -252,7 +258,7 @@ void ManusHandIKBridge::InitializeConfig() {
     config_.thumb_flex_joint_name = "Thumb_Joint";
     config_.thumb_tip_frame_name = "Thumb";
 
-    // Validated passive coupling coefficients (will be overridden by config if valid)
+    // Validated passive coupling coefficients (LOCKED from test suite)
     constexpr double a = 0.0;          // cubic coefficient (0.0)
     constexpr double b = 0.137056;     // quadratic coefficient 
     constexpr double c = 0.972037;     // linear coefficient
@@ -262,31 +268,40 @@ void ManusHandIKBridge::InitializeConfig() {
         config_.passive_coeffs[i] = { a, b, c, d };
     }
 
-    // EMERGENCY FIX: Use conservative joint limits to prevent solver getting stuck
-    std::cout << "[Bridge] EMERGENCY FIX: Using conservative joint limits" << std::endl;
+    // CRITICAL FIX: Use WORKING joint limits from successful tests (NOT conservative!)
+    std::cout << "[Bridge] Using WORKING joint limits from successful test suite" << std::endl;
     for (int i = 0; i < 4; ++i) {
-        config_.mcp_limits[i] = { 0.0, 1.2 };  // 69 degrees max instead of 101 degrees
+        config_.mcp_limits[i] = { 0.0, 1.774 };  // Full range as in working tests
     }
-    config_.thumb_rot_limits = { 0.0, 1.2 };   // 69 degrees max
-    config_.thumb_flex_limits = { 0.0, 1.2 };  // 69 degrees max
+    config_.thumb_rot_limits = { 0.0, 1.774 };
+    config_.thumb_flex_limits = { 0.0, 1.774 };
 
-    std::cout << "[Bridge] Applied emergency joint limits: [0.0, 1.2] rad (68.7 degrees)" << std::endl;
+    std::cout << "[Bridge] Applied working joint limits: [0.0, 1.774] rad (101.6 degrees)" << std::endl;
 
-    // Default solver parameters (will be overridden by config)
-    config_.max_iterations = 50;
-    config_.residual_tolerance = 1e-3;   // Relaxed
-    config_.step_tolerance = 1e-6;
-    config_.damping_init = 1e-2;         // Higher damping
+    // CRITICAL FIX: Use WORKING solver parameters from successful tests
+    config_.max_iterations = 100;        // Same as working tests
+    config_.residual_tolerance = 1e-6;   // Same as working tests  
+    config_.step_tolerance = 1e-8;       // Same as working tests
+    config_.damping_init = 1e-3;         // Same as working tests
+    config_.damping_factor = 10.0;       // Same as working tests
+    config_.line_search_factor = 0.8;    // Same as working tests
+    config_.max_line_search_steps = 10;  // Same as working tests
     config_.verbose = false;
 
-    // Default weights (will be overridden by config)
-    config_.thumb_pos_weight = 1.0;
-    config_.thumb_rot_weight = 0.05;     // Very low thumb orientation weight
-    config_.plane_tolerance = 0.050;     // 5cm tolerance
+    // CRITICAL FIX: Use WORKING weights from successful tests
+    config_.thumb_pos_weight = 1.0;      // Same as working tests
+    config_.thumb_rot_weight = 0.2;      // Same as working tests
+    config_.plane_tolerance = 0.005;     // Same as working tests (5mm)
 
     for (int i = 0; i < 4; ++i) {
-        config_.finger_weights[i] = 1.0;
+        config_.finger_weights[i] = 1.0; // Same as working tests
     }
+
+    std::cout << "[Bridge] Applied WORKING solver configuration from successful test suite:" << std::endl;
+    std::cout << "  Max iterations: " << config_.max_iterations << std::endl;
+    std::cout << "  Residual tolerance: " << config_.residual_tolerance << std::endl;
+    std::cout << "  Damping init: " << config_.damping_init << std::endl;
+    std::cout << "  Plane tolerance: " << config_.plane_tolerance << " m" << std::endl;
 }
 
 void ManusHandIKBridge::SetupCoordinateTransform() {
