@@ -108,7 +108,7 @@ events:
       The output was:
       0
       MSBuild version 17.13.9+e0f243f1e for .NET Framework
-      Build started 8/21/2025 10:54:36 PM.
+      Build started 8/21/2025 11:11:12 PM.
       
       Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\4.1.0-rc4\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
       PrepareForBuild:
@@ -137,7 +137,7 @@ events:
           0 Warning(s)
           0 Error(s)
       
-      Time Elapsed 00:00:00.77
+      Time Elapsed 00:00:00.53
       
       
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
@@ -3370,8 +3370,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-f6rpr5"
-      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-f6rpr5"
+      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-a1nskd"
+      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-a1nskd"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -3385,40 +3385,40 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-f6rpr5'
+        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-a1nskd'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_50129.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d36fe.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/21/2025 10:54:37 PM.
+        Build started 8/21/2025 11:11:13 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f6rpr5\\cmTC_50129.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a1nskd\\cmTC_d36fe.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_50129.dir\\Debug\\".
+          Creating directory "cmTC_d36fe.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f6rpr5\\Debug\\".
-          Creating directory "cmTC_50129.dir\\Debug\\cmTC_50129.tlog\\".
+          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a1nskd\\Debug\\".
+          Creating directory "cmTC_d36fe.dir\\Debug\\cmTC_d36fe.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_50129.dir\\Debug\\cmTC_50129.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_50129.dir\\Debug\\cmTC_50129.tlog\\unsuccessfulbuild".
+          Creating "cmTC_d36fe.dir\\Debug\\cmTC_d36fe.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_d36fe.dir\\Debug\\cmTC_d36fe.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_50129.dir\\Debug\\\\" /Fd"cmTC_50129.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_d36fe.dir\\Debug\\\\" /Fd"cmTC_d36fe.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_50129.dir\\Debug\\\\" /Fd"cmTC_50129.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /Fo"cmTC_d36fe.dir\\Debug\\\\" /Fd"cmTC_d36fe.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-4.1\\Modules\\CMakeCXXCompilerABI.cpp"
           CMakeCXXCompilerABI.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f6rpr5\\Debug\\cmTC_50129.exe" /INCREMENTAL /ILK:"cmTC_50129.dir\\Debug\\cmTC_50129.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-f6rpr5/Debug/cmTC_50129.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-f6rpr5/Debug/cmTC_50129.lib" /MACHINE:X64  /machine:x64 cmTC_50129.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_50129.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f6rpr5\\Debug\\cmTC_50129.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a1nskd\\Debug\\cmTC_d36fe.exe" /INCREMENTAL /ILK:"cmTC_d36fe.dir\\Debug\\cmTC_d36fe.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-a1nskd/Debug/cmTC_d36fe.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-a1nskd/Debug/cmTC_d36fe.lib" /MACHINE:X64  /machine:x64 cmTC_d36fe.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_d36fe.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a1nskd\\Debug\\cmTC_d36fe.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_50129.dir\\Debug\\cmTC_50129.tlog\\unsuccessfulbuild".
-          Touching "cmTC_50129.dir\\Debug\\cmTC_50129.tlog\\cmTC_50129.lastbuildstate".
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-f6rpr5\\cmTC_50129.vcxproj" (default targets).
+          Deleting file "cmTC_d36fe.dir\\Debug\\cmTC_d36fe.tlog\\unsuccessfulbuild".
+          Touching "cmTC_d36fe.dir\\Debug\\cmTC_d36fe.tlog\\cmTC_d36fe.lastbuildstate".
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-a1nskd\\cmTC_d36fe.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.79
+        Time Elapsed 00:00:00.54
         
       exitCode: 0
   -
@@ -3566,8 +3566,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-95wrfl"
-      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-95wrfl"
+      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-fa4pkw"
+      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-fa4pkw"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -3580,40 +3580,40 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-95wrfl'
+        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-fa4pkw'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_13c3f.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_60993.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/21/2025 10:54:39 PM.
+        Build started 8/21/2025 11:11:14 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\cmTC_13c3f.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\cmTC_60993.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_13c3f.dir\\Debug\\".
+          Creating directory "cmTC_60993.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\Debug\\".
-          Creating directory "cmTC_13c3f.dir\\Debug\\cmTC_13c3f.tlog\\".
+          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\Debug\\".
+          Creating directory "cmTC_60993.dir\\Debug\\cmTC_60993.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_13c3f.dir\\Debug\\cmTC_13c3f.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_13c3f.dir\\Debug\\cmTC_13c3f.tlog\\unsuccessfulbuild".
+          Creating "cmTC_60993.dir\\Debug\\cmTC_60993.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_60993.dir\\Debug\\cmTC_60993.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_13c3f.dir\\Debug\\\\" /Fd"cmTC_13c3f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\src.cxx"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_60993.dir\\Debug\\\\" /Fd"cmTC_60993.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\src.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_13c3f.dir\\Debug\\\\" /Fd"cmTC_13c3f.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\src.cxx"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_60993.dir\\Debug\\\\" /Fd"cmTC_60993.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\src.cxx"
           src.cxx
-        C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\cmTC_13c3f.vcxproj]
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\cmTC_13c3f.vcxproj" (default targets) -- FAILED.
+        C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\cmTC_60993.vcxproj]
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\cmTC_60993.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\cmTC_13c3f.vcxproj" (default target) (1) ->
+        "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\cmTC_60993.vcxproj" (default target) (1) ->
         (ClCompile target) -> 
-          C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-95wrfl\\cmTC_13c3f.vcxproj]
+          C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\src.cxx(1,10): error C1083: Cannot open include file: 'pthread.h': No such file or directory [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-fa4pkw\\cmTC_60993.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.44
+        Time Elapsed 00:00:00.36
         
       exitCode: 1
   -
@@ -3627,8 +3627,8 @@ events:
     checks:
       - "Looking for pthread_create in pthreads"
     directories:
-      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ityada"
-      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ityada"
+      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-tmjfkd"
+      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-tmjfkd"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -3641,42 +3641,42 @@ events:
       variable: "CMAKE_HAVE_PTHREADS_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ityada'
+        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-tmjfkd'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_5b584.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_01c63.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/21/2025 10:54:39 PM.
+        Build started 8/21/2025 11:11:14 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ityada\\cmTC_5b584.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tmjfkd\\cmTC_01c63.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_5b584.dir\\Debug\\".
+          Creating directory "cmTC_01c63.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ityada\\Debug\\".
-          Creating directory "cmTC_5b584.dir\\Debug\\cmTC_5b584.tlog\\".
+          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tmjfkd\\Debug\\".
+          Creating directory "cmTC_01c63.dir\\Debug\\cmTC_01c63.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_5b584.dir\\Debug\\cmTC_5b584.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_5b584.dir\\Debug\\cmTC_5b584.tlog\\unsuccessfulbuild".
+          Creating "cmTC_01c63.dir\\Debug\\cmTC_01c63.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_01c63.dir\\Debug\\cmTC_01c63.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_5b584.dir\\Debug\\\\" /Fd"cmTC_5b584.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ityada\\CheckFunctionExists.cxx"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_01c63.dir\\Debug\\\\" /Fd"cmTC_01c63.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tmjfkd\\CheckFunctionExists.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_5b584.dir\\Debug\\\\" /Fd"cmTC_5b584.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ityada\\CheckFunctionExists.cxx"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_01c63.dir\\Debug\\\\" /Fd"cmTC_01c63.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tmjfkd\\CheckFunctionExists.cxx"
           CheckFunctionExists.cxx
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ityada\\Debug\\cmTC_5b584.exe" /INCREMENTAL /ILK:"cmTC_5b584.dir\\Debug\\cmTC_5b584.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ityada/Debug/cmTC_5b584.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ityada/Debug/cmTC_5b584.lib" /MACHINE:X64  /machine:x64 cmTC_5b584.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ityada\\cmTC_5b584.vcxproj]
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ityada\\cmTC_5b584.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tmjfkd\\Debug\\cmTC_01c63.exe" /INCREMENTAL /ILK:"cmTC_01c63.dir\\Debug\\cmTC_01c63.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-tmjfkd/Debug/cmTC_01c63.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-tmjfkd/Debug/cmTC_01c63.lib" /MACHINE:X64  /machine:x64 cmTC_01c63.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tmjfkd\\cmTC_01c63.vcxproj]
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tmjfkd\\cmTC_01c63.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ityada\\cmTC_5b584.vcxproj" (default target) (1) ->
+        "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tmjfkd\\cmTC_01c63.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ityada\\cmTC_5b584.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-tmjfkd\\cmTC_01c63.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.61
+        Time Elapsed 00:00:00.50
         
       exitCode: 1
   -
@@ -3690,8 +3690,8 @@ events:
     checks:
       - "Looking for pthread_create in pthread"
     directories:
-      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-p47ag8"
-      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-p47ag8"
+      source: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ezbrq6"
+      binary: "C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ezbrq6"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -3704,42 +3704,42 @@ events:
       variable: "CMAKE_HAVE_PTHREAD_CREATE"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-p47ag8'
+        Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ezbrq6'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_74677.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_e66ce.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/21/2025 10:54:40 PM.
+        Build started 8/21/2025 11:11:15 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-p47ag8\\cmTC_74677.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ezbrq6\\cmTC_e66ce.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_74677.dir\\Debug\\".
+          Creating directory "cmTC_e66ce.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-p47ag8\\Debug\\".
-          Creating directory "cmTC_74677.dir\\Debug\\cmTC_74677.tlog\\".
+          Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ezbrq6\\Debug\\".
+          Creating directory "cmTC_e66ce.dir\\Debug\\cmTC_e66ce.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_74677.dir\\Debug\\cmTC_74677.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_74677.dir\\Debug\\cmTC_74677.tlog\\unsuccessfulbuild".
+          Creating "cmTC_e66ce.dir\\Debug\\cmTC_e66ce.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_e66ce.dir\\Debug\\cmTC_e66ce.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_74677.dir\\Debug\\\\" /Fd"cmTC_74677.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-p47ag8\\CheckFunctionExists.cxx"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_e66ce.dir\\Debug\\\\" /Fd"cmTC_e66ce.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ezbrq6\\CheckFunctionExists.cxx"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_74677.dir\\Debug\\\\" /Fd"cmTC_74677.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-p47ag8\\CheckFunctionExists.cxx"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /GR /std:c++17 /Fo"cmTC_e66ce.dir\\Debug\\\\" /Fd"cmTC_e66ce.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ezbrq6\\CheckFunctionExists.cxx"
           CheckFunctionExists.cxx
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-p47ag8\\Debug\\cmTC_74677.exe" /INCREMENTAL /ILK:"cmTC_74677.dir\\Debug\\cmTC_74677.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-p47ag8/Debug/cmTC_74677.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-p47ag8/Debug/cmTC_74677.lib" /MACHINE:X64  /machine:x64 cmTC_74677.dir\\Debug\\CheckFunctionExists.obj
-        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-p47ag8\\cmTC_74677.vcxproj]
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-p47ag8\\cmTC_74677.vcxproj" (default targets) -- FAILED.
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ezbrq6\\Debug\\cmTC_e66ce.exe" /INCREMENTAL /ILK:"cmTC_e66ce.dir\\Debug\\cmTC_e66ce.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ezbrq6/Debug/cmTC_e66ce.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/CMakeFiles/CMakeScratch/TryCompile-ezbrq6/Debug/cmTC_e66ce.lib" /MACHINE:X64  /machine:x64 cmTC_e66ce.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ezbrq6\\cmTC_e66ce.vcxproj]
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ezbrq6\\cmTC_e66ce.vcxproj" (default targets) -- FAILED.
         
         Build FAILED.
         
-        "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-p47ag8\\cmTC_74677.vcxproj" (default target) (1) ->
+        "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ezbrq6\\cmTC_e66ce.vcxproj" (default target) (1) ->
         (Link target) -> 
-          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-p47ag8\\cmTC_74677.vcxproj]
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\CMakeFiles\\CMakeScratch\\TryCompile-ezbrq6\\cmTC_e66ce.vcxproj]
         
             0 Warning(s)
             1 Error(s)
         
-        Time Elapsed 00:00:00.57
+        Time Elapsed 00:00:00.48
         
       exitCode: 1
   -
@@ -16920,38 +16920,38 @@ events:
       stdout: |
         Change Dir: 'C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/CMakeTmp'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_bef5c.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3a8be.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
         MSBuild version 17.13.9+e0f243f1e for .NET Framework
-        Build started 8/21/2025 10:54:49 PM.
+        Build started 8/21/2025 11:11:25 PM.
         
-        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\CMakeFiles\\CMakeTmp\\cmTC_bef5c.vcxproj" on node 1 (default targets).
+        Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\CMakeFiles\\CMakeTmp\\cmTC_3a8be.vcxproj" on node 1 (default targets).
         PrepareForBuild:
-          Creating directory "cmTC_bef5c.dir\\Debug\\".
+          Creating directory "cmTC_3a8be.dir\\Debug\\".
           Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
           Creating directory "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\CMakeFiles\\CMakeTmp\\Debug\\".
-          Creating directory "cmTC_bef5c.dir\\Debug\\cmTC_bef5c.tlog\\".
+          Creating directory "cmTC_3a8be.dir\\Debug\\cmTC_3a8be.tlog\\".
         InitializeBuildStatus:
-          Creating "cmTC_bef5c.dir\\Debug\\cmTC_bef5c.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_bef5c.dir\\Debug\\cmTC_bef5c.tlog\\unsuccessfulbuild".
+          Creating "cmTC_3a8be.dir\\Debug\\cmTC_3a8be.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
+          Touching "cmTC_3a8be.dir\\Debug\\cmTC_3a8be.tlog\\unsuccessfulbuild".
         ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MD /GS /fp:precise /GR /std:c++17 /Fo"cmTC_bef5c.dir\\Debug\\\\" /Fd"cmTC_bef5c.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue  /Zc:__cplusplus "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\cmake\\tmp-cxx-standard.cpp"
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MD /GS /fp:precise /GR /std:c++17 /Fo"cmTC_3a8be.dir\\Debug\\\\" /Fd"cmTC_3a8be.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue  /Zc:__cplusplus "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\cmake\\tmp-cxx-standard.cpp"
           Microsoft (R) C/C++ Optimizing Compiler Version 19.43.34808 for x64
           Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MD /GS /fp:precise /GR /std:c++17 /Fo"cmTC_bef5c.dir\\Debug\\\\" /Fd"cmTC_bef5c.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue  /Zc:__cplusplus "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\cmake\\tmp-cxx-standard.cpp"
+          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MD /GS /fp:precise /GR /std:c++17 /Fo"cmTC_3a8be.dir\\Debug\\\\" /Fd"cmTC_3a8be.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue  /Zc:__cplusplus "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\cmake\\tmp-cxx-standard.cpp"
           tmp-cxx-standard.cpp
         Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_bef5c.exe" /INCREMENTAL /ILK:"cmTC_bef5c.dir\\Debug\\cmTC_bef5c.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/CMakeTmp/Debug/cmTC_bef5c.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/CMakeTmp/Debug/cmTC_bef5c.lib" /MACHINE:X64  /machine:x64 "cmTC_bef5c.dir\\Debug\\tmp-cxx-standard.obj"
-          cmTC_bef5c.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_bef5c.exe
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.43.34808\\bin\\HostX64\\x64\\link.exe /OUT:"C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_3a8be.exe" /INCREMENTAL /ILK:"cmTC_3a8be.dir\\Debug\\cmTC_3a8be.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/CMakeTmp/Debug/cmTC_3a8be.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /IMPLIB:"C:/Users/nicol/Alt_Bionics/GitHub/manus/build/hand_ik/CMakeFiles/CMakeTmp/Debug/cmTC_3a8be.lib" /MACHINE:X64  /machine:x64 "cmTC_3a8be.dir\\Debug\\tmp-cxx-standard.obj"
+          cmTC_3a8be.vcxproj -> C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\CMakeFiles\\CMakeTmp\\Debug\\cmTC_3a8be.exe
         FinalizeBuildStatus:
-          Deleting file "cmTC_bef5c.dir\\Debug\\cmTC_bef5c.tlog\\unsuccessfulbuild".
-          Touching "cmTC_bef5c.dir\\Debug\\cmTC_bef5c.tlog\\cmTC_bef5c.lastbuildstate".
-        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\CMakeFiles\\CMakeTmp\\cmTC_bef5c.vcxproj" (default targets).
+          Deleting file "cmTC_3a8be.dir\\Debug\\cmTC_3a8be.tlog\\unsuccessfulbuild".
+          Touching "cmTC_3a8be.dir\\Debug\\cmTC_3a8be.tlog\\cmTC_3a8be.lastbuildstate".
+        Done Building Project "C:\\Users\\nicol\\Alt_Bionics\\GitHub\\manus\\build\\hand_ik\\CMakeFiles\\CMakeTmp\\cmTC_3a8be.vcxproj" (default targets).
         
         Build succeeded.
             0 Warning(s)
             0 Error(s)
         
-        Time Elapsed 00:00:00.92
+        Time Elapsed 00:00:01.07
         
       exitCode: 0
     runResult:

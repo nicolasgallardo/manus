@@ -44,39 +44,25 @@ private:
     ManusIntegrationConfig config_;
 
     // Parse host:port from connection string
-    std::pair<std::string, uint16_t> parseConnectionString(const std::string& connection) {
+    static void parseHostPort(const std::string& connection, std::string& host, uint16_t& port) {
         auto colon_pos = connection.find(':');
         if (colon_pos == std::string::npos) {
             // No port specified, use default
-            return { connection, 9004 };
+            host = connection;
+            port = 9004;
+            return;
         }
 
-        std::string host = connection.substr(0, colon_pos);
+        host = connection.substr(0, colon_pos);
         std::string port_str = connection.substr(colon_pos + 1);
-        uint16_t port = static_cast<uint16_t>(std::stoi(port_str));
-
-        return { host, port };
+        port = static_cast<uint16_t>(std::stoi(port_str));
     }
 
-    // Connection wrapper that matches actual Manus SDK 3.0.0 API
-    static bool ConnectGrpc_Actual(const std::string& host, uint16_t port) {
-        // Based on typical Manus SDK 3.0.0 pattern - adjust based on your actual ManusSDK.h
-        // Most likely one of these patterns:
-
-        // Pattern A: Single URI string (most common in SDK 3.0.0)
-        std::string uri = host + ":" + std::to_string(port);
-        SDKReturnCode rc = CoreSdk_ConnectGRPC(uri.c_str());
-
-        // Pattern B: If SDK wants separate host/port (uncomment if needed)
-        // SDKReturnCode rc = CoreSdk_ConnectGRPC(host.c_str(), port);
-
-        // Pattern C: If SDK wants a settings struct (uncomment if needed)
-        // CoreSdk_ConnectionSettings settings{};
-        // strncpy(settings.address, host.c_str(), sizeof(settings.address) - 1);
-        // settings.port = port;
-        // settings.transport = CoreSdk_TransportType_GRPC; // or similar enum
-        // SDKReturnCode rc = CoreSdk_Connect(&settings);
-
+    // Connection wrapper that matches Manus SDK 3.0.0 API (no arguments)
+    static bool connectToCore_NoArgs() {
+        // Based on Manus SDK 3.0.0 - CoreSdk_ConnectGRPC takes no arguments
+        // and connects to a preset GRPC address that should be configured beforehand
+        SDKReturnCode rc = CoreSdk_ConnectGRPC();
         return rc == SDKReturnCode_Success;
     }
 
@@ -188,7 +174,10 @@ public:
         std::cout << ICON_LINK << " Attempting to connect to Manus Core..." << std::endl;
 
         // Parse connection string from config
-        auto [host, port] = parseConnectionString(config_.connection.host + ":" + std::to_string(config_.connection.port));
+        std::string host;
+        uint16_t port;
+        std::string connection_str = config_.connection.host + ":" + std::to_string(config_.connection.port);
+        parseHostPort(connection_str, host, port);
 
         // Add pre-connection diagnostics
         std::cout << ICON_WARN << " Connection diagnostics:" << std::endl;
@@ -198,10 +187,11 @@ public:
         std::cout << "  - Retry attempts: " << config_.connection.retry_attempts << std::endl;
         std::cout << "  - Protocol: gRPC" << std::endl;
 
-        // FIXED: Use the correct connection wrapper that matches actual SDK API
-        std::cout << ICON_WARN << " Attempting gRPC connection with SDK 3.0.0 API..." << std::endl;
+        // FIXED: Use the correct SDK 3.0.0 API (no arguments)
+        std::cout << ICON_WARN << " Attempting gRPC connection with SDK 3.0.0 API (preset route)..." << std::endl;
+        std::cout << ICON_WARN << " Note: SDK 3.0.0 uses preset route configuration - ensure Manus Core is configured for " << host << ":" << port << std::endl;
 
-        bool success = ConnectGrpc_Actual(host, port);
+        bool success = connectToCore_NoArgs();
 
         if (success) {
             connected_ = true;
@@ -225,6 +215,8 @@ public:
         std::cout << "  4. Try restarting Manus Dashboard" << std::endl;
         std::cout << "  5. Check Manus logs for detailed error information" << std::endl;
         std::cout << "  6. Verify SDK version compatibility (using SDK 3.0.0 API)" << std::endl;
+        std::cout << "  7. IMPORTANT: SDK 3.0.0 uses preset route - ensure Core is configured for " << host << ":" << port << std::endl;
+        std::cout << "     (The SDK cannot dynamically set host/port; it must be preset in Core configuration)" << std::endl;
 
         return false;
     }
