@@ -112,6 +112,7 @@ if(BUILD_MANUS_INTEGRATION)
     # MOVED: This must come AFTER add_executable()
     if (MSVC)
         target_compile_options(SDKClient PRIVATE /utf-8)
+	add_compile_options(/utf-8)
     endif()
     
     # Optional: copy DLL next to the exe if MANUS_SDK_DLL resolved

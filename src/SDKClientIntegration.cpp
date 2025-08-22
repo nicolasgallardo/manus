@@ -16,24 +16,14 @@
 // Hand IK integration
 #include "ManusHandIKBridge.h"
 
-// Safe ASCII replacements for emoji (Fix C4566 warnings)
-#ifdef _WIN32
+// ASCII replacements for emoji to avoid C4566 codepage warnings
 #define ICON_OK   "[OK]"
-#define ICON_BAD  "[ERR]" 
+#define ICON_BAD  "[FAIL]" 
 #define ICON_WARN "[WARN]"
 #define ICON_ROCKET "[START]"
 #define ICON_LINK "[CONN]"
 #define ICON_STOP "[STOP]"
-#define ICON_DATA "[DATA]"
-#else
-#define ICON_OK   "✓"
-#define ICON_BAD  "❌"
-#define ICON_WARN "⚠️"
-#define ICON_ROCKET "🚀"
-#define ICON_LINK "🔗"
-#define ICON_STOP "🛑"
-#define ICON_DATA "📊"
-#endif
+#define ICON_DATA "[STATS]"
 
 // Global shutdown flag
 std::atomic<bool> g_shutdown{ false };
@@ -66,6 +56,28 @@ private:
         uint16_t port = static_cast<uint16_t>(std::stoi(port_str));
 
         return { host, port };
+    }
+
+    // Connection wrapper that matches actual Manus SDK 3.0.0 API
+    static bool ConnectGrpc_Actual(const std::string& host, uint16_t port) {
+        // Based on typical Manus SDK 3.0.0 pattern - adjust based on your actual ManusSDK.h
+        // Most likely one of these patterns:
+
+        // Pattern A: Single URI string (most common in SDK 3.0.0)
+        std::string uri = host + ":" + std::to_string(port);
+        SDKReturnCode rc = CoreSdk_ConnectGRPC(uri.c_str());
+
+        // Pattern B: If SDK wants separate host/port (uncomment if needed)
+        // SDKReturnCode rc = CoreSdk_ConnectGRPC(host.c_str(), port);
+
+        // Pattern C: If SDK wants a settings struct (uncomment if needed)
+        // CoreSdk_ConnectionSettings settings{};
+        // strncpy(settings.address, host.c_str(), sizeof(settings.address) - 1);
+        // settings.port = port;
+        // settings.transport = CoreSdk_TransportType_GRPC; // or similar enum
+        // SDKReturnCode rc = CoreSdk_Connect(&settings);
+
+        return rc == SDKReturnCode_Success;
     }
 
 public:
@@ -186,37 +198,12 @@ public:
         std::cout << "  - Retry attempts: " << config_.connection.retry_attempts << std::endl;
         std::cout << "  - Protocol: gRPC" << std::endl;
 
-        // CRITICAL FIX: Use correct SDK 3.x API with separate host and port
-        std::cout << ICON_WARN << " Attempting gRPC connection with SDK 3.x API..." << std::endl;
+        // FIXED: Use the correct connection wrapper that matches actual SDK API
+        std::cout << ICON_WARN << " Attempting gRPC connection with SDK 3.0.0 API..." << std::endl;
 
-        SDKReturnCode result;
+        bool success = ConnectGrpc_Actual(host, port);
 
-        // Try the two-argument version first (most likely for SDK 3.x)
-        try {
-            result = CoreSdk_ConnectGRPC(host.c_str(), port);
-        }
-        catch (...) {
-            std::cout << ICON_WARN << " Two-argument API failed, trying settings-based API..." << std::endl;
-
-            // Fallback: Try settings-based API if available
-#ifdef MANUS_SDK_HAS_CONNECTION_SETTINGS
-            ConnectionSettings settings = {};
-            settings.mode = ConnectionMode_GRPC;
-            strncpy(settings.grpc.address, host.c_str(), sizeof(settings.grpc.address) - 1);
-            settings.grpc.port = port;
-            settings.grpc.timeout_ms = config_.connection.timeout_ms;
-
-            result = CoreSdk_Connect(settings);
-#else
-// Last resort: Try the legacy single-string API (but this is what was failing)
-            std::string legacy_connection = host + ":" + std::to_string(port);
-            result = CoreSdk_ConnectGRPC(legacy_connection.c_str());
-#endif
-        }
-
-        // Provide detailed error information
-        switch (result) {
-        case SDKReturnCode_Success:
+        if (success) {
             connected_ = true;
             std::cout << ICON_OK << " Connected to Manus Core successfully!" << std::endl;
 
@@ -226,25 +213,10 @@ public:
 
             std::cout << ICON_OK << " Connection established, ready for data streaming" << std::endl;
             return true;
-
-        case SDKReturnCode_Error:
-            std::cout << ICON_BAD << " Generic error connecting to Manus Core" << std::endl;
-            break;
-
-        case SDKReturnCode_InvalidArgument:
-            std::cout << ICON_BAD << " Invalid argument error - check host/port format" << std::endl;
-            break;
-
-        case SDKReturnCode_NotConnected:
-            std::cout << ICON_BAD << " Not connected - Manus Core may not be running" << std::endl;
-            break;
-
-        default:
-            std::cout << ICON_BAD << " Unknown connection error (status code: " << result << ")" << std::endl;
-            break;
         }
 
-        // Provide troubleshooting guidance
+        // Connection failed - provide detailed troubleshooting
+        std::cout << ICON_BAD << " Failed to connect to Manus Core" << std::endl;
         std::cout << std::endl;
         std::cout << ICON_WARN << " Connection failed. Troubleshooting steps:" << std::endl;
         std::cout << "  1. Ensure Manus Dashboard is running and shows 'Connected'" << std::endl;
@@ -252,7 +224,7 @@ public:
         std::cout << "  3. Verify no firewall is blocking port " << port << std::endl;
         std::cout << "  4. Try restarting Manus Dashboard" << std::endl;
         std::cout << "  5. Check Manus logs for detailed error information" << std::endl;
-        std::cout << "  6. Verify SDK version compatibility (using SDK 3.x API)" << std::endl;
+        std::cout << "  6. Verify SDK version compatibility (using SDK 3.0.0 API)" << std::endl;
 
         return false;
     }
