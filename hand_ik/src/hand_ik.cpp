@@ -171,7 +171,7 @@ namespace hand_ik {
         computeForwardKinematics(qfull_);
     }
 
-    (const Eigen::VectorXd& qa_seed) const {
+    PlaneSet HandIK::computePlanes(const Eigen::VectorXd& qa_seed) const {
         PlaneSet planes;
 
         if (config_.verbose) {
@@ -362,10 +362,12 @@ namespace hand_ik {
             }
 
             // Extract Jacobian columns safely
-            Eigen::Vector3d J_mcp = (mcp_v_idx < J_trans.cols()) ?
-                J_trans.col(mcp_v_idx) : Eigen::Vector3d::Zero();
-            Eigen::Vector3d J_distal = (distal_v_idx < J_trans.cols()) ?
-                J_trans.col(distal_v_idx) : Eigen::Vector3d::Zero();
+            //Eigen::Vector3d J_mcp = (mcp_v_idx < J_trans.cols()) ?
+            //    J_trans.col(mcp_v_idx) : Eigen::Vector3d::Zero();
+            //Eigen::Vector3d J_distal = (distal_v_idx < J_trans.cols()) ?
+            //    J_trans.col(distal_v_idx) : Eigen::Vector3d::Zero();
+            Eigen::Vector3d J_mcp = (mcp_v_idx < J_trans.cols()) ? J_trans.col(mcp_v_idx).eval() : Eigen::Vector3d::Zero();
+            Eigen::Vector3d J_distal = (distal_v_idx < J_trans.cols()) ? J_trans.col(distal_v_idx).eval() : Eigen::Vector3d::Zero();
 
             // FIXED: Chain rule for passive coupling
             double q_mcp = qfull_[model_.joints[mcp_joint].idx_q()];
