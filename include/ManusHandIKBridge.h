@@ -6,6 +6,7 @@
 #include <Eigen/Dense>
 #include <memory>
 #include <array>
+#include <map>
 
 enum class HandSide {
     Left,
@@ -26,6 +27,7 @@ struct JointConfiguration {
     bool valid = false;
     double solve_time_ms = 0.0;
     int iterations = 0;
+    double jacobian_error = 0.0;  // NEW: Max FD error for diagnostics
 };
 
 // Bridge between Manus coordinate system and Hand IK
@@ -50,13 +52,15 @@ public:
     // Access to loaded configuration
     const ManusIntegrationConfig& GetConfig() const { return manus_config_; }
 
-    // NEW: Internal state management for proper FK/Jacobian updates
-    void ForceKinematicsUpdate(const Eigen::VectorXd& q_full);
-    void ApplyWorkingJointLimits(Eigen::VectorXd& qa) const;
-
-    // NEW: Frame ID access for debugging
-    void PrintFrameMapping() const;
+    // NEW: Enhanced joint mapping and validation
+    void ValidateJointMapping();
     bool ValidateFrameIDs() const;
+    void PrintFrameMapping() const;
+
+    // NEW: Moving planes and FD checking
+    void SetUseFDCheck(bool enable) { use_fd_check_ = enable; }
+    void SetUseMovingPlanes(bool enable) { use_moving_planes_ = enable; }
+    void SetPlaneTolerance(double tolerance);
 
 private:
     std::unique_ptr<hand_ik::HandIK> ik_solver_;
@@ -71,28 +75,40 @@ private:
     mutable uint64_t solve_count_ = 0;
     mutable double total_solve_time_ms_ = 0.0;
 
-    // NEW: Cached frame IDs for consistent fingertip access
+    // NEW: Joint mapping resolved by name lookup
+    std::map<std::string, pinocchio::JointIndex> joint_name_to_id_;
+    std::map<std::string, pinocchio::FrameIndex> frame_name_to_id_;
+
+    // Cached joint indices (resolved by name)
+    std::array<pinocchio::JointIndex, 4> mcp_joint_ids_;
+    std::array<pinocchio::JointIndex, 4> distal_joint_ids_;
+    pinocchio::JointIndex thumb_rot_joint_id_;
+    pinocchio::JointIndex thumb_flex_joint_id_;
+
+    // Cached frame indices (resolved by name)
     std::array<pinocchio::FrameIndex, 4> fingertip_frame_ids_;
     pinocchio::FrameIndex thumb_tip_frame_id_;
 
-    // NEW: Working joint limits (from successful test configuration)
-    std::array<std::array<double, 2>, 4> working_mcp_limits_;
-    std::array<double, 2> working_thumb_rot_limits_;
-    std::array<double, 2> working_thumb_flex_limits_;
-
-    // NEW: Iteration counter for FK/Jacobian recompute tracking
-    mutable uint32_t fk_recompute_count_ = 0;
+    // NEW: Enhanced solver options
+    bool use_moving_planes_ = true;     // Recompute planes each iteration
+    bool use_fd_check_ = false;         // Enable finite difference validation
+    uint32_t jacobian_recompute_count_ = 0;
 
     void InitializeConfig();
     void SetupCoordinateTransform();
     hand_ik::Targets ConvertTargets(const FingerTargets& manus_targets) const;
 
-    // NEW: Enhanced solver methods with proper FK/Jacobian management
-    bool SolveWithRecomputedJacobians(const FingerTargets& manus_targets, JointConfiguration& joint_config);
-    void RecomputeKinematicsAndJacobians(const Eigen::VectorXd& q_full);
-    bool ValidateJacobianColumns(const Eigen::MatrixXd& J_analytical) const;
+    // NEW: Enhanced joint mapping by name
+    void ResolveJointIndicesByName();
+    void BuildJointNameMaps();
+    pinocchio::JointIndex LookupJointByName(const std::string& joint_name) const;
+    pinocchio::FrameIndex LookupFrameByName(const std::string& frame_name) const;
 
-    // NEW: Frame validation and setup
-    void CacheFingertipFrameIDs();
-    void SetupWorkingJointLimits();
+    // NEW: Robust plane construction from joint axes
+    Eigen::Vector3d GetJointAxis(pinocchio::JointIndex joint_id) const;
+    Eigen::Vector3d GetRobustPlaneNormal(int finger_idx) const;
+
+    // NEW: Enhanced solver with FD validation option
+    bool SolveWithEnhancedValidation(const FingerTargets& manus_targets, JointConfiguration& joint_config);
+    double ValidateJacobianFiniteDifference(const Eigen::VectorXd& qa) const;
 };

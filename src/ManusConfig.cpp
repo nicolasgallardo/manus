@@ -94,11 +94,18 @@ std::vector<double> ManusConfigLoader::ExtractDoubleArray(const std::string& jso
     return result;
 }
 
-// NEW: Safe connection parsing that handles both string and object forms
+// Enhanced connection parsing with offline mode support
 ManusConnectionConfig ManusConfigLoader::ParseConnection(const std::string& json_content) {
     ManusConnectionConfig connection;
 
-    // First try to find a simple string form: "Connection": "127.0.0.1:9004"
+    // Check for offline mode first
+    connection.offline_mode = ExtractBoolValue(json_content, "offline_mode");
+    if (connection.offline_mode) {
+        std::cout << "[Config] Offline mode enabled - will skip Core connection" << std::endl;
+        return connection; // Skip other connection parsing if offline
+    }
+
+    // Try both "Connection" object and direct key approach
     std::string connection_str = ExtractStringValue(json_content, "connection");
     if (connection_str.empty()) {
         connection_str = ExtractStringValue(json_content, "Connection");
@@ -130,13 +137,19 @@ ManusConnectionConfig ManusConfigLoader::ParseConnection(const std::string& json
         return connection;
     }
 
-    // Try object form: "connection": { "host": "...", "port": ... }
+    // Try object form: "Connection": { "Host": "...", "Port": ... }
     std::string host = ExtractStringValue(json_content, "host");
+    if (host.empty()) {
+        host = ExtractStringValue(json_content, "Host");
+    }
     if (!host.empty()) {
         connection.host = host;
     }
 
     int port = ExtractIntValue(json_content, "port");
+    if (port == 0) {
+        port = ExtractIntValue(json_content, "Port");
+    }
     if (port > 0 && port <= 65535) {
         connection.port = port;
     }
@@ -161,7 +174,7 @@ ManusIntegrationConfig ManusConfigLoader::LoadConfig(const std::string& config_p
         std::string json_content = ReadFileToString(config_path);
         ManusIntegrationConfig config;
 
-        // FIXED: Use robust connection parsing
+        // Parse connection with offline mode support
         config.connection = ParseConnection(json_content);
 
         // Coordinate system
@@ -185,7 +198,7 @@ ManusIntegrationConfig ManusConfigLoader::LoadConfig(const std::string& config_p
             config.coordinate_system.units = "meters";
         }
 
-        // Hand settings - look for right hand enabled flag
+        // Hand settings
         std::string right_hand_section = json_content;
         size_t right_hand_pos = right_hand_section.find("\"right_hand\"");
         if (right_hand_pos != std::string::npos) {
@@ -206,7 +219,7 @@ ManusIntegrationConfig ManusConfigLoader::LoadConfig(const std::string& config_p
             config.urdf_path = urdf_path;
         }
 
-        // IK Solver parameters - with safe extraction
+        // IK Solver parameters with safer extraction
         int max_iter = ExtractIntValue(json_content, "max_iterations");
         if (max_iter > 0) config.solver_params.max_iterations = max_iter;
 
@@ -228,16 +241,21 @@ ManusIntegrationConfig ManusConfigLoader::LoadConfig(const std::string& config_p
         int line_search_steps = ExtractIntValue(json_content, "max_line_search_steps");
         if (line_search_steps > 0) config.solver_params.max_line_search_steps = line_search_steps;
 
-        // FIXED: Plane tolerance (critical for out-of-plane issues)
+        // IMPROVED: Plane tolerance with safer defaults
         double plane_tol = ExtractDoubleValue(json_content, "plane_tolerance");
         if (plane_tol > 0) {
-            config.weights.plane_tolerance = plane_tol;
+            config.solver_params.plane_tolerance = plane_tol;
         }
         else {
-            // Increased default to avoid early exits
-            config.weights.plane_tolerance = 0.05; // 5cm tolerance instead of 0.8cm
-            std::cout << "[Config] Using relaxed plane tolerance: " << config.weights.plane_tolerance << " m" << std::endl;
+            // Use relaxed default to avoid early exits
+            config.solver_params.plane_tolerance = 0.05; // 5cm tolerance instead of 0.5cm
+            std::cout << "[Config] Using relaxed plane tolerance: " << config.solver_params.plane_tolerance << " m" << std::endl;
         }
+
+        // NEW: Moving planes and FD check options
+        config.solver_params.use_moving_planes = ExtractBoolValue(json_content, "use_moving_planes");
+        config.solver_params.fd_check = ExtractBoolValue(json_content, "fd_check");
+        config.solver_params.verbose = ExtractBoolValue(json_content, "verbose_ik");
 
         // Weights
         double thumb_pos = ExtractDoubleValue(json_content, "thumb_pos_weight");
@@ -253,7 +271,7 @@ ManusIntegrationConfig ManusConfigLoader::LoadConfig(const std::string& config_p
             }
         }
 
-        // Passive coupling coefficients - only use if they appear to be the validated ones
+        // Passive coupling coefficients - only use if they match validated ones
         double coeff_a = ExtractDoubleValue(json_content, "cubic_coefficient");
         double coeff_b = ExtractDoubleValue(json_content, "quadratic_coefficient");
         double coeff_c = ExtractDoubleValue(json_content, "linear_coefficient");
@@ -295,12 +313,16 @@ ManusIntegrationConfig ManusConfigLoader::LoadConfig(const std::string& config_p
         config.logging.performance_stats = ExtractBoolValue(json_content, "performance_stats");
         config.logging.skeleton_debug = ExtractBoolValue(json_content, "skeleton_debug");
         config.logging.coordinate_debug = ExtractBoolValue(json_content, "coordinate_debug");
+        config.logging.license_debug = ExtractBoolValue(json_content, "license_debug");
 
         std::cout << "[Config] Configuration loaded successfully" << std::endl;
-        std::cout << "[Config] Connection: " << config.connection.host << ":" << config.connection.port << std::endl;
+        if (!config.connection.offline_mode) {
+            std::cout << "[Config] Connection: " << config.connection.host << ":" << config.connection.port << std::endl;
+        }
         std::cout << "[Config] URDF: " << config.urdf_path << std::endl;
         std::cout << "[Config] Max iterations: " << config.solver_params.max_iterations << std::endl;
-        std::cout << "[Config] Plane tolerance: " << config.weights.plane_tolerance << " m" << std::endl;
+        std::cout << "[Config] Plane tolerance: " << config.solver_params.plane_tolerance << " m" << std::endl;
+        std::cout << "[Config] Use moving planes: " << (config.solver_params.use_moving_planes ? "yes" : "no") << std::endl;
         std::cout << "[Config] Performance stats: " << (config.logging.performance_stats ? "enabled" : "disabled") << std::endl;
 
         return config;
@@ -329,10 +351,12 @@ void ManusIntegrationConfig::ApplyToHandIKConfig(hand_ik::HandIKConfig& ik_confi
     ik_config.line_search_factor = solver_params.line_search_factor;
     ik_config.max_line_search_steps = solver_params.max_line_search_steps;
 
+    // Apply updated tolerances
+    ik_config.plane_tolerance = solver_params.plane_tolerance;
+
     // Apply weights
     ik_config.thumb_pos_weight = weights.thumb_position;
     ik_config.thumb_rot_weight = weights.thumb_orientation;
-    ik_config.plane_tolerance = weights.plane_tolerance;
 
     for (int i = 0; i < 4; ++i) {
         ik_config.finger_weights[i] = weights.finger_weights[i];
@@ -344,8 +368,6 @@ void ManusIntegrationConfig::ApplyToHandIKConfig(hand_ik::HandIKConfig& ik_confi
         std::abs(passive_coupling.c - 0.972037) > tolerance ||
         std::abs(passive_coupling.d - 0.0129125) > tolerance) {
         std::cerr << "[Config] WARNING: Passive coupling coefficients differ from validated values!" << std::endl;
-        std::cerr << "[Config] Expected: b=0.137056, c=0.972037, d=0.0129125" << std::endl;
-        std::cerr << "[Config] Got: b=" << passive_coupling.b << ", c=" << passive_coupling.c << ", d=" << passive_coupling.d << std::endl;
         std::cerr << "[Config] Using validated coefficients instead of config values" << std::endl;
 
         // Use validated coefficients
@@ -372,7 +394,7 @@ void ManusIntegrationConfig::ApplyToHandIKConfig(hand_ik::HandIKConfig& ik_confi
     }
 
     // Apply logging
-    ik_config.verbose = logging.verbose_ik;
+    ik_config.verbose = solver_params.verbose;
 
     std::cout << "[Config] Applied configuration to Hand IK solver:" << std::endl;
     std::cout << "[Config]   Max iterations: " << ik_config.max_iterations << std::endl;

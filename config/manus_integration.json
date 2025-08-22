@@ -6,6 +6,7 @@
     "retry_attempts": 3,
     "protocol": "grpc"
   },
+  "offline_mode": false,
   "coordinate_system": {
     "handedness": "right",
     "up_axis": "positive_y",
@@ -21,7 +22,10 @@
     "damping_factor": 10.0,
     "line_search_factor": 0.8,
     "max_line_search_steps": 10,
-    "plane_tolerance": 0.005
+    "plane_tolerance": 0.05,
+    "use_moving_planes": true,
+    "fd_check": false,
+    "verbose_ik": false
   },
   "joint_limits": {
     "use_working_limits": true,
@@ -49,11 +53,13 @@
     "enable_threading": false
   },
   "logging": {
+    "level": "info",
     "verbose_ik": false,
     "performance_stats": true,
     "coordinate_debug": false,
     "jacobian_validation": true,
-    "frame_mapping_debug": true
+    "frame_mapping_debug": true,
+    "license_debug": true
   },
   "diagnostics": {
     "run_jacobian_test": true,
@@ -94,5 +100,13 @@
     ],
     "thumb_position": [ 0.04, 0.04, 0.04 ],
     "thumb_rotation": "identity"
+  },
+  "enhanced_features": {
+    "robust_plane_construction": true,
+    "joint_mapping_by_name": true,
+    "license_aware_connection": true,
+    "finite_difference_validation": false,
+    "relaxed_plane_tolerance": true,
+    "performance_optimized": true
   }
 }

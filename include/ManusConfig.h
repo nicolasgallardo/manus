@@ -11,6 +11,7 @@ struct ManusConnectionConfig {
     int port = 9004;
     int timeout_ms = 5000;
     int retry_attempts = 3;
+    bool offline_mode = false;  // NEW: Skip Core connection
 };
 
 struct ManusCoordinateConfig {
@@ -35,13 +36,16 @@ struct ManusIKSolverConfig {
     double damping_factor = 10.0;       // WORKING value from test suite
     double line_search_factor = 0.8;    // WORKING value from test suite
     int max_line_search_steps = 10;     // WORKING value from test suite
+    double plane_tolerance = 0.05;      // NEW: Relaxed default (5cm instead of 0.5cm)
+    bool use_moving_planes = true;      // NEW: Recompute planes each iteration
+    bool fd_check = false;              // NEW: Enable finite difference validation
+    bool verbose = false;
 };
 
 struct ManusIKWeights {
     double thumb_position = 1.0;
     double thumb_orientation = 0.2;     // WORKING value from test suite
     std::array<double, 4> finger_weights = { 1.0, 1.0, 1.0, 1.0 };
-    double plane_tolerance = 0.05;      // RELAXED from 0.008 to avoid early exits
 };
 
 struct ManusPassiveCoupling {
@@ -64,6 +68,7 @@ struct ManusLoggingConfig {
     bool performance_stats = true;
     bool skeleton_debug = false;
     bool coordinate_debug = false;
+    bool license_debug = true;          // NEW: License/dongle status logging
 };
 
 struct ManusIntegrationConfig {
@@ -97,6 +102,6 @@ private:
     static bool ExtractBoolValue(const std::string& json, const std::string& key);
     static std::vector<double> ExtractDoubleArray(const std::string& json, const std::string& key);
 
-    // NEW: Safe connection parsing that handles both string and object forms
+    // Enhanced connection parsing that handles offline mode
     static ManusConnectionConfig ParseConnection(const std::string& json_content);
 };
