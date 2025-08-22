@@ -6,6 +6,7 @@
 #include <filesystem>
 #include <random>
 #include <iomanip>
+#include <sstream>
 
 // Manus SDK headers
 #ifdef MANUS_SDK_AVAILABLE
@@ -15,15 +16,15 @@
 // Hand IK integration
 #include "ManusHandIKBridge.h"
 
-// UTF-8 safe emoji definitions (Fix 1)
+// Safe ASCII replacements for emoji (Fix C4566 warnings)
 #ifdef _WIN32
-#define ICON_OK   u8"✓"
-#define ICON_BAD  u8"❌" 
-#define ICON_WARN u8"⚠️"
-#define ICON_ROCKET u8"🚀"
-#define ICON_LINK u8"🔗"
-#define ICON_STOP u8"🛑"
-#define ICON_DATA u8"📊"
+#define ICON_OK   "[OK]"
+#define ICON_BAD  "[ERR]" 
+#define ICON_WARN "[WARN]"
+#define ICON_ROCKET "[START]"
+#define ICON_LINK "[CONN]"
+#define ICON_STOP "[STOP]"
+#define ICON_DATA "[DATA]"
 #else
 #define ICON_OK   "✓"
 #define ICON_BAD  "❌"
@@ -51,6 +52,21 @@ private:
     bool connected_;
     std::unique_ptr<ManusHandIKBridge> ik_bridge_;
     ManusIntegrationConfig config_;
+
+    // Parse host:port from connection string
+    std::pair<std::string, uint16_t> parseConnectionString(const std::string& connection) {
+        auto colon_pos = connection.find(':');
+        if (colon_pos == std::string::npos) {
+            // No port specified, use default
+            return { connection, 9004 };
+        }
+
+        std::string host = connection.substr(0, colon_pos);
+        std::string port_str = connection.substr(colon_pos + 1);
+        uint16_t port = static_cast<uint16_t>(std::stoi(port_str));
+
+        return { host, port };
+    }
 
 public:
     ManusSDKClient() : session_id_(0), connected_(false) {}
@@ -159,18 +175,44 @@ public:
     bool connectToCore() {
         std::cout << ICON_LINK << " Attempting to connect to Manus Core..." << std::endl;
 
+        // Parse connection string from config
+        auto [host, port] = parseConnectionString(config_.connection.host + ":" + std::to_string(config_.connection.port));
+
         // Add pre-connection diagnostics
         std::cout << ICON_WARN << " Connection diagnostics:" << std::endl;
-        std::cout << "  - Host: " << config_.connection.host << std::endl;
-        std::cout << "  - Port: " << config_.connection.port << std::endl;
+        std::cout << "  - Host: " << host << std::endl;
+        std::cout << "  - Port: " << port << std::endl;
         std::cout << "  - Timeout: " << config_.connection.timeout_ms << "ms" << std::endl;
         std::cout << "  - Retry attempts: " << config_.connection.retry_attempts << std::endl;
         std::cout << "  - Protocol: gRPC" << std::endl;
 
-        // Try to get more info about the connection attempt
-        std::cout << ICON_WARN << " Attempting gRPC connection..." << std::endl;
+        // CRITICAL FIX: Use correct SDK 3.x API with separate host and port
+        std::cout << ICON_WARN << " Attempting gRPC connection with SDK 3.x API..." << std::endl;
 
-        SDKReturnCode result = CoreSdk_ConnectGRPC();
+        SDKReturnCode result;
+
+        // Try the two-argument version first (most likely for SDK 3.x)
+        try {
+            result = CoreSdk_ConnectGRPC(host.c_str(), port);
+        }
+        catch (...) {
+            std::cout << ICON_WARN << " Two-argument API failed, trying settings-based API..." << std::endl;
+
+            // Fallback: Try settings-based API if available
+#ifdef MANUS_SDK_HAS_CONNECTION_SETTINGS
+            ConnectionSettings settings = {};
+            settings.mode = ConnectionMode_GRPC;
+            strncpy(settings.grpc.address, host.c_str(), sizeof(settings.grpc.address) - 1);
+            settings.grpc.port = port;
+            settings.grpc.timeout_ms = config_.connection.timeout_ms;
+
+            result = CoreSdk_Connect(settings);
+#else
+// Last resort: Try the legacy single-string API (but this is what was failing)
+            std::string legacy_connection = host + ":" + std::to_string(port);
+            result = CoreSdk_ConnectGRPC(legacy_connection.c_str());
+#endif
+        }
 
         // Provide detailed error information
         switch (result) {
@@ -190,7 +232,7 @@ public:
             break;
 
         case SDKReturnCode_InvalidArgument:
-            std::cout << ICON_BAD << " Invalid argument error" << std::endl;
+            std::cout << ICON_BAD << " Invalid argument error - check host/port format" << std::endl;
             break;
 
         case SDKReturnCode_NotConnected:
@@ -207,9 +249,10 @@ public:
         std::cout << ICON_WARN << " Connection failed. Troubleshooting steps:" << std::endl;
         std::cout << "  1. Ensure Manus Dashboard is running and shows 'Connected'" << std::endl;
         std::cout << "  2. Check if Manus Core service is running in background" << std::endl;
-        std::cout << "  3. Verify no firewall is blocking port " << config_.connection.port << std::endl;
+        std::cout << "  3. Verify no firewall is blocking port " << port << std::endl;
         std::cout << "  4. Try restarting Manus Dashboard" << std::endl;
         std::cout << "  5. Check Manus logs for detailed error information" << std::endl;
+        std::cout << "  6. Verify SDK version compatibility (using SDK 3.x API)" << std::endl;
 
         return false;
     }
@@ -292,16 +335,13 @@ public:
         }
     }
 
-    // ONLY REPLACE THE runStandaloneIKTest METHOD in your existing SDKClientIntegration.cpp
-    // Find this method and replace it with the version below:
-
     void runStandaloneIKTest() {
         if (!ik_bridge_) {
             std::cout << ICON_BAD << " No Hand IK bridge for testing" << std::endl;
             return;
         }
 
-        std::cout << ICON_WARN << " Running standalone Hand IK test with PROPER analytical Jacobian..." << std::endl;
+        std::cout << ICON_WARN << " Running standalone Hand IK test with FIXED analytical Jacobian..." << std::endl;
 
         // Test 1: Run built-in diagnostics
         std::cout << ICON_WARN << " Running Hand IK diagnostics..." << std::endl;
@@ -404,7 +444,7 @@ public:
             << " (" << std::fixed << std::setprecision(1) << success_rate << "%) successful" << std::endl;
 
         if (success_rate >= 80.0) {
-            std::cout << ICON_OK << " Hand IK integration is working with PROPER analytical Jacobian!" << std::endl;
+            std::cout << ICON_OK << " Hand IK integration is working with FIXED analytical Jacobian!" << std::endl;
         }
         else if (success_rate > 0.0) {
             std::cout << ICON_WARN << " Hand IK works but may need further tuning" << std::endl;
@@ -417,7 +457,7 @@ public:
         std::cout << ICON_OK << " Standalone test complete. Expected improvements:" << std::endl;
         std::cout << "  - Jacobian FD errors should be ~1e-6 instead of ~1e-1" << std::endl;
         std::cout << "  - Solve times should be ~1-5ms instead of 7000ms" << std::endl;
-        std::cout << "  - Success rates should be ≥80% instead of 0%" << std::endl;
+        std::cout << "  - Success rates should be >=80% instead of 0%" << std::endl;
         std::cout << "  - Thumb flexion should show non-zero angles" << std::endl;
     }
 

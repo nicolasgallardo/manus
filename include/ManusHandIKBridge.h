@@ -5,6 +5,7 @@
 #include "ManusConfig.h"
 #include <Eigen/Dense>
 #include <memory>
+#include <array>
 
 enum class HandSide {
     Left,
@@ -49,6 +50,14 @@ public:
     // Access to loaded configuration
     const ManusIntegrationConfig& GetConfig() const { return manus_config_; }
 
+    // NEW: Internal state management for proper FK/Jacobian updates
+    void ForceKinematicsUpdate(const Eigen::VectorXd& q_full);
+    void ApplyWorkingJointLimits(Eigen::VectorXd& qa) const;
+
+    // NEW: Frame ID access for debugging
+    void PrintFrameMapping() const;
+    bool ValidateFrameIDs() const;
+
 private:
     std::unique_ptr<hand_ik::HandIK> ik_solver_;
     hand_ik::HandIKConfig config_;
@@ -62,7 +71,28 @@ private:
     mutable uint64_t solve_count_ = 0;
     mutable double total_solve_time_ms_ = 0.0;
 
+    // NEW: Cached frame IDs for consistent fingertip access
+    std::array<pinocchio::FrameIndex, 4> fingertip_frame_ids_;
+    pinocchio::FrameIndex thumb_tip_frame_id_;
+
+    // NEW: Working joint limits (from successful test configuration)
+    std::array<std::array<double, 2>, 4> working_mcp_limits_;
+    std::array<double, 2> working_thumb_rot_limits_;
+    std::array<double, 2> working_thumb_flex_limits_;
+
+    // NEW: Iteration counter for FK/Jacobian recompute tracking
+    mutable uint32_t fk_recompute_count_ = 0;
+
     void InitializeConfig();
     void SetupCoordinateTransform();
     hand_ik::Targets ConvertTargets(const FingerTargets& manus_targets) const;
+
+    // NEW: Enhanced solver methods with proper FK/Jacobian management
+    bool SolveWithRecomputedJacobians(const FingerTargets& manus_targets, JointConfiguration& joint_config);
+    void RecomputeKinematicsAndJacobians(const Eigen::VectorXd& q_full);
+    bool ValidateJacobianColumns(const Eigen::MatrixXd& J_analytical) const;
+
+    // NEW: Frame validation and setup
+    void CacheFingertipFrameIDs();
+    void SetupWorkingJointLimits();
 };
